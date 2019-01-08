@@ -19,7 +19,7 @@
 ## Usage
 
 ```javascript
-const aslug = require('aslug');
+import aslug from 'aslug';
 
 aslug('my|bad|string'); // my_124_bad_124_string
 ```
