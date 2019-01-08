@@ -1,18 +1,29 @@
-module.exports = function aslug(
-  str,
+/**
+ * @module Aslug
+ */
+
+export interface IOpts {
+  target?: RegExp;
+  separation?: string;
+  trim?: boolean;
+  replace?: (char: string) => string;
+}
+
+export default function aslug(
+  str: string,
   {
     target = /[^a-zA-Z0-9]/,
     separation = '_',
     trim = false,
-    replace = (char) => char.charCodeAt()
-  } = {}
-) {
+    replace = (char) => String(char.charCodeAt(0))
+  }: IOpts = {}
+): string {
   const joinStr = trim ? separation : '';
   const getCharStr = trim
-    ? (char) => replace(char)
-    : (char) => separation + replace(char) + separation;
+    ? (char: string) => replace(char)
+    : (char: string) => separation + replace(char) + separation;
 
-  function runSlug(arr, last) {
+  function runSlug(arr: string[], last: string): string {
     if (!last) return arr.join(joinStr);
 
     const index = last.search(target);
@@ -28,4 +39,4 @@ module.exports = function aslug(
   }
 
   return runSlug([], str);
-};
+}

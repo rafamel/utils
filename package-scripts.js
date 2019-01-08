@@ -1,49 +1,80 @@
-const registerSx = (sx, _ = (global.SX = {})) =>
-  Object.keys(sx).forEach((key) => (global.SX[key] = sx[key]));
-const sx = (name) => `node -r ./package-scripts.js -e "global.SX.${name}()"`;
+const path = require('path');
 const scripts = (x) => ({ scripts: x });
 const exit0 = (x) => `${x} || shx echo `;
-const series = (x) => `(${x.join(') && (')})`;
-// const intrim = (x) => x.replace(/\n/g, ' ').replace(/ {2,}/g, ' ');
+const series = (...x) => `(${x.join(') && (')})`;
+const dir = (file) => path.join(CONFIG_DIR, file);
+const ts = (cmd) => (TYPESCRIPT ? cmd : 'shx echo');
+const dotted = (ext) => '.' + ext.replace(/,/g, ',.');
+const {
+  OUT_DIR,
+  DOCS_DIR,
+  CONFIG_DIR,
+  EXTENSIONS,
+  TYPESCRIPT
+} = require('./project.config');
 
 process.env.LOG_LEVEL = 'disable';
 module.exports = scripts({
-  build: series([
+  build: series(
     'nps validate',
-    exit0('shx rm -r lib'),
-    'shx mkdir lib',
-    'babel src --out-dir lib'
-  ]),
-  watch: 'onchange "./src/**/*.{js,jsx,ts}" -i -- nps private.watch',
-  fix: `prettier --write "./**/*.{js,jsx,ts,json,scss}"`,
+    exit0(`shx rm -r ${OUT_DIR}`),
+    `shx mkdir ${OUT_DIR}`,
+    `jake fixpackage["${OUT_DIR}"]`,
+    'nps private.build docs'
+  ),
+  publish: `nps build && cd ${OUT_DIR} && npm publish`,
+  watch: `onchange "./src/**/*.{${EXTENSIONS}}" --initial --kill -- nps private.watch`,
+  fix: [
+    'prettier',
+    `--write "./**/*.{${EXTENSIONS},.json,.scss}"`,
+    `--config "${dir('.prettierrc.js')}"`,
+    `--ignore-path "${dir('.prettierignore')}"`
+  ].join(' '),
   lint: {
-    default: 'eslint ./src --ext .js',
-    test: 'eslint ./test --ext .js',
-    md: 'markdownlint *.md --config markdown.json'
+    default: [
+      'concurrently',
+      `"eslint ./src --ext ${dotted(EXTENSIONS)} -c ${dir('.eslintrc.js')}"`,
+      `"${ts(`tslint ./src/**/*.{ts,tsx} -c ${dir('tslint.json')}`)}"`,
+      '-n eslint,tslint',
+      '-c yellow,blue'
+    ].join(' '),
+    types: ts('tsc --noEmit'),
+    test: `eslint ./test --ext ${dotted(EXTENSIONS)} -c ${dir('.eslintrc.js')}`,
+    md: `markdownlint *.md --config ${dir('markdown.json')}`,
+    scripts: 'jake lintscripts[' + __dirname + ']'
   },
   test: {
-    default: 'nps lint.test && jest ./test/.*.test.js --runInBand',
-    watch: 'onchange "./{test,src}/*.{js,jsx}" -i -- nps private.test_watch'
+    default: series('nps lint.test', `cross-env NODE_ENV=test jest`),
+    watch: `onchange "./{test,src}/**/*.{${EXTENSIONS}}" --initial --kill -- nps private.test_watch`
   },
-  validate: 'nps fix lint lint.test lint.md test private.validate_last',
-  update: 'npm update --save/save-dev && npm outdated',
-  clean: `${exit0('shx rm -r lib coverage')} && shx rm -rf node_modules`,
+  validate:
+    'nps lint lint.types lint.md lint.scripts test private.validate_last',
+  update: series('npm update --save/save-dev', 'npm outdated'),
+  clean: series(
+    exit0(`shx rm -r ${OUT_DIR} ${DOCS_DIR} coverage`),
+    'shx rm -rf node_modules'
+  ),
+  docs: series(
+    exit0(`shx rm -r ${DOCS_DIR}`),
+    ts(`typedoc --out ${DOCS_DIR} ./src`)
+  ),
   // Private
   private: {
-    watch: `${sx('clear')} && nps lint`,
-    test_watch: `${sx('clear')} && nps test`,
-    validate_last: `npm outdated || ${sx('countdown')}`
-  }
-});
-
-registerSx({
-  clear: () => console.log('\x1Bc'),
-  countdown: (i = 8) => {
-    if (!process.env.MSG) return;
-    console.log('');
-    const t = setInterval(() => {
-      process.stdout.write('\r' + process.env.MSG + ' ' + i);
-      !i-- && (clearInterval(t) || true) && console.log('\n');
-    }, 1000);
+    build: [
+      'concurrently',
+      `"babel src --out-dir ${OUT_DIR} --extensions "${dotted(
+        EXTENSIONS
+      )}" --source-maps inline"`,
+      `"${ts(`tsc --emitDeclarationOnly --outDir ${OUT_DIR}`)}"`,
+      '-n babel,tsc',
+      '-c green,magenta'
+    ].join(' '),
+    watch: series(
+      'jake clear',
+      'shx echo "____________\n"',
+      'concurrently "nps private.build" "nps lint"'
+    ),
+    test_watch: series('jake clear', 'nps test'),
+    validate_last: `npm outdated || jake countdown`
   }
 });

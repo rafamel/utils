@@ -1,4 +1,4 @@
-const aslug = require('../src');
+import aslug from '../src';
 
 describe(`- Basic`, () => {
   test(`Works when opts are provided`, () => {
@@ -6,7 +6,7 @@ describe(`- Basic`, () => {
       target: /[^a-zA-Z0-9]/,
       separation: '_',
       trim: false,
-      replace: (char) => char.charCodeAt()
+      replace: (char) => String(char.charCodeAt(0))
     });
     expect(ans).toBe('some_124_str');
   });

@@ -1,6 +1,6 @@
 # aslug
 
-[![Version](https://img.shields.io/github/package-json/v/rafamel/aslug.svg)](https://github.com/rafamel/aslug)
+[![Version](https://img.shields.io/npm/v/aslug.svg)](https://www.npmjs.com/package/aslug)
 [![Build Status](https://travis-ci.org/rafamel/aslug.svg)](https://travis-ci.org/rafamel/aslug)
 [![Coverage](https://img.shields.io/coveralls/rafamel/aslug.svg)](https://coveralls.io/github/rafamel/aslug)
 [![Dependencies](https://david-dm.org/rafamel/aslug/status.svg)](https://david-dm.org/rafamel/aslug)
@@ -24,7 +24,7 @@ const aslug = require('aslug');
 aslug('my|bad|string'); // my_124_bad_124_string
 ```
 
-### `aslug(str, opts)`
+### `aslug(str, opts): string`
 
 * **str** *(string):* The string to *aslug*
 * **opts** *(object, optional):* Options object, with optional properties:
@@ -35,4 +35,5 @@ aslug('my|bad|string'); // my_124_bad_124_string
   * **trim** *(boolean):* Whether to trim separation characters when at the end or beginning of the string in the case the first or last characters are not allowed. If you wish for each string to be unique, this should be `false`.
     * Default: `false`
   * **replace** *(function):* A function to replace the *target* characters. By default, they're replaced by their code.
-    * Default: `(char) => char.charCodeAt()`
+    * Default: `(char) => String(char.charCodeAt(0))`
+  
