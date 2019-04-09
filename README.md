@@ -1,7 +1,7 @@
 # aslug
 
 <!-- markdownlint-disable MD036 -->
-**Aslug:** Slug a string while preserving its uniqueness. By default, it substitutes each forbidden character for its code, surrounded by a separator. The clearest use case is for ids that must be made safe, while assuring they won't conflict with other valid ids.
+**A lossless *slug* that preserves uniqueness.**
 <!-- markdownlint-enable MD036 -->
 
 ## Install

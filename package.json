@@ -2,7 +2,7 @@
   "name": "aslug",
   "version": "0.2.1",
   "author": "Rafa Mel",
-  "description": "Slug a string while preserving its uniqueness.",
+  "description": "A lossless slug that preserves uniqueness",
   "keywords": [
     "slug",
     "safe",
