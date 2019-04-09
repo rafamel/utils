@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>aslug 0.2.1</title>
+	<title>aslug 0.3.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">aslug 0.2.1</a>
+					<a href="index.html" class="title">aslug 0.3.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> aslug 0.2.1</h1>
+			<h1> aslug 0.3.0</h1>
 		</div>
 	</div>
 </header>
@@ -80,7 +80,7 @@
 				<ul>
 					<li>Produces a <strong>readable, lossless, encoding.</strong></li>
 					<li>Includes a decoder to <strong>recover the original string.</strong></li>
-					<li>Allows character set to be modified via options.</li>
+					<li>Allows the character set to be modified via options.</li>
 				</ul>
 				<h2 id="usage">Usage</h2>
 				<h3 id="aslug-options-"><code>aslug(options?)</code></h3>
@@ -91,10 +91,10 @@
 				</ul>
 				<p>Optional <code>options</code> fields include:</p>
 				<ul>
-					<li>An <code>alphabet</code> to be used for the payload. Defaults to: <code>&#39;123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-&#39;</code>.</li>
-					<li>A <code>separator</code> between the readable string and the payload. Defaults to <code>&#39;~&#39;</code>.</li>
+					<li>An <code>alphabet</code> for the payload. Defaults to: <code>&#39;123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-&#39;</code>.</li>
+					<li>A <code>separator</code> to be used between the readable string and the payload. Defaults to <code>&#39;~&#39;</code>.</li>
 					<li>A <code>target</code> regular expression to identify the characters to replace. Defaults to matching all characters not in <code>alphabet</code>.</li>
-					<li>A <code>map</code> function to determine the strategy to use when replacing characters: remove diacritics, leave empty, or any alternative that might be desired. Defaults to replacing characters for their <em>ASCII</em> equivalent.</li>
+					<li>A <code>map</code> function to determine the strategy to use when replacing characters: remove diacritics, leave empty, or any other alternative. Defaults to replacing characters for their <em>ASCII</em> equivalent.</li>
 				</ul>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> aslug <span class="hljs-keyword">from</span> <span class="hljs-string">'aslug'</span>;
 
