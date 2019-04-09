@@ -1,80 +1,91 @@
-const path = require('path');
-const scripts = (x) => ({ scripts: x });
-const exit0 = (x) => `${x} || shx echo `;
-const series = (...x) => `(${x.join(') && (')})`;
-const dir = (file) => path.join(CONFIG_DIR, file);
-const ts = (cmd) => (TYPESCRIPT ? cmd : 'shx echo');
-const dotted = (ext) => '.' + ext.replace(/,/g, ',.');
-const {
-  OUT_DIR,
-  DOCS_DIR,
-  CONFIG_DIR,
-  EXTENSIONS,
-  TYPESCRIPT
-} = require('./project.config');
+const project = require('./project.config');
+const nps = require('./scripts/nps');
+
+/* Verify root */
+if (process.cwd() !== project.get('paths.root'))
+  throw Error(`Tasks must be run from root`);
+
+/* Project config */
+const DOCS_DIR = project.get('paths.docs');
+const TS = project.get('typescript');
+const EXT = (TS ? project.get('ext.ts').split(',') : [])
+  .concat(project.get('ext.js').split(','))
+  .filter(Boolean)
+  .join(',');
+const DOT_EXT = '.' + EXT.replace(/,/g, ',.');
+const { COMMIT, COMMITIZEN } = process.env;
 
 process.env.LOG_LEVEL = 'disable';
-module.exports = scripts({
-  build: series(
-    'nps validate',
-    exit0(`shx rm -r ${OUT_DIR}`),
-    `shx mkdir ${OUT_DIR}`,
-    `jake fixpackage["${OUT_DIR}"]`,
-    'nps private.build docs'
-  ),
-  publish: `nps build && cd ${OUT_DIR} && npm publish`,
-  watch: `onchange "./src/**/*.{${EXTENSIONS}}" --initial --kill -- nps private.watch`,
-  fix: [
-    'prettier',
-    `--write "./**/*.{${EXTENSIONS},.json,.scss}"`,
-    `--config "${dir('.prettierrc.js')}"`,
-    `--ignore-path "${dir('.prettierignore')}"`
-  ].join(' '),
+module.exports = nps({
+  build: {
+    default: 'nps validate build.force',
+    force: 'cross-env NODE_ENV=production nps build.pack build.types',
+    pack: ['jake run:zero["shx mkdir pkg"]', 'pack build'].concat(
+      project.get('nodeOnly') && [
+        `jake pkg:forbid[esnext,main,module]`,
+        `babel src --out-dir ./pkg/dist-lib --extensions ${DOT_EXT} --source-maps inline`,
+        `jake pkg:add[main,dist-lib/index.js]`
+      ]
+    ),
+    types: TS && [
+      `ttsc --project ttsconfig.json --outDir ./pkg/dist-types/`,
+      `jake cpr["./src","./pkg/dist-types/",d.ts]`,
+      `jake pkg:add[types,dist-types/index.d.ts]`,
+      `shx echo "Declaration files built"`
+    ]
+  },
+  publish: `cd ./pkg && npm publish`,
+  watch:
+    `onchange "./src/**/*.{${EXT}}" --initial --kill -- ` +
+    `jake clear run:exec["shx echo ⚡"] run:zero["nps private.watch"]`,
+  fix: `prettier --write "./**/*.{${EXT},json,scss}"`,
+  types: TS && 'tsc --noEmit --emitDeclarationOnly false',
   lint: {
-    default: [
-      'concurrently',
-      `"eslint ./src --ext ${dotted(EXTENSIONS)} -c ${dir('.eslintrc.js')}"`,
-      `"${ts(`tslint ./src/**/*.{ts,tsx} -c ${dir('tslint.json')}`)}"`,
-      '-n eslint,tslint',
-      '-c yellow,blue'
-    ].join(' '),
-    types: ts('tsc --noEmit'),
-    test: `eslint ./test --ext ${dotted(EXTENSIONS)} -c ${dir('.eslintrc.js')}`,
-    md: `markdownlint *.md --config ${dir('markdown.json')}`,
-    scripts: 'jake lintscripts[' + __dirname + ']'
+    default: `eslint ./src ./test --ext ${DOT_EXT}`,
+    md: `markdownlint README.md --config markdown.json`,
+    scripts: `jake lintscripts`
   },
   test: {
-    default: series('nps lint.test', `cross-env NODE_ENV=test jest`),
-    watch: `onchange "./{test,src}/**/*.{${EXTENSIONS}}" --initial --kill -- nps private.test_watch`
+    default: ['nps lint types', 'cross-env NODE_ENV=test jest'],
+    watch:
+      `onchange "./{src,test}/**/*.{${EXT}}" --initial --kill -- ` +
+      'jake clear run:exec["shx echo ⚡"] run:zero["nps test"]'
   },
-  validate:
-    'nps lint lint.types lint.md lint.scripts test private.validate_last',
-  update: series('npm update --save/save-dev', 'npm outdated'),
-  clean: series(
-    exit0(`shx rm -r ${OUT_DIR} ${DOCS_DIR} coverage`),
+  validate: [
+    // prettier-ignore
+    COMMIT && !COMMITIZEN && 'jake run:conditional[' +
+        `"\nCommits should be done via 'npm run commit'. Continue?",` +
+        '"","exit 1",Yes,5]',
+    'nps test lint.md lint.scripts',
+    'jake run:zero["npm outdated"]',
+    COMMIT && `jake run:conditional["\nCommit?","","exit 1",Yes,5]`
+  ],
+  docs: TS && [
+    `jake run:zero["shx rm -r \"${DOCS_DIR}\""]`,
+    `typedoc --out "${DOCS_DIR}" ./src`
+  ],
+  changelog: 'conventional-changelog -p angular -i CHANGELOG.md -s -r 0',
+  update: ['npm update --save/save-dev', 'npm outdated'],
+  clean: [
+    `jake run:zero["shx rm -r pkg \"${DOCS_DIR}\" coverage CHANGELOG.md"]`,
     'shx rm -rf node_modules'
-  ),
-  docs: series(
-    exit0(`shx rm -r ${DOCS_DIR}`),
-    ts(`typedoc --out ${DOCS_DIR} ./src`)
-  ),
+  ],
   // Private
   private: {
-    build: [
-      'concurrently',
-      `"babel src --out-dir ${OUT_DIR} --extensions "${dotted(
-        EXTENSIONS
-      )}" --source-maps inline"`,
-      `"${ts(`tsc --emitDeclarationOnly --outDir ${OUT_DIR}`)}"`,
-      '-n babel,tsc',
-      '-c green,magenta'
-    ].join(' '),
-    watch: series(
-      'jake clear',
-      'shx echo "____________\n"',
-      'concurrently "nps private.build" "nps lint"'
-    ),
-    test_watch: series('jake clear', 'nps test'),
-    validate_last: `npm outdated || jake countdown`
+    watch:
+      'cross-env NODE_ENV=development concurrently' +
+      ' "nps build.pack build.types" "nps lint"' +
+      ' -n build,eslint -c blue,yellow',
+    preversion: [
+      'shx echo "Recommended version bump is:"',
+      'conventional-recommended-bump --preset angular --verbose',
+      `jake run:conditional["\nContinue?","","exit 1",Yes]`
+    ],
+    version: [
+      'nps changelog',
+      project.get('release.docs') && 'nps docs',
+      project.get('release.build') && 'nps build',
+      'git add .'
+    ]
   }
 });
