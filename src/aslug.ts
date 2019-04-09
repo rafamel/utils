@@ -9,7 +9,6 @@ import { ALPHABET, SEPARATOR } from './constants';
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function aslug(options: Partial<IOptions> = {}) {
   const opts = Object.assign(
-    {},
     { alphabet: ALPHABET, separator: SEPARATOR },
     options
   );
