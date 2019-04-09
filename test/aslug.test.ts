@@ -28,7 +28,9 @@ describe(`options`, () => {
     encode.mockClear();
     decode.mockClear();
 
+    const clone = { ...(opts || {}) };
     const a = aslug(opts);
+    expect(opts || {}).toEqual(clone);
     expect(a).toHaveProperty('encode');
     expect(a).toHaveProperty('decode');
     expect(a.encode('foo')).toBe('foobar');
