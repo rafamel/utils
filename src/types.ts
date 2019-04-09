@@ -12,7 +12,7 @@ export interface IOptions {
    */
   target: RegExp;
   /**
-   * Maps the replaced characters with any string not matching `target` -otherwise an empty string. Defaults to replacing characters for their ASCII equivalent.
+   * Maps the replaced characters with any string not matching `target` -otherwise an empty string. Defaults to replacing characters for their *ASCII* equivalent.
    */
   map: (char: string) => string;
 }

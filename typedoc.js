@@ -14,5 +14,10 @@ module.exports = {
   excludePrivate: true,
   excludeNotExported: false,
   readme: path.join(project.get('paths.root'), 'README.md'),
-  exclude: ['**/internal/**/*.ts']
+  exclude: [
+    '**/internal/**/*.ts',
+    '**/src/constants.ts',
+    '**/src/encode.ts',
+    '**/src/decode.ts'
+  ]
 };
