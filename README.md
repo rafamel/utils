@@ -22,7 +22,7 @@ An example use case for `aslug` would be a set of *ids* that have to be made saf
 
 * Produces a **readable, lossless, encoding.**
 * Includes a decoder to **recover the original string.**
-* Allows character set to be modified via options.
+* Allows the character set to be modified via options.
 
 ## Usage
 
@@ -35,10 +35,10 @@ An example use case for `aslug` would be a set of *ids* that have to be made saf
 
 Optional `options` fields include:
 
-* An `alphabet` to be used for the payload. Defaults to: `'123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-'`.
-* A `separator` between the readable string and the payload. Defaults to `'~'`.
+* An `alphabet` for the payload. Defaults to: `'123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-'`.
+* A `separator` to be used between the readable string and the payload. Defaults to `'~'`.
 * A `target` regular expression to identify the characters to replace. Defaults to matching all characters not in `alphabet`.
-* A `map` function to determine the strategy to use when replacing characters: remove diacritics, leave empty, or any alternative that might be desired. Defaults to replacing characters for their *ASCII* equivalent.
+* A `map` function to determine the strategy to use when replacing characters: remove diacritics, leave empty, or any other alternative. Defaults to replacing characters for their *ASCII* equivalent.
 
 ```javascript
 import aslug from 'aslug';
@@ -49,4 +49,3 @@ encode('string w/ special chars'); // string-w-special-chars~L42YrSYaHpHrCP63nHv
 
 decode('string-w-special-chars~L42YrSYaHpHrCP63nHvD'); // string w/ special chars
 ```
-  
