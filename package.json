@@ -8,7 +8,9 @@
     "safe",
     "string",
     "unique",
-    "ascii"
+    "ascii",
+    "encode",
+    "decode"
   ],
   "scripts": {
     "prepublishOnly": "exit 1",
