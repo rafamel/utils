@@ -2,8 +2,10 @@ import execall from 'execall';
 import camelcase from 'camelcase';
 import { IOfType, IFlag } from './types';
 
+// TODO test README example
+
 /**
- * Parses a `help` string and returns an object with flags, aliases, and descriptions.
+ * Parses a `help` string and returns an object with options, aliases, arugments, and descriptions.
  * `options`:
  *  - `safe`: if false, it won't perform safety checks. Default: `true`.
  *  - `mode`: `'keep'` will maintain all names as they are; `'no-dash'` will remove the initial flag dashes; `'camelcase'` will remove initial dashes and camelcase flags. Default: `'keep'`.
@@ -18,15 +20,13 @@ export default function flags(
     if (/\s*--([a-z-]*)\s*(<[a-z-\s]*>)?,\s*-([a-z-]*)/i.exec(help)) {
       throw Error(`Alias found last in help -should be first`);
     }
-    if (/-([a-z-]{2,}\s*,)/.exec(help)) {
-      throw Error(`Aliases must be a single character`);
-    }
   }
 
   const aliases: IOfType<string> = {};
+  // TODO change to options
   const flags: IOfType<IFlag> = {};
 
-  const regex = /[\n\r]\s*(?:(-[a-z-])[ \t]*,[ \t]*)?(--[a-z-]+)(\s*<.*>)?( +.*)?$/gim;
+  const regex = /[\n\r]\s*(?:(-[a-z-]+)[ \t]*,[ \t]*)?(--[a-z-]+)(\s*<.*>)?( +.*)?$/gim;
   const matches = execall(regex, help);
   for (let match of matches) {
     if (!match.sub[1]) continue;
@@ -47,6 +47,9 @@ export default function flags(
 
     // alias
     if (match.sub[0]) {
+      if (opts.safe && match.sub[0].length > 2) {
+        throw Error(`Aliases must be a single character`);
+      }
       item.alias =
         opts.mode === 'no-dash' || opts.mode === 'camelcase'
           ? match.sub[0].slice(1)

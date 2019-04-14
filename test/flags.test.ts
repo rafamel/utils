@@ -12,6 +12,8 @@ Options:
   --foo-bar          Foo bar
   --env <env>        Environment
   --file<path>       File path
+  --foo-bar-baz      Foo bar -optional, also baz
+  --foo-bar-foobar      Foo bar --optional, also foobar
   
   --version
   --bar-baz
@@ -24,6 +26,12 @@ Options:
   -n, --no-detect         Disable detection
   -g, --glob <pattern>    Set glob pattern
   -e, --ext <extensions>  Set extensions
+  -h, --hoist <level>     Hoist to level -optional, not recommended
+  -c, --choice <number>   Chooses output --optional, all by default
+
+Commands:
+  foo       This is some command -optional, does nothing
+  bar       This is another command --optional, also does nothing
 
 Examples:
 foo --bar --file ./path
@@ -36,6 +44,8 @@ const items: IOfType<IFlag> = {
   '--foo-bar': { description: 'Foo bar' },
   '--env': { description: 'Environment', argument: 'env' },
   '--file': { description: 'File path', argument: 'path' },
+  '--foo-bar-baz': { description: 'Foo bar -optional, also baz' },
+  '--foo-bar-foobar': { description: 'Foo bar --optional, also foobar' },
 
   '--version': { description: '' },
   '--bar-baz': { description: '' },
@@ -55,6 +65,16 @@ const items: IOfType<IFlag> = {
     description: 'Set extensions',
     alias: '-e',
     argument: 'extensions'
+  },
+  '--hoist': {
+    description: 'Hoist to level -optional, not recommended',
+    alias: '-h',
+    argument: 'level'
+  },
+  '--choice': {
+    description: 'Chooses output --optional, all by default',
+    alias: '-c',
+    argument: 'number'
   }
 };
 const aliases: IOfType<string> = {
@@ -63,7 +83,9 @@ const aliases: IOfType<string> = {
   '-z': '--baz',
   '-n': '--no-detect',
   '-g': '--glob',
-  '-e': '--ext'
+  '-e': '--ext',
+  '-h': '--hoist',
+  '-c': '--choice'
 };
 
 test(`succeeds w/ mode = 'keep'`, () => {
@@ -93,6 +115,10 @@ test(`succeeds w/ mode = 'camelcase'`, () => {
     switch (val) {
       case 'foo-bar':
         return 'fooBar';
+      case 'foo-bar-baz':
+        return 'fooBarBaz';
+      case 'foo-bar-foobar':
+        return 'fooBarFoobar';
       case 'bar-baz':
         return 'barBaz';
       case 'no-detect':
