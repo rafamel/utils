@@ -1,1 +1,5 @@
-export default function main(): void {}
+export { default as error } from './error';
+export { default as flags } from './flags';
+export { default as log } from './log';
+export { default as splitBy } from './split-by';
+export * from '~/types';
