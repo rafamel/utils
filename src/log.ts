@@ -1,5 +1,8 @@
 /**
- * Prints a `str` message and, if `options.exit` is passed, exit the process with that code
+ * Prints a `str` message.
+ *
+ * `options`:
+ *  - `exit`: if passed, it will exit the process with that code.
  */
 export default function log(
   str: string,
