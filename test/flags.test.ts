@@ -89,18 +89,21 @@ const aliases: IOfType<string> = {
 };
 
 test(`succeeds w/ mode = 'keep'`, () => {
-  expect(flags(help)).toEqual({ flags: items, aliases });
-  expect(flags(help, { mode: 'keep' })).toEqual({ flags: items, aliases });
+  expect(flags(help)).toEqual({ options: items, aliases });
+  expect(flags(help, { mode: 'keep' })).toEqual({ options: items, aliases });
 });
 test(`succeeds w/ mode = 'no-dash'`, () => {
   expect(flags(help, { mode: 'no-dash' })).toEqual({
-    flags: Object.entries(items).reduce((acc: IOfType<IFlag>, [key, value]) => {
-      acc[key.slice(2)] = {
-        ...value,
-        alias: value.alias ? value.alias.slice(1) : undefined
-      };
-      return acc;
-    }, {}),
+    options: Object.entries(items).reduce(
+      (acc: IOfType<IFlag>, [key, value]) => {
+        acc[key.slice(2)] = {
+          ...value,
+          alias: value.alias ? value.alias.slice(1) : undefined
+        };
+        return acc;
+      },
+      {}
+    ),
     aliases: Object.entries(aliases).reduce(
       (acc: IOfType<string>, [key, value]) => {
         acc[key.slice(1)] = value.slice(2);
@@ -128,13 +131,16 @@ test(`succeeds w/ mode = 'camelcase'`, () => {
     }
   };
   expect(flags(help, { mode: 'camelcase' })).toEqual({
-    flags: Object.entries(items).reduce((acc: IOfType<IFlag>, [key, value]) => {
-      acc[subs(key.slice(2))] = {
-        ...value,
-        alias: value.alias ? value.alias.slice(1) : undefined
-      };
-      return acc;
-    }, {}),
+    options: Object.entries(items).reduce(
+      (acc: IOfType<IFlag>, [key, value]) => {
+        acc[subs(key.slice(2))] = {
+          ...value,
+          alias: value.alias ? value.alias.slice(1) : undefined
+        };
+        return acc;
+      },
+      {}
+    ),
     aliases: Object.entries(aliases).reduce(
       (acc: IOfType<string>, [key, value]) => {
         acc[key.slice(1)] = subs(value.slice(2));

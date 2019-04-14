@@ -2,8 +2,6 @@ import execall from 'execall';
 import camelcase from 'camelcase';
 import { IOfType, IFlag } from './types';
 
-// TODO test README example
-
 /**
  * Parses a `help` string and returns an object with options, aliases, arugments, and descriptions.
  * `options`:
@@ -13,7 +11,7 @@ import { IOfType, IFlag } from './types';
 export default function flags(
   help: string,
   options?: { safe?: boolean; mode?: 'keep' | 'no-dash' | 'camelcase' }
-): { flags: IOfType<IFlag>; aliases: IOfType<string> } {
+): { options: IOfType<IFlag>; aliases: IOfType<string> } {
   const opts = Object.assign({ safe: true, mode: 'keep' }, options || {});
 
   if (opts.safe) {
@@ -23,7 +21,6 @@ export default function flags(
   }
 
   const aliases: IOfType<string> = {};
-  // TODO change to options
   const flags: IOfType<IFlag> = {};
 
   const regex = /[\n\r]\s*(?:(-[a-z-]+)[ \t]*,[ \t]*)?(--[a-z-]+)(\s*<.*>)?( +.*)?$/gim;
@@ -69,5 +66,5 @@ export default function flags(
     flags[key] = item;
   }
 
-  return { flags, aliases };
+  return { options: flags, aliases };
 }
