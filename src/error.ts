@@ -7,7 +7,7 @@ export type TLogger = IOfType<any> & {
 };
 
 /**
- * Formats and logs an error message.
+ * Formats and prints an error message.
  *
  * `options`:
  *  - `exit`: if passed, it will exit the process with that code.
