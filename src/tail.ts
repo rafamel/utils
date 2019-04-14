@@ -4,14 +4,14 @@
 export default function tail(
   arr: string[],
   spaces: number = 8
-): (str: string) => string {
+): (str?: string) => string {
   const longest = arr.sort((a, b) => b.length - a.length)[0];
-  return function being(str: string): string {
-    return (
-      str +
-      ' '.repeat(
-        Math.max(1, (longest ? longest.length - str.length : 0) + spaces)
-      )
-    );
+  return function being(str?: string): string {
+    return str
+      ? str +
+          ' '.repeat(
+            Math.max(1, (longest ? longest.length - str.length : 0) + spaces)
+          )
+      : ' '.repeat(Math.max(1, (longest ? longest.length : 0) + spaces));
   };
 }
