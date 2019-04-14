@@ -8,7 +8,10 @@ export default function tail(
   const longest = arr.sort((a, b) => b.length - a.length)[0];
   return function being(str: string): string {
     return (
-      str + ' '.repeat((longest ? longest.length - str.length : 0) + spaces)
+      str +
+      ' '.repeat(
+        Math.max(1, (longest ? longest.length - str.length : 0) + spaces)
+      )
     );
   };
 }
