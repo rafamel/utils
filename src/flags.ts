@@ -34,31 +34,33 @@ export default function flags(
   const regex = /[\n\r]\s*(?:(-[a-z-]+)[ \t]*,[ \t]*)?(--[a-z-]+)(\s*<.*>)?( +.*)?$/gim;
   const matches = execall(regex, help);
   for (let match of matches) {
-    if (!match.sub[1]) continue;
+    const sub = match.subMatches;
+
+    if (!sub[1]) continue;
 
     // Key
     const key =
       // prettier-ignore
-      opts.mode === 'no-dash' ? match.sub[1].slice(2)
-        : opts.mode === 'camelcase' ? camelcase(match.sub[1]) : match.sub[1];
+      opts.mode === 'no-dash' ? sub[1].slice(2)
+        : opts.mode === 'camelcase' ? camelcase(sub[1]) : sub[1];
     if (opts.safe && flags.hasOwnProperty(key)) {
       throw Error(`Flag ${key} found twice`);
     }
 
     // description
     const item: IFlag = {
-      description: match.sub[3] ? match.sub[3].trim() : ''
+      description: sub[3] ? sub[3].trim() : ''
     };
 
     // alias
-    if (match.sub[0]) {
-      if (opts.safe && match.sub[0].length > 2) {
+    if (sub[0]) {
+      if (opts.safe && sub[0].length > 2) {
         throw Error(`Aliases must be a single character`);
       }
       item.alias =
         opts.mode === 'no-dash' || opts.mode === 'camelcase'
-          ? match.sub[0].slice(1)
-          : match.sub[0];
+          ? sub[0].slice(1)
+          : sub[0];
 
       if (opts.safe && aliases.hasOwnProperty(item.alias)) {
         throw Error(`Alias ${item.alias} found twice`);
@@ -67,8 +69,8 @@ export default function flags(
     }
 
     // argument
-    if (match.sub[2]) {
-      item.argument = match.sub[2].trim().slice(1, -1);
+    if (sub[2]) {
+      item.argument = sub[2].trim().slice(1, -1);
     }
 
     flags[key] = item;
