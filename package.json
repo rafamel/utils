@@ -66,6 +66,7 @@
     "@babel/preset-typescript": "^7.1.0",
     "@pika/pack": "^0.3.7",
     "@types/camelcase": "^5.2.0",
+    "@types/find-up": "^2.1.1",
     "@types/jest": "^24.0.9",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/parser": "^1.6.0",
@@ -106,9 +107,14 @@
     "typescript": "^3.4.3"
   },
   "dependencies": {
+    "@types/normalize-package-data": "^2.4.0",
     "camelcase": "^5.3.1",
     "chalk": "^2.4.2",
-    "execall": "^2.0.0"
+    "errorish": "^0.1.0",
+    "execall": "^2.0.0",
+    "find-up": "^3.0.0",
+    "fs-extra": "^7.0.1",
+    "normalize-package-data": "^2.5.0"
   },
   "husky": {
     "hooks": {
