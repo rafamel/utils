@@ -2,17 +2,25 @@ import execall from 'execall';
 import camelcase from 'camelcase';
 import { IOfType, IFlag } from './types';
 
+export interface IFlagsOpts {
+  /**
+   * If false, `flags` won't perform safety checks. Default: `true`.
+   */
+  safe?: boolean;
+  /**
+   * `'keep'` will maintain all names as they are; `'no-dash'` will remove the initial flag dashes; `'camelcase'` will remove initial dashes and camelcase flags. Default: `'keep'`.
+   */
+  mode?: 'keep' | 'no-dash' | 'camelcase';
+}
+
 /**
  * Parses a `help` string and returns an object with options, aliases, arugments, and descriptions.
- * `options`:
- *  - `safe`: if false, it won't perform safety checks. Default: `true`.
- *  - `mode`: `'keep'` will maintain all names as they are; `'no-dash'` will remove the initial flag dashes; `'camelcase'` will remove initial dashes and camelcase flags. Default: `'keep'`.
  */
 export default function flags(
   help: string,
-  options?: { safe?: boolean; mode?: 'keep' | 'no-dash' | 'camelcase' }
+  options?: IFlagsOpts
 ): { options: IOfType<IFlag>; aliases: IOfType<string> } {
-  const opts = Object.assign({ safe: true, mode: 'keep' }, options || {});
+  const opts = Object.assign({ safe: true, mode: 'keep' }, options);
 
   if (opts.safe) {
     if (/\s*--([a-z-]*)\s*(<[a-z-\s]*>)?,\s*-([a-z-]*)/i.exec(help)) {
