@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>cli-belt 0.2.0</title>
+	<title>cli-belt 0.3.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">cli-belt 0.2.0</a>
+					<a href="index.html" class="title">cli-belt 0.3.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> cli-belt 0.2.0</h1>
+			<h1> cli-belt 0.3.0</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<blockquote>
 					<p>An utility belt to complement your arguments parser of choice.</p>
 				</blockquote>
-				<p>If you come to find it useful, consider <a href="https://github.com/rafamel/cli-belt">starring the project</a> 💪 and/or following <a href="https://github.com/rafamel">its author</a> ❤️ -there&#39;s more on the way!</p>
+				<p>If you find it useful, consider <a href="https://github.com/rafamel/cli-belt">starring the project</a> 💪 and/or following <a href="https://github.com/rafamel">its author</a> ❤️ -there&#39;s more on the way!</p>
 				<h2 id="install">Install</h2>
 				<p><a href="https://www.npmjs.com/package/cli-belt"><code>npm install cli-belt</code></a></p>
 				<h2 id="motivation">Motivation</h2>
@@ -86,10 +86,9 @@
 					<li><a href="https://rafamel.github.io/cli-belt/globals.html#safepairs"><code>safePairs</code></a> ensures all properties of an object exist in another.</li>
 					<li><a href="https://rafamel.github.io/cli-belt/globals.html#splitby"><code>splitBy</code></a> splits an arguments array into two arrays by the first <code>separator</code>.</li>
 					<li><a href="https://rafamel.github.io/cli-belt/globals.html#error"><code>error</code></a> formats and prints an error message, optionally exiting the process.</li>
-					<li><a href="https://rafamel.github.io/cli-belt/globals.html#log"><code>log</code></a> prints a message, optionally exiting the process.</li>
 				</ul>
 				<h2 id="usage-example">Usage example</h2>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { loadPackage, flags, safePairs, log, splitBy, error } <span class="hljs-keyword">from</span> <span class="hljs-string">'cli-belt'</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { loadPackage, flags, safePairs, splitBy, error } <span class="hljs-keyword">from</span> <span class="hljs-string">'cli-belt'</span>;
 <span class="hljs-keyword">import</span> { stripIndent <span class="hljs-keyword">as</span> indent } <span class="hljs-keyword">from</span> <span class="hljs-string">'common-tags'</span>;
 <span class="hljs-keyword">import</span> arg <span class="hljs-keyword">from</span> <span class="hljs-string">'arg'</span>;
 <span class="hljs-keyword">import</span> logger <span class="hljs-keyword">from</span> <span class="hljs-string">'loglevel'</span>;
@@ -145,8 +144,8 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 
   <span class="hljs-comment">// Handle options</span>
   <span class="hljs-keyword">if</span> (cmd._.length) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`Unknown command <span class="hljs-subst">${cmd._[<span class="hljs-number">0</span>]}</span>`</span>);
-  <span class="hljs-keyword">if</span> (cmd[<span class="hljs-string">'--help'</span>]) <span class="hljs-keyword">return</span> log(help);
-  <span class="hljs-keyword">if</span> (cmd[<span class="hljs-string">'--version'</span>]) <span class="hljs-keyword">return</span> log(pkg.version);
+  <span class="hljs-keyword">if</span> (cmd[<span class="hljs-string">'--help'</span>]) <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.log(help);
+  <span class="hljs-keyword">if</span> (cmd[<span class="hljs-string">'--version'</span>]) <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.log(pkg.version);
 
   <span class="hljs-keyword">const</span> env = cmd[<span class="hljs-string">'--env'</span>] ? { <span class="hljs-attr">NODE_ENV</span>: cmd[<span class="hljs-string">'--env'</span>] } : {};
   <span class="hljs-keyword">await</span> spawn(<span class="hljs-string">'echo'</span>, args, { env, <span class="hljs-attr">stdio</span>: <span class="hljs-string">'inherit'</span> });
@@ -175,9 +174,6 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/iloadpackageopts.html" class="tsd-kind-icon">ILoad<wbr>Package<wbr>Opts</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ilogopts.html" class="tsd-kind-icon">ILog<wbr>Opts</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/ioftype.html" class="tsd-kind-icon">IOf<wbr>Type</a>
 					</li>
@@ -195,9 +191,6 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) 
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#loadpackage" class="tsd-kind-icon">load<wbr>Package</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#log" class="tsd-kind-icon">log</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#safepairs" class="tsd-kind-icon">safe<wbr>Pairs</a>

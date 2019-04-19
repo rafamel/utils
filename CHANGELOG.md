@@ -1,3 +1,17 @@
+# [0.3.0](https://github.com/rafamel/cli-belt/compare/v0.2.0...v0.3.0) (2019-04-19)
+
+
+### Features
+
+* **log:** removes log ([c860d3b](https://github.com/rafamel/cli-belt/commit/c860d3b))
+
+
+### BREAKING CHANGES
+
+* **log:** `log` is no longer available
+
+
+
 # [0.2.0](https://github.com/rafamel/cli-belt/compare/v0.1.0...v0.2.0) (2019-04-19)
 
 
