@@ -10,7 +10,7 @@
 
 > An utility belt to complement your arguments parser of choice.
 
-If you come to find it useful, consider [starring the project](https://github.com/rafamel/cli-belt) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
+If you find it useful, consider [starring the project](https://github.com/rafamel/cli-belt) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
 
 ## Install
 
@@ -29,12 +29,11 @@ These are all of `cli-belt`'s helper functions -[see docs:](https://rafamel.gith
 * [`safePairs`](https://rafamel.github.io/cli-belt/globals.html#safepairs) ensures all properties of an object exist in another.
 * [`splitBy`](https://rafamel.github.io/cli-belt/globals.html#splitby) splits an arguments array into two arrays by the first `separator`.
 * [`error`](https://rafamel.github.io/cli-belt/globals.html#error) formats and prints an error message, optionally exiting the process.
-* [`log`](https://rafamel.github.io/cli-belt/globals.html#log) prints a message, optionally exiting the process.
 
 ## Usage example
 
 ```javascript
-import { loadPackage, flags, safePairs, log, splitBy, error } from 'cli-belt';
+import { loadPackage, flags, safePairs, splitBy, error } from 'cli-belt';
 import { stripIndent as indent } from 'common-tags';
 import arg from 'arg';
 import logger from 'loglevel';
@@ -90,8 +89,8 @@ export default async function main() {
 
   // Handle options
   if (cmd._.length) throw Error(`Unknown command ${cmd._[0]}`);
-  if (cmd['--help']) return log(help);
-  if (cmd['--version']) return log(pkg.version);
+  if (cmd['--help']) return console.log(help);
+  if (cmd['--version']) return console.log(pkg.version);
 
   const env = cmd['--env'] ? { NODE_ENV: cmd['--env'] } : {};
   await spawn('echo', args, { env, stdio: 'inherit' });
