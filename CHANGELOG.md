@@ -1,4 +1,19 @@
-# 0.1.0 (2019-04-14)
+# [0.2.0](https://github.com/rafamel/cli-belt/compare/v0.1.0...v0.2.0) (2019-04-19)
+
+
+### Features
+
+* adds loadPackage ([fa4ab1c](https://github.com/rafamel/cli-belt/commit/fa4ab1c))
+* **tail:** removes tail ([e3f11fc](https://github.com/rafamel/cli-belt/commit/e3f11fc))
+
+
+### BREAKING CHANGES
+
+* **tail:** `tail` is no longer available.
+
+
+
+# [0.1.0](https://github.com/rafamel/cli-belt/compare/c0c696f...v0.1.0) (2019-04-14)
 
 
 ### Bug Fixes
