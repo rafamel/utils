@@ -2,6 +2,7 @@
   "extends": [
     "config:base",
     "docker:disable",
+    ":pinOnlyDevDependencies",
     ":automergeRequireAllStatusChecks",
     ":prHourlyLimitNone",
     ":prConcurrentLimit10",
