@@ -10,7 +10,7 @@
 
 > A lossless *slug* that preserves uniqueness.
 
-If you find it useful, consider [starring the project](https://github.com/rafamel/ts-project) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
+If you find it useful, consider [starring the project](https://github.com/rafamel/aslug) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
 
 ## Install
 
