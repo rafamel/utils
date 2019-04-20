@@ -47,7 +47,8 @@ describe(`options`, () => {
       expect(typeof opts).toBe('object');
       if (doAlphabet) expect(opts.alphabet).toBe(ALPHABET);
       if (doSeparator) expect(opts.separator).toBe('~');
-      if (doTarget) expect(opts.target.toString()).toBe(`/[^${ALPHABET}]/`);
+      if (doTarget)
+        expect(opts.target.toString()).toBe(`/[^${ALPHABET.slice(0, -1)}\\-]/`);
 
       if (doMap) {
         const map = opts.map;
@@ -79,7 +80,9 @@ describe(`options`, () => {
     run(false, true, false, true, { alphabet });
 
     expect(basex).toHaveBeenCalledWith(alphabet);
-    expect(encode.mock.calls[0][2].target.toString()).toBe(`/[^${alphabet}]/`);
+    expect(encode.mock.calls[0][2].target.toString()).toBe(
+      `/[^${alphabet.slice(0, -1)}\\-]/`
+    );
     expect(encode.mock.calls[0][2].alphabet).toBe(alphabet);
     expect(encode.mock.calls[0][2].map('j')).toBe('');
   });
