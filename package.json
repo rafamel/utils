@@ -102,9 +102,9 @@
     "typescript": "^3.4.2"
   },
   "dependencies": {
-    "base-x": "3.0.5",
+    "base-x": "^3.0.5",
     "escape-string-regexp": "^2.0.0",
-    "unidecode": "0.1.8"
+    "unidecode": "^0.1.8"
   },
   "husky": {
     "hooks": {
