@@ -8,9 +8,9 @@
 [![License](https://img.shields.io/github/license/rafamel/aslug.svg)](https://github.com/rafamel/aslug/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/aslug.svg)](https://www.npmjs.com/package/aslug)
 
-<!-- markdownlint-disable MD036 -->
-**A lossless *slug* that preserves uniqueness.**
-<!-- markdownlint-enable MD036 -->
+> A lossless *slug* that preserves uniqueness.
+
+If you find it useful, consider [starring the project](https://github.com/rafamel/ts-project) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
 
 ## Install
 
