@@ -1,8 +1,8 @@
 # aslug
 
 [![Version](https://img.shields.io/npm/v/aslug.svg)](https://www.npmjs.com/package/aslug)
-[![Build Status](https://img.shields.io/travis/rafamel/aslug.svg)](https://travis-ci.org/rafamel/aslug)
-[![Coverage](https://img.shields.io/coveralls/rafamel/aslug.svg)](https://coveralls.io/github/rafamel/aslug)
+[![Build Status](https://img.shields.io/travis/rafamel/aslug/master.svg)](https://travis-ci.org/rafamel/aslug)
+[![Coverage](https://img.shields.io/coveralls/rafamel/aslug/master.svg)](https://coveralls.io/github/rafamel/aslug)
 [![Dependencies](https://img.shields.io/david/rafamel/aslug.svg)](https://david-dm.org/rafamel/aslug)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/aslug.svg)](https://snyk.io/test/npm/aslug)
 [![License](https://img.shields.io/github/license/rafamel/aslug.svg)](https://github.com/rafamel/aslug/blob/master/LICENSE)
