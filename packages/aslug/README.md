@@ -1,16 +1,16 @@
 # aslug
 
 [![Version](https://img.shields.io/npm/v/aslug.svg)](https://www.npmjs.com/package/aslug)
-[![Build Status](https://img.shields.io/travis/rafamel/aslug/master.svg)](https://travis-ci.org/rafamel/aslug)
-[![Coverage](https://img.shields.io/coveralls/rafamel/aslug/master.svg)](https://coveralls.io/github/rafamel/aslug)
-[![Dependencies](https://img.shields.io/david/rafamel/aslug.svg)](https://david-dm.org/rafamel/aslug)
+[![Build Status](https://img.shields.io/travis/rafamel/utils/master.svg)](https://travis-ci.org/rafamel/utils)
+[![Coverage](https://img.shields.io/coveralls/rafamel/utils/master.svg)](https://coveralls.io/github/rafamel/utils)
+[![Dependencies](https://img.shields.io/david/rafamel/utils.svg?path=packages%2Faslug)](https://david-dm.org/rafamel/utils.svg?path=packages%2Faslug)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/aslug.svg)](https://snyk.io/test/npm/aslug)
-[![License](https://img.shields.io/github/license/rafamel/aslug.svg)](https://github.com/rafamel/aslug/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/aslug.svg)](https://www.npmjs.com/package/aslug)
 
 > A lossless *slug* that preserves uniqueness.
 
-If you find it useful, consider [starring the project](https://github.com/rafamel/aslug) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
+If you find it useful, consider [starring the project](https://github.com/rafamel/utils/tree/master/packages/aslug) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
 
 ## Install
 

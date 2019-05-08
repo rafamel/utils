@@ -41,13 +41,13 @@
     "version": "kpo version --"
   },
   "license": "MIT",
-  "homepage": "https://github.com/rafamel/aslug",
+  "homepage": "https://github.com/rafamel/utils/tree/master/packages/aslug",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafamel/aslug"
+    "url": "https://github.com/rafamel/utils"
   },
   "bugs": {
-    "url": "https://github.com/rafamel/aslug/issues"
+    "url": "https://github.com/rafamel/utils/issues"
   },
   "devDependencies": {
     "@types/base-x": "^3.0.0",
