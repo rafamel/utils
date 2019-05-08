@@ -1,9 +1,9 @@
-/pkg
-/build
-/lib
-/bin
-/dist
-/out
+pkg
+build
+lib
+bin
+dist
+out
 .vscode
 .cache
 coverage

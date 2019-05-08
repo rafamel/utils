@@ -1,7 +1,7 @@
-const pkg = require('./package.json');
 const path = require('path');
 const project = require('./project.config');
 
+const pkg = require(path.join(project.paths.root, 'package.json'));
 module.exports = {
   name: `${pkg.name} ${pkg.version}`,
   mode: 'file',
@@ -13,11 +13,6 @@ module.exports = {
   excludeExternals: true,
   excludePrivate: true,
   excludeNotExported: false,
-  readme: path.join(project.get('paths.root'), 'README.md'),
-  exclude: [
-    '**/internal/**/*.ts',
-    '**/src/constants.ts',
-    '**/src/encode.ts',
-    '**/src/decode.ts'
-  ]
+  readme: path.join(project.paths.root, 'README.md'),
+  exclude: ['**/__mocks__/**/*']
 };

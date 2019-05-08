@@ -1,0 +1,93 @@
+{
+  "name": "aslug",
+  "version": "0.3.2",
+  "author": "Rafa Mel",
+  "description": "A lossless slug that preserves uniqueness",
+  "keywords": [
+    "slug",
+    "safe",
+    "string",
+    "unique",
+    "ascii",
+    "encode",
+    "decode"
+  ],
+  "scripts": {
+    "start": "kpo start --",
+    "build": "kpo build --",
+    "build.force": "kpo build.force --",
+    "publish": "kpo publish --",
+    "watch": "kpo watch --",
+    "fix": "kpo fix --",
+    "fix.format": "kpo fix.format --",
+    "fix.scripts": "kpo fix.scripts --",
+    "types": "kpo types --",
+    "lint": "kpo lint --",
+    "lint.md": "kpo lint.md --",
+    "lint.scripts": "kpo lint.scripts --",
+    "test": "kpo test --",
+    "test.force": "kpo test.force --",
+    "test.watch": "kpo test.watch --",
+    "validate": "kpo validate --",
+    "docs": "kpo docs --",
+    "changelog": "kpo changelog --",
+    "update": "kpo update --",
+    "clean": "kpo clean --",
+    "clean.top": "kpo clean.top --",
+    "clean.modules": "kpo clean.modules --",
+    "commit": "kpo commit --",
+    "prepublishOnly": "kpo prepublishOnly --",
+    "preversion": "kpo preversion --",
+    "version": "kpo version --"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/rafamel/aslug",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafamel/aslug"
+  },
+  "bugs": {
+    "url": "https://github.com/rafamel/aslug/issues"
+  },
+  "devDependencies": {
+    "@types/base-x": "^3.0.0",
+    "@types/unidecode": "^0.1.1"
+  },
+  "dependencies": {
+    "base-x": "^3.0.5",
+    "escape-string-regexp": "^2.0.0",
+    "unidecode": "^0.1.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cross-env COMMIT=# nps validate"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "__mocks__/**/*",
+            "__tests__/**/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-node",
+        {
+          "minNodeVersion": "8"
+        }
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
+  }
+}

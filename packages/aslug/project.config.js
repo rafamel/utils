@@ -1,11 +1,12 @@
 const path = require('path');
 const { default: slim } = require('slimconf');
+const pkg = require('./package.json');
 
 module.exports = slim({
   // transpile straight up with babel.
-  // You should set @babel/preset-env with the proper target @ .babelrc
   nodeOnly: false,
   typescript: true,
+  monorepo: true,
   // Extensions allowed for each file type, as a comma separated string
   ext: {
     js: 'js,cjs,mjs,jsx',
@@ -14,7 +15,7 @@ module.exports = slim({
   // Paths used on build
   paths: {
     root: __dirname,
-    docs: path.join(__dirname, 'docs')
+    docs: path.join(__dirname, '../../docs', pkg.name)
   },
   release: {
     // Build project on version bump. Boolean.
