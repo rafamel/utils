@@ -5,4 +5,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.3.3 (2019-05-08)
 
+
+### Bug Fixes
+
+* **aslug:** fixes readme and package urls to match utils repo ([060c967](https://github.com/rafamel/utils/commit/060c967))
+
+
+
+
+
+## 0.3.3 (2019-05-08)
+
 **Note:** Version bump only for package aslug
