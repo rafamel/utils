@@ -16,7 +16,9 @@
     "start": "kpo start --",
     "build": "kpo build --",
     "build.force": "kpo build.force --",
-    "publish": "kpo publish --",
+    "commit": "kpo commit --",
+    "semantic": "kpo semantic --",
+    "release": "kpo release --",
     "watch": "kpo watch --",
     "fix": "kpo fix --",
     "fix.format": "kpo fix.format --",
@@ -35,7 +37,6 @@
     "clean": "kpo clean --",
     "clean.top": "kpo clean.top --",
     "clean.modules": "kpo clean.modules --",
-    "commit": "kpo commit --",
     "prepublishOnly": "kpo prepublishOnly --",
     "preversion": "kpo preversion --",
     "version": "kpo version --"

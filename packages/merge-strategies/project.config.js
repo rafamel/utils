@@ -6,7 +6,6 @@ module.exports = slim({
   // transpile straight up with babel.
   nodeOnly: false,
   typescript: true,
-  monorepo: true,
   // Extensions allowed for each file type, as a comma separated string
   ext: {
     js: 'js,cjs,mjs,jsx',
