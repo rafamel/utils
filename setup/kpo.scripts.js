@@ -104,11 +104,13 @@ module.exports.scripts = {
   /* Hooks */
   $precommit: series.env('kpo validate', { COMMIT: '#' }),
   prepublishOnly: Error(`Publish should be done via 'kpo publish'`),
-  preversion: (!vars.version && guardian) || [
-    log`Recommended version bump is:`,
-    'conventional-recommended-bump --preset angular --verbose',
-    confirm({ no: Error() })
-  ],
+  preversion: project.monorepo
+    ? !vars.version && guardian
+    : [
+        log`Recommended version bump is:`,
+        'conventional-recommended-bump --preset angular --verbose',
+        confirm({ no: Error() })
+      ],
   version: [
     !vars.version && kpo`preversion`,
     !project.monorepo && kpo`changelog`,
