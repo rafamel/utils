@@ -16,4 +16,18 @@ If you find it useful, consider [starring the project](https://github.com/rafame
 
 [`npm install merge-strategies`](https://www.npmjs.com/package/merge-strategies)
 
-<!-- ## Motivation / Use cases | Documentation | Usage / Examples -->
+## Usage
+
+All functions return a new object -they are not mutated-, and take in objects of any type. If they receive scalars instead of `Array`s or `object`s, `value` will be returned.
+
+### shallow(defaults, value)
+
+If both `defaults` and `value` are objects, they will be shallow merged.
+
+### merge(defaults, value)
+
+If both `defaults` and `value` are objects, they will be deep merged.
+
+### deep(defaults, value)
+
+If both the `defaults` and `value` are objects, they will be deep merged. Arrays will be concatenated.
