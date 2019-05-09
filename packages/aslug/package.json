@@ -12,6 +12,11 @@
     "encode",
     "decode"
   ],
+  "engines": {
+    "node": ">=8"
+  },
+  "main": "pkg/dist-node/index.js",
+  "types": "pkg/dist-types/index.d.ts",
   "scripts": {
     "start": "kpo start --",
     "build": "kpo build --",
