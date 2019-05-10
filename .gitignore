@@ -3,7 +3,6 @@
 pkg
 build
 lib
-bin
 dist
 out
 _test*
