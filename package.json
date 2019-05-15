@@ -20,6 +20,7 @@
     "validate": "kpo validate --",
     "docs": "kpo docs --",
     "update": "kpo update --",
+    "outdated": "kpo outdated --",
     "clean": "kpo clean --",
     "clean.top": "kpo clean.top --",
     "clean.modules": "kpo clean.modules --",

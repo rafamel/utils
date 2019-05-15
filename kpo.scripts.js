@@ -29,6 +29,7 @@ module.exports.scripts = {
   ],
   docs: 'kpo :stream docs',
   update: ['npm update', 'npm outdated'],
+  outdated: 'npm outdated',
   clean: {
     default: kpo`clean.top clean.modules`,
     top: remove([`./pkg`, `./docs`, `./coverage`, `CHANGELOG.md`], {
