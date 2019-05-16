@@ -16,10 +16,10 @@ module.exports.scripts = {
     'lerna version --no-push --no-commit-hooks --conventional-commits',
     { SEMANTIC: '#' }
   ),
-  release: series.env(
-    ['lerna publish --contents pkg from-package', 'git push --tags'],
-    { RELEASE: '#' }
-  ),
+  release: [
+    series.env('lerna publish --contents pkg from-package', { RELEASE: '#' }),
+    ['git push', 'git push --tags']
+  ],
   validate: [
     vars.validate ? `kpo -d ${vars.validate} validate` : 'kpo :stream validate',
     ensure`coverage`,
