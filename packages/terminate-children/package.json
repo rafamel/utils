@@ -60,6 +60,10 @@
   "@pika/pack": {
     "pipeline": []
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "ps-tree": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/ps-tree": "^1.1.0"
+  }
 }
