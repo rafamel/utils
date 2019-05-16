@@ -12,3 +12,4 @@ If you find it useful, consider [starring the project](https://github.com/rafame
 
 * [*aslug:*](https://github.com/rafamel/utils/tree/master/packages/aslug) a lossless *slug* that preserves uniqueness.
 * [*merge-strategies:*](https://github.com/rafamel/utils/tree/master/packages/merge-strategies) object merging made simple.
+* [*terminate-children:*](https://github.com/rafamel/utils/tree/master/packages/terminate-children) terminate all children for a process.
