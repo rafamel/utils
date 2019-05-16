@@ -20,7 +20,7 @@ If you find it useful, consider [starring the project](https://github.com/rafame
 
 ### `terminate(pid: number, options?: object): Promise<number[]>`
 
-Takes in the `pid` of the parent process to terminate children processes for, and returns a promise resolving in an array with the *pid*s of the children process still alive.
+Takes in the `pid` of the parent process to terminate children processes for, and returns a promise resolving in an array with the *pid*s of the children processes still alive.
 
 By default, unless an `options.timeout` is passed, the returned promise won't resolve until all children processes have been successfully terminated, hence it will resolve with an empty array.
 
