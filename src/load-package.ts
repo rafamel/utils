@@ -23,7 +23,7 @@ export default async function loadPackage(
 ): Promise<Package> {
   const opts = Object.assign({ normalize: true, title: false }, options);
 
-  const path = await up('package.json', { cwd: dir });
+  const path = await up('package.json', { cwd: dir, type: 'file' });
   if (!path) throw Error(`package couldn't be found`);
 
   const pkg = await fs.readJSON(path).catch(rejects);

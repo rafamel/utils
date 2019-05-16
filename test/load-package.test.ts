@@ -21,7 +21,10 @@ describe(`reads package`, () => {
   test(`calls up w/ dir`, async () => {
     await loadPackage('foo/bar');
     expect(mocks.up).toHaveBeenCalledTimes(1);
-    expect(mocks.up).toHaveBeenCalledWith('package.json', { cwd: 'foo/bar' });
+    expect(mocks.up).toHaveBeenCalledWith('package.json', {
+      cwd: 'foo/bar',
+      type: 'file'
+    });
   });
   test(`fails if package is not found`, async () => {
     mocks.up.mockImplementationOnce(async () => null);
