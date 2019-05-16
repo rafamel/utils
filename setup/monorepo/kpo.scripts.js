@@ -16,7 +16,7 @@ module.exports.options = options;
 module.exports.scripts = merge(scripts, {
   commit: [
     log`${chalk.bold.yellow('\nWARN:')} Validating only ${vars.root}`,
-    series.env('kpo @root commit --', { REPO_VALIDATE: vars.root })
+    series.env('kpo @root commit --', { VALIDATE: vars.root })
   ],
   semantic: !vars.semantic && error,
   release: !vars.release && error,
