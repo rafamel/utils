@@ -1,0 +1,65 @@
+{
+  "name": "terminate-children",
+  "version": "0.0.0",
+  "author": "Rafa Mel",
+  "description": "Terminate all children for a process",
+  "keywords": [
+    "children",
+    "ps",
+    "child",
+    "process",
+    "kill",
+    "terminate",
+    "term",
+    "signal"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "main": "pkg/dist-node/index.js",
+  "types": "pkg/dist-types/index.d.ts",
+  "scripts": {
+    "start": "kpo start --",
+    "build": "kpo build --",
+    "build.force": "kpo build.force --",
+    "commit": "kpo commit --",
+    "semantic": "kpo semantic --",
+    "release": "kpo release --",
+    "watch": "kpo watch --",
+    "fix": "kpo fix --",
+    "fix.format": "kpo fix.format --",
+    "fix.scripts": "kpo fix.scripts --",
+    "types": "kpo types --",
+    "lint": "kpo lint --",
+    "lint.md": "kpo lint.md --",
+    "lint.scripts": "kpo lint.scripts --",
+    "test": "kpo test --",
+    "test.force": "kpo test.force --",
+    "test.watch": "kpo test.watch --",
+    "validate": "kpo validate --",
+    "docs": "kpo docs --",
+    "changelog": "kpo changelog --",
+    "update": "kpo update --",
+    "outdated": "kpo outdated --",
+    "clean": "kpo clean --",
+    "clean.top": "kpo clean.top --",
+    "clean.modules": "kpo clean.modules --",
+    "prepublishOnly": "kpo prepublishOnly --",
+    "preversion": "kpo preversion --",
+    "version": "kpo version --"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/rafamel/utils/tree/master/packages/terminate-children",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafamel/utils"
+  },
+  "bugs": {
+    "url": "https://github.com/rafamel/utils/issues"
+  },
+  "@pika/pack": {
+    "pipeline": []
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

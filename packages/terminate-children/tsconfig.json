@@ -1,0 +1,9 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/tsconfig.json",
+  "extends": "../../setup/tsconfig.json",
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": "."
+  }
+}
