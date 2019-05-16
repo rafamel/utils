@@ -1,4 +1,5 @@
 const project = require('./project.config');
+
 const EXT =
   project.get('typescript') && project.get('ext.ts')
     ? project.get('ext.js') + ',' + project.get('ext.ts')
@@ -12,7 +13,6 @@ module.exports = {
   modulePathIgnorePatterns: [
     '<rootDir>/pkg',
     '<rootDir>/src/@types',
-    '<rootDir>/src/bin',
     '<rootDir>/src/.*/__mocks__'
   ],
   moduleFileExtensions: EXT_ARR.concat(['json']),

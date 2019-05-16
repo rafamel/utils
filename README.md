@@ -1,8 +1,8 @@
 # cli-belt
 
 [![Version](https://img.shields.io/npm/v/cli-belt.svg)](https://www.npmjs.com/package/cli-belt)
-[![Build Status](https://img.shields.io/travis/rafamel/cli-belt.svg)](https://travis-ci.org/rafamel/cli-belt)
-[![Coverage](https://img.shields.io/coveralls/rafamel/cli-belt.svg)](https://coveralls.io/github/rafamel/cli-belt)
+[![Build Status](https://img.shields.io/travis/rafamel/cli-belt/master.svg)](https://travis-ci.org/rafamel/cli-belt)
+[![Coverage](https://img.shields.io/coveralls/rafamel/cli-belt/master.svg)](https://coveralls.io/github/rafamel/cli-belt)
 [![Dependencies](https://img.shields.io/david/rafamel/cli-belt.svg)](https://david-dm.org/rafamel/cli-belt)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/cli-belt.svg)](https://snyk.io/test/npm/cli-belt)
 [![License](https://img.shields.io/github/license/rafamel/cli-belt.svg)](https://github.com/rafamel/cli-belt/blob/master/LICENSE)
