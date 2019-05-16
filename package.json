@@ -1,6 +1,6 @@
 {
   "name": "cli-belt",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Rafa Mel",
   "description": "An utility belt to complement your arguments parser of choice",
   "keywords": [
