@@ -15,3 +15,32 @@ If you find it useful, consider [starring the project](https://github.com/rafame
 ## Install
 
 [`npm install terminate-children`](https://www.npmjs.com/package/terminate-children)
+
+## Usage
+
+### `terminate(pid: number, options?: object): Promise<number[]>`
+
+Takes in the `pid` of the parent process to terminate children processes for, and returns a promise resolving in an array with the *pid*s of the children process still alive.
+
+By default, unless an `options.timeout` is passed, the returned promise won't resolve until all children processes have been successfully terminated, hence it will resolve with an empty array.
+
+* `pid`: **Required,** *number,* the *pid* of the parent process.
+* `options`: **Optional,** *object,* with optional keys:
+  * `signal`: *string,* signal to send to children. Default: `SIGTERM`.
+  * `filter`: *Function,* filter function for children to send signals to, with signature `(pid: number) => boolean`.
+  * `interval`: *number,* interval in *ms* at which to check whether children processes are still alive for the returned promise.
+  * `timeout`: *number | null,* timeout in *ms* for the returned promise. If `null`, the returned promise won't resolve until all processes have been terminated; if `0`, it will resolve with the processes `pid`s still alive immediately after the `signal` has been sent; otherwise, it will resolve with the processes still alive at `timeout`, if they haven't been all terminated before it is reached.
+
+```javascript
+import terminate from 'terminate-children';
+
+console.log('Sending SIGTERM to children processes');
+terminate(process.pid, { timeout: 5000 }).then(arr => {
+  // Return if all children processes have terminated
+  if (!arr.length) return;
+
+  // Otherwise, we'll send a SIGKILL, as we've already waited for 5 seconds
+  console.log('Sending SIGKILL to children processes');
+  return terminate(process.pid, { signal: 'SIGKILL' })
+});
+```
