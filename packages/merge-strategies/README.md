@@ -24,10 +24,40 @@ All functions return a new object -they are not mutated-, and take in objects of
 
 If both `defaults` and `value` are objects, they will be shallow merged.
 
+```javascript
+import { shallow } from 'merge-strategies';
+
+// Returns: { foo: [3, 4], bar: { foo: 'foo' } }
+shallow(
+  { foo: [1, 2], bar: { baz: 'baz' },
+  { foo: [3, 4], bar: { foo: 'foo' },
+);
+```
+
 ### merge(defaults, value)
 
 If both `defaults` and `value` are objects, they will be deep merged.
 
+```javascript
+import { merge } from 'merge-strategies';
+
+// Returns: { foo: [3, 4], bar: { baz: 'baz', foo: 'foo' } }
+merge(
+  { foo: [1, 2], bar: { baz: 'baz' },
+  { foo: [3, 4], bar: { foo: 'foo' },
+);
+```
+
 ### deep(defaults, value)
 
 If both the `defaults` and `value` are objects, they will be deep merged. Arrays will be concatenated.
+
+```javascript
+import { merge } from 'merge-strategies';
+
+// Returns: { foo: [1, 2, 3, 4], bar: { baz: 'baz', foo: 'foo' } }
+merge(
+  { foo: [1, 2], bar: { baz: 'baz' },
+  { foo: [3, 4], bar: { foo: 'foo' },
+);
+```
