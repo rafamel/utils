@@ -27,9 +27,9 @@ By default, unless an `options.timeout` is passed, the returned promise won't re
 * `pid`: **Required,** *number,* the *pid* of the parent process.
 * `options`: **Optional,** *object,* with optional keys:
   * `signal`: *string,* signal to send to children. Default: `SIGTERM`.
+  * `interval`: *number,* interval in *ms* at which to check whether children processes are still alive for the returned promise. Default: `25`.
+  * `timeout`: *number | null,* timeout in *ms* for the returned promise. If `null`, the returned promise won't resolve until all processes have been terminated; if `0`, it will resolve with the processes `pid`s still alive immediately after the `signal` has been sent; otherwise, it will resolve with the processes still alive at `timeout`, if they haven't been all terminated before it is reached. Default: `null`.
   * `filter`: *Function,* filter function for children to send signals to, with signature `(pid: number) => boolean`.
-  * `interval`: *number,* interval in *ms* at which to check whether children processes are still alive for the returned promise.
-  * `timeout`: *number | null,* timeout in *ms* for the returned promise. If `null`, the returned promise won't resolve until all processes have been terminated; if `0`, it will resolve with the processes `pid`s still alive immediately after the `signal` has been sent; otherwise, it will resolve with the processes still alive at `timeout`, if they haven't been all terminated before it is reached.
 
 ```javascript
 import terminate from 'terminate-children';
