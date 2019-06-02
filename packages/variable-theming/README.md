@@ -22,7 +22,7 @@ If you find it useful, consider [starring the project](https://github.com/rafame
 
 ```javascript
 import inject from 'style-inject';
-import generate from 'variable-themes';
+import generate from 'variable-theming';
 
 const mainTheme = {
   custom: {
@@ -60,13 +60,11 @@ const secondaryTheme = {
   }
 }
 
-
 /*
-  Element properties will be assigned to variables for the first
-  object of items passed if the first `setup` argument is true.
+  Element properties will be assigned to variables
+  for the first object, but not for the second.
 */
 const { setup, ...main } = generate(
-  true,
   mainTheme.elements,
   mainTheme.custom
 );
@@ -81,12 +79,13 @@ inject(setup.css);
 inject(`:root { ${main.css} }`);
 
 /*
-  We don't need to assign element properties to variables 
-  anymore as they are already globally set.
+  We don't need to assign element properties to variables
+  anymore as they are already globally set, so we don't need
+  to separate element styles and custom properties for setup.
 */
-const secondary = generate(
-  secondaryTheme.elements,
-  secondaryTheme.custom
-);
+const secondary = generate({
+  ...secondaryTheme.elements,
+  ...secondaryTheme.custom
+});
 inject(`.someClassSecondaryWillApplyTo { ${secondary.css} }`);
 ```
