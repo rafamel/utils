@@ -4,15 +4,15 @@ import alive from './alive';
 export interface IOptions {
   signal?: string;
   interval?: number;
-  filter?: (pid: number) => boolean;
   timeout?: number | null;
+  filter?: (pid: number) => boolean;
 }
 
 const defaults: Required<IOptions> = {
   signal: 'SIGTERM',
-  filter: () => true,
   interval: 25,
-  timeout: null
+  timeout: null,
+  filter: () => true
 };
 
 export default async function terminateChildren(
