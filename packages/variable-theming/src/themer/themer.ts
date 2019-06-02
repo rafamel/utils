@@ -1,7 +1,6 @@
 import generate from '~/generate';
 import defaults from './defaults';
-import nth from './get-nth';
-import { ITheme, ITypography, IPalette, IOutput, IOfType } from '~/types';
+import { ITheme, IOutput, IOfType } from '~/types';
 
 export default function themer(theme?: ITheme): IOutput {
   const { typography, palette, group } = Object.assign(
@@ -9,31 +8,27 @@ export default function themer(theme?: ITheme): IOutput {
     theme
   );
 
-  const custom: IOfType<IOfType<string>> = { ...group };
-  // Typography
-  let nt = Array.isArray(typography)
-    ? typography.length
-    : Number(Object.keys(typography).sort((a, b) => Number(b) - Number(a))[0]) +
-        1 || 0;
+  const custom: IOfType<IOfType<string>> = {
+    ...group,
+    'typography-primary': { ...defaults.typography },
+    'palette-primary': { ...defaults.palette }
+  };
 
-  for (let i = 0; i < nt; i++) {
-    const item = (typography[i] || {}) as ITypography;
-    custom[`typography-${nth(i)}`] = {
+  // Typography
+  const te = Object.entries(typography);
+  for (let [key, value] of te) {
+    custom[`typography-${key}`] = {
       ...defaults.typography,
-      ...item
+      ...(value || {})
     };
   }
-  // Palette
-  let np = Array.isArray(palette)
-    ? palette.length
-    : Number(Object.keys(palette).sort((a, b) => Number(b) - Number(a))[0]) +
-        1 || 0;
 
-  for (let i = 0; i < np; i++) {
-    const item = (palette[i] || {}) as IPalette;
-    custom[`palette-${nth(i)}`] = {
+  // Palette
+  const pe = Object.entries(palette);
+  for (let [key, value] of pe) {
+    custom[`palette-${key}`] = {
       ...defaults.palette,
-      ...item
+      ...(value || {})
     };
   }
 

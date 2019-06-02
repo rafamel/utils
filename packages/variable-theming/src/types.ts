@@ -33,7 +33,7 @@ export interface IPalette {
 }
 
 export interface ITheme {
-  typography?: ITypography[] | { [key: number]: Partial<ITypography> };
-  palette?: IPalette[] | { [key: number]: IPalette };
+  typography?: { primary?: ITypography } & IOfType<ITypography>;
+  palette?: { primary?: IPalette } & IOfType<IPalette>;
   group?: IOfType<IOfType<string>>;
 }
