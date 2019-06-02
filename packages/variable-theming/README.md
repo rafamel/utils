@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/variable-theming.svg)](https://www.npmjs.com/package/variable-theming)
 
-> CSS theming based on custom properties
+> CSS theming based on custom properties.
 
 If you find it useful, consider [starring the project](https://github.com/rafamel/utils/tree/master/packages/variable-theming) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
 
@@ -19,6 +19,10 @@ If you find it useful, consider [starring the project](https://github.com/rafame
 ## Usage
 
 **[Documentation](https://rafamel.github.io/utils/variable-theming/globals.html)**
+
+### generate
+
+[`generate`](https://rafamel.github.io/utils/variable-theming/globals.html#generate) takes a non opinionated approach regarding the contents of your theme.
 
 ```javascript
 import inject from 'style-inject';
@@ -88,4 +92,66 @@ const secondary = generate({
   ...secondaryTheme.custom
 });
 inject(`.someClassSecondaryWillApplyTo { ${secondary.css} }`);
+```
+
+### themer
+
+[`themer`](https://rafamel.github.io/utils/variable-theming/globals.html#themer) takes a more opinionated approach. An [`ITheme`](https://rafamel.github.io/utils/variable-theming/interfaces/itheme.html) should be provided defining a number of `palette` and `typography` objects, as well as a group of any other variables to define.
+
+For `palette` and `typography`, the variable names -more on that on the example below- will include their ordinal name. For indexes greater than `10`, these will be expressed in the form `11th`, `12th`, `21st`, `22nd` `23rd`, while up to `10` they will be `primary`, `secondary`, `tertiary`, `quaternary`, `quinary`, `senary`, `septenary`, `octonary`, `nonary`, and `denary`.
+
+`variable-theming` also exports a default [`setup`](https://rafamel.github.io/utils/variable-theming/globals.html#setup) that will apply the primary typography to the `body` element.
+
+```javascript
+import inject from 'style-inject';
+import color from 'color';
+import { setup, themer } from 'variable-theming';
+
+const { css } = themer({
+  typography: {
+    0: {
+      /*
+        These will be applied to body via setup
+        and will be available as:
+          --typography-primary-font-family
+          --typograhpy-primary-font-weight
+      */
+      fontFamily: 'Helvetica',
+      fontWeight: '300'
+    },
+    1: {
+      /*
+        These will be available as:
+          --typography-secondary-font-family
+          --typography-secondary-line-height
+      */
+      fontFamily: 'sans-serif',
+      lineHeight: '2'
+    }
+  },
+  palette: {
+    0: {
+      /*
+        These will be available as:
+          --palette-primary-main
+          --palette-primary-light
+          --palette-primary-dark
+          --palette-primary-contrast
+      */
+      main: 'green',
+      light: color('green').lighten(0.5).toString(),
+      dark: color('green').darken(0.5).toString(),
+      contrast: 'red'
+    }
+  },
+  group: {
+    var: {
+      // --var-spacing
+      spacing: '0.25em'
+    }
+  }
+});
+
+inject(setup.css);
+inject(css);
 ```

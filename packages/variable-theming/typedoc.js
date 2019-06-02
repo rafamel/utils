@@ -5,5 +5,8 @@ const typedoc = require('../../setup/typedoc');
 
 module.exports = {
   ...typedoc,
-  exclude: typedoc.exclude.concat(['**/trunk.ts'])
+  exclude: typedoc.exclude.concat([
+    '**/generate/trunk.ts',
+    '**/themer/defaults.ts'
+  ])
 };
