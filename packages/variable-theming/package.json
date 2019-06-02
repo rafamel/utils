@@ -1,6 +1,6 @@
 {
   "name": "variable-theming",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Rafa Mel",
   "description": "CSS theming based on custom properties",
   "keywords": [
@@ -76,6 +76,5 @@
   "dependencies": {
     "decamelize": "^3.2.0",
     "ordinal": "^1.0.3"
-  },
-  "devDependencies": {}
+  }
 }

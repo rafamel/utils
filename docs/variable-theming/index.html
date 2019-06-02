@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>variable-theming 0.1.0</title>
+	<title>variable-theming 0.2.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">variable-theming 0.1.0</a>
+					<a href="index.html" class="title">variable-theming 0.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> variable-theming 0.1.0</h1>
+			<h1> variable-theming 0.2.0</h1>
 		</div>
 	</div>
 </header>
@@ -71,13 +71,15 @@
 					<a href="https://github.com/rafamel/utils/blob/master/LICENSE"><img src="https://img.shields.io/github/license/rafamel/utils.svg" alt="License"></a>
 				<a href="https://www.npmjs.com/package/variable-theming"><img src="https://img.shields.io/npm/types/variable-theming.svg" alt="Types"></a></p>
 				<blockquote>
-					<p>CSS theming based on custom properties</p>
+					<p>CSS theming based on custom properties.</p>
 				</blockquote>
 				<p>If you find it useful, consider <a href="https://github.com/rafamel/utils/tree/master/packages/variable-theming">starring the project</a> 💪 and/or following <a href="https://github.com/rafamel">its author</a> ❤️ -there&#39;s more on the way!</p>
 				<h2 id="install">Install</h2>
 				<p><a href="https://www.npmjs.com/package/variable-theming"><code>npm install variable-theming</code></a></p>
 				<h2 id="usage">Usage</h2>
 				<p><strong><a href="https://rafamel.github.io/utils/variable-theming/globals.html">Documentation</a></strong></p>
+				<h3 id="generate">generate</h3>
+				<p><a href="https://rafamel.github.io/utils/variable-theming/globals.html#generate"><code>generate</code></a> takes a non opinionated approach regarding the contents of your theme.</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> inject <span class="hljs-keyword">from</span> <span class="hljs-string">'style-inject'</span>;
 <span class="hljs-keyword">import</span> generate <span class="hljs-keyword">from</span> <span class="hljs-string">'variable-theming'</span>;
 
@@ -145,6 +147,61 @@ inject(<span class="hljs-string">`:root { <span class="hljs-subst">${main.css}</
   ...secondaryTheme.custom
 });
 inject(<span class="hljs-string">`.someClassSecondaryWillApplyTo { <span class="hljs-subst">${secondary.css}</span> }`</span>);</code></pre>
+				<h3 id="themer">themer</h3>
+				<p><a href="https://rafamel.github.io/utils/variable-theming/globals.html#themer"><code>themer</code></a> takes a more opinionated approach. An <a href="https://rafamel.github.io/utils/variable-theming/interfaces/itheme.html"><code>ITheme</code></a> should be provided defining a number of <code>palette</code> and <code>typography</code> objects, as well as a group of any other variables to define.</p>
+				<p>For <code>palette</code> and <code>typography</code>, the variable names -more on that on the example below- will include their ordinal name. For indexes greater than <code>10</code>, these will be expressed in the form <code>11th</code>, <code>12th</code>, <code>21st</code>, <code>22nd</code> <code>23rd</code>, while up to <code>10</code> they will be <code>primary</code>, <code>secondary</code>, <code>tertiary</code>, <code>quaternary</code>, <code>quinary</code>, <code>senary</code>, <code>septenary</code>, <code>octonary</code>, <code>nonary</code>, and <code>denary</code>.</p>
+				<p><code>variable-theming</code> also exports a default <a href="https://rafamel.github.io/utils/variable-theming/globals.html#setup"><code>setup</code></a> that will apply the primary typography to the <code>body</code> element.</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> inject <span class="hljs-keyword">from</span> <span class="hljs-string">'style-inject'</span>;
+<span class="hljs-keyword">import</span> color <span class="hljs-keyword">from</span> <span class="hljs-string">'color'</span>;
+<span class="hljs-keyword">import</span> { setup, themer } <span class="hljs-keyword">from</span> <span class="hljs-string">'variable-theming'</span>;
+
+<span class="hljs-keyword">const</span> { css } = themer({
+  <span class="hljs-attr">typography</span>: {
+    <span class="hljs-number">0</span>: {
+      <span class="hljs-comment">/*
+        These will be applied to body via setup
+        and will be available as:
+          --typography-primary-font-family
+          --typograhpy-primary-font-weight
+      */</span>
+      fontFamily: <span class="hljs-string">'Helvetica'</span>,
+      <span class="hljs-attr">fontWeight</span>: <span class="hljs-string">'300'</span>
+    },
+    <span class="hljs-number">1</span>: {
+      <span class="hljs-comment">/*
+        These will be available as:
+          --typography-secondary-font-family
+          --typography-secondary-line-height
+      */</span>
+      fontFamily: <span class="hljs-string">'sans-serif'</span>,
+      <span class="hljs-attr">lineHeight</span>: <span class="hljs-string">'2'</span>
+    }
+  },
+  <span class="hljs-attr">palette</span>: {
+    <span class="hljs-number">0</span>: {
+      <span class="hljs-comment">/*
+        These will be available as:
+          --palette-primary-main
+          --palette-primary-light
+          --palette-primary-dark
+          --palette-primary-contrast
+      */</span>
+      main: <span class="hljs-string">'green'</span>,
+      <span class="hljs-attr">light</span>: color(<span class="hljs-string">'green'</span>).lighten(<span class="hljs-number">0.5</span>).toString(),
+      <span class="hljs-attr">dark</span>: color(<span class="hljs-string">'green'</span>).darken(<span class="hljs-number">0.5</span>).toString(),
+      <span class="hljs-attr">contrast</span>: <span class="hljs-string">'red'</span>
+    }
+  },
+  <span class="hljs-attr">group</span>: {
+    <span class="hljs-attr">var</span>: {
+      <span class="hljs-comment">// --var-spacing</span>
+      spacing: <span class="hljs-string">'0.25em'</span>
+    }
+  }
+});
+
+inject(setup.css);
+inject(css);</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -163,11 +220,32 @@ inject(<span class="hljs-string">`.someClassSecondaryWillApplyTo { <span class="
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ioutput.html" class="tsd-kind-icon">IOutput</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipalette.html" class="tsd-kind-icon">IPalette</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isetupoutput.html" class="tsd-kind-icon">ISetup<wbr>Output</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itheme.html" class="tsd-kind-icon">ITheme</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itypography.html" class="tsd-kind-icon">ITypography</a>
+					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#titems" class="tsd-kind-icon">TItems</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#generate" class="tsd-kind-icon">generate</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#nth" class="tsd-kind-icon">nth</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#themer" class="tsd-kind-icon">themer</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#setup" class="tsd-kind-icon">setup</a>
 					</li>
 				</ul>
 			</nav>
