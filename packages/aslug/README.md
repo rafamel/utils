@@ -30,8 +30,8 @@ An example use case for `aslug` would be a set of *ids* that have to be made saf
 
 `aslug` takes an `options` *object* and returns an *object* with methods `encode` and `decode` -both taking a *string*.
 
-* [`aslug` documentation](https://rafamel.github.io/aslug/globals.html#aslug)
-* [`options` documentation](https://rafamel.github.io/aslug/interfaces/ioptions.html)
+* [`aslug` documentation](https://rafamel.github.io/utils/aslug/globals.html#aslug)
+* [`options` documentation](https://rafamel.github.io/utils/aslug/interfaces/ioptions.html)
 
 Optional `options` fields include:
 

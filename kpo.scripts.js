@@ -45,5 +45,5 @@ module.exports.scripts = {
   ],
   prepublishOnly: !vars.release && Error(`Run 'kpo release'`),
   preversion: !vars.semantic && Error(`Run 'kpo semantic'`),
-  version: 'git add .'
+  version: [kpo`preversion`, 'git add .']
 };
