@@ -2,7 +2,7 @@ export interface IOfType<T> {
   [key: string]: T;
 }
 
-export type TItems = IOfType<IOfType<string>>;
+export type TItems = IOfType<IOfType<string | undefined>>;
 
 export interface IOutput {
   css: string;

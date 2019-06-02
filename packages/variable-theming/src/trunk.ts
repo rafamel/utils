@@ -1,5 +1,5 @@
 import decamelize from 'decamelize';
-import { TItems, IOfType, IOutput } from './types';
+import { TItems, IOfType, IOutput } from '~/types';
 
 export default function trunk(items: TItems, setup: boolean): IOutput {
   const entries = Object.entries(items);
@@ -17,6 +17,8 @@ export default function trunk(items: TItems, setup: boolean): IOutput {
 
     const entries = Object.entries(element);
     for (let [camelProperty, value] of entries) {
+      if (value === undefined) continue;
+
       const property = decamelize(camelProperty, '-');
       const variable = `--${name}-${property}`;
       styles[variable] = value;
