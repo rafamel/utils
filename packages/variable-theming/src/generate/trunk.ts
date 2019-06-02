@@ -1,7 +1,7 @@
 import decamelize from 'decamelize';
-import { TItems, IOfType, IOutput } from '~/types';
+import { TItems, IOfType, ISetupOutput } from '~/types';
 
-export default function trunk(items: TItems, setup: boolean): IOutput {
+export default function trunk(items: TItems, setup: boolean): ISetupOutput {
   const entries = Object.entries(items);
   const styles: IOfType<string> = {};
   let css = ``;
