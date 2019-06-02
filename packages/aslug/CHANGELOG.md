@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/rafamel/utils/compare/aslug@0.3.4...aslug@0.3.5) (2019-06-02)
+
+**Note:** Version bump only for package aslug
+
+
+
+
+
 ## [0.3.4](https://github.com/rafamel/utils/compare/aslug@0.3.3...aslug@0.3.4) (2019-05-16)
 
 **Note:** Version bump only for package aslug
@@ -50,5 +58,3 @@ strings, and returns an object with methods `encode` and `decode`.
 
 
 # 0.2.0 (2019-01-08)
-
-
