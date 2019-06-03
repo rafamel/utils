@@ -75,6 +75,9 @@
   },
   "dependencies": {
     "decamelize": "^3.2.0",
-    "ordinal": "^1.0.3"
+    "flat": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/flat": "0.0.28"
   }
 }

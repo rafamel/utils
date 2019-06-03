@@ -2,38 +2,24 @@ export interface IOfType<T> {
   [key: string]: T;
 }
 
-export type TItems = IOfType<IOfType<string | undefined>>;
+export type TValue = string | number | null | undefined | void;
+
+export type TElements = IOfType<IOfType<TValue>>;
+
+export interface ITheme {
+  [key: string]: ITheme | TValue;
+}
 
 export interface IOutput {
   css: string;
   styles: IOfType<string>;
 }
 
+export interface ISetup {
+  css: string;
+  styles: IOfType<IOfType<string>>;
+}
+
 export interface ISetupOutput extends IOutput {
-  setup: {
-    css: string;
-    styles: IOfType<IOfType<string>>;
-  };
-}
-
-export interface ITypography {
-  fontFamily?: string;
-  fontSize?: string;
-  fontWeight?: string;
-  lineHeight?: string;
-  letterSpacing?: string;
-  fontStyle?: string;
-}
-
-export interface IPalette {
-  main?: string;
-  light?: string;
-  dark?: string;
-  contrast?: string;
-}
-
-export interface ITheme {
-  typography?: { primary?: ITypography } & IOfType<ITypography>;
-  palette?: { primary?: IPalette } & IOfType<IPalette>;
-  group?: IOfType<IOfType<string>>;
+  setup: ISetup;
 }

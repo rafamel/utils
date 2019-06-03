@@ -1,3 +1,2 @@
-export { default } from './generate';
-export * from './themer';
+export { default } from './theming';
 export * from './types';
