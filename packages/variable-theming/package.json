@@ -1,6 +1,6 @@
 {
   "name": "variable-theming",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": "Rafa Mel",
   "description": "CSS theming based on custom properties",
   "keywords": [
