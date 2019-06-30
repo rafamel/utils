@@ -13,37 +13,37 @@
   "engines": {
     "node": ">=8"
   },
-  "main": "pkg/dist-node/index.js",
-  "types": "pkg/dist-types/index.d.ts",
+  "main": "pkg/dist/index.js",
+  "types": "pkg/dist/index.d.ts",
   "scripts": {
-    "start": "kpo start --",
-    "build": "kpo build --",
-    "build.force": "kpo build.force --",
     "commit": "kpo commit --",
     "semantic": "kpo semantic --",
-    "release": "kpo release --",
-    "watch": "kpo watch --",
     "fix": "kpo fix --",
-    "fix.format": "kpo fix.format --",
-    "fix.scripts": "kpo fix.scripts --",
-    "types": "kpo types --",
+    "fix:scripts": "kpo fix:scripts --",
     "lint": "kpo lint --",
-    "lint.md": "kpo lint.md --",
-    "lint.scripts": "kpo lint.scripts --",
-    "test": "kpo test --",
-    "test.force": "kpo test.force --",
-    "test.watch": "kpo test.watch --",
-    "validate": "kpo validate --",
-    "docs": "kpo docs --",
-    "changelog": "kpo changelog --",
-    "update": "kpo update --",
-    "outdated": "kpo outdated --",
+    "lint:md": "kpo lint:md --",
+    "lint:scripts": "kpo lint:scripts --",
     "clean": "kpo clean --",
-    "clean.top": "kpo clean.top --",
-    "clean.modules": "kpo clean.modules --",
+    "clean:build": "kpo clean:build --",
+    "clean:modules": "kpo clean:modules --",
+    "precommit": "kpo precommit --",
     "prepublishOnly": "kpo prepublishOnly --",
     "preversion": "kpo preversion --",
-    "version": "kpo version --"
+    "version": "kpo version --",
+    "build": "kpo build --",
+    "build:transpile": "kpo build:transpile --",
+    "build:types": "kpo build:types --",
+    "fix:code": "kpo fix:code --",
+    "lint:code": "kpo lint:code --",
+    "lint:types": "kpo lint:types --",
+    "test": "kpo test --",
+    "validate": "kpo validate --",
+    "docs": "kpo docs --",
+    "build:pack": "kpo build:pack --",
+    "build:static": "kpo build:static --",
+    "release": "kpo release --",
+    "watch": "kpo watch --",
+    "watch:test": "kpo watch:test --"
   },
   "license": "MIT",
   "homepage": "https://github.com/rafamel/utils/tree/master/packages/merge-strategies",
@@ -53,6 +53,14 @@
   },
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"
+  },
+  "devDependencies": {
+    "@types/lodash.clonedeep": "^4.5.6",
+    "@types/lodash.mergewith": "^4.6.6"
+  },
+  "dependencies": {
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.mergewith": "^4.6.1"
   },
   "@pika/pack": {
     "pipeline": [
@@ -69,13 +77,5 @@
         "@pika/plugin-build-web"
       ]
     ]
-  },
-  "dependencies": {
-    "lodash.clonedeep": "^4.5.0",
-    "lodash.mergewith": "^4.6.1"
-  },
-  "devDependencies": {
-    "@types/lodash.clonedeep": "^4.5.6",
-    "@types/lodash.mergewith": "^4.6.6"
   }
 }
