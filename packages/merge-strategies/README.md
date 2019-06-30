@@ -53,10 +53,10 @@ merge(
 If both the `defaults` and `value` are objects, they will be deep merged. Arrays will be concatenated.
 
 ```javascript
-import { merge } from 'merge-strategies';
+import { deep } from 'merge-strategies';
 
 // Returns: { foo: [1, 2, 3, 4], bar: { baz: 'baz', foo: 'foo' } }
-merge(
+deep(
   { foo: [1, 2], bar: { baz: 'baz' },
   { foo: [3, 4], bar: { foo: 'foo' },
 );
