@@ -15,6 +15,10 @@ describe(`shallow`, () => {
       d: 4
     });
   });
+  test(`doesn't fail on null`, () => {
+    expect(shallow(null, { a: 1 })).not.toBe({ a: 1 });
+    expect(shallow({ a: 1 }, null)).toEqual(null);
+  });
   test(`doesn't assign to defaults`, () => {
     const defaults = { a: 1 };
     expect(shallow(defaults, {})).not.toBe(defaults);

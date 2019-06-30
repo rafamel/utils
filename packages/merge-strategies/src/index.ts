@@ -6,8 +6,10 @@ import clonedeep from 'lodash.clonedeep';
  */
 export function shallow<T, D>(defaults: D, value: T): T | (T & D) {
   return typeof value === 'object' &&
+    value !== null &&
     !Array.isArray(value) &&
     typeof defaults === 'object' &&
+    defaults !== null &&
     !Array.isArray(defaults)
     ? Object.assign(clonedeep(defaults), value)
     : value;
