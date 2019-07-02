@@ -53,13 +53,13 @@
     "@types/unidecode": "^0.1.1",
     "@zerollup/ts-transform-paths": "^1.7.3",
     "coveralls": "^3.0.4",
-    "husky": "^2.4.1",
+    "husky": "^3.0.0",
     "jest-cli": "^24.8.0",
     "kpo": "^0.11.0",
     "lerna": "^3.15.0",
     "onchange": "^6.0.0",
     "prettier": "^1.18.2",
-    "typescript": "3.4.3"
+    "typescript": "^3.5.2"
   },
   "dependencies": {},
   "husky": {
