@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/rafamel/utils/compare/merge-strategies@0.1.3...merge-strategies@0.1.4) (2019-07-03)
+
+**Note:** Version bump only for package merge-strategies
+
+
+
+
+
 ## [0.1.3](https://github.com/rafamel/utils/compare/merge-strategies@0.1.2...merge-strategies@0.1.3) (2019-06-30)
 
 
