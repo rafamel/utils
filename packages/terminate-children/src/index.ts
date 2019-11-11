@@ -1,14 +1,14 @@
 import tree from 'ps-tree';
 import alive from './alive';
 
-export interface IOptions {
+export interface Options {
   signal?: string;
   interval?: number;
   timeout?: number | null;
   filter?: (pid: number) => boolean;
 }
 
-const defaults: Required<IOptions> = {
+const defaults: Required<Options> = {
   signal: 'SIGTERM',
   interval: 25,
   timeout: null,
@@ -17,7 +17,7 @@ const defaults: Required<IOptions> = {
 
 export default async function terminateChildren(
   pid: number,
-  options?: IOptions
+  options?: Options
 ): Promise<number[]> {
   const opts = Object.assign({}, defaults, options);
 
