@@ -3,11 +3,11 @@ import basex from 'base-x';
 import escape from 'escape-string-regexp';
 import encode from './encode';
 import decode from './decode';
-import { IOptions } from './types';
+import { Options } from './types';
 import { ALPHABET, SEPARATOR } from './constants';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default function aslug(options: Partial<IOptions> = {}) {
+export default function aslug(options: Partial<Options> = {}) {
   const opts = Object.assign(
     { alphabet: ALPHABET, separator: SEPARATOR },
     options
@@ -34,12 +34,12 @@ export default function aslug(options: Partial<IOptions> = {}) {
   }
   opts.map = options.map
     ? (char: string) => {
-        const str = (options as IOptions).map(char);
-        return str.search((opts as IOptions).target) === -1 ? str : '';
+        const str = (options as Options).map(char);
+        return str.search((opts as Options).target) === -1 ? str : '';
       }
     : (char: string) => {
         const str = unidecode(char).replace(/[ _.,;:]/, '-');
-        return str.search((opts as IOptions).target) === -1 ? str : '';
+        return str.search((opts as Options).target) === -1 ? str : '';
       };
 
   /* Additional safety checks */
@@ -52,7 +52,7 @@ export default function aslug(options: Partial<IOptions> = {}) {
 
   const base = basex(opts.alphabet);
   return {
-    encode: (str: string) => encode(str, base, opts as IOptions),
-    decode: (str: string) => decode(str, base, opts as IOptions)
+    encode: (str: string) => encode(str, base, opts as Options),
+    decode: (str: string) => decode(str, base, opts as Options)
   };
 }

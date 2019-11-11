@@ -2,7 +2,7 @@ import aslug from '~/aslug';
 import _basex from 'base-x';
 import _encode from '~/encode';
 import _decode from '~/decode';
-import { IOptions } from '~/types';
+import { Options } from '~/types';
 import { ALPHABET } from '~/constants';
 
 const basex: any = _basex;
@@ -22,7 +22,7 @@ describe(`options`, () => {
     doSeparator: boolean,
     doTarget: boolean,
     doMap: boolean,
-    opts?: Partial<IOptions>
+    opts?: Partial<Options>
   ): void {
     basex.mockClear();
     encode.mockClear();

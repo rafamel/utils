@@ -1,4 +1,4 @@
-export interface IOptions {
+export interface Options {
   /**
    * Alphabet of characters to use to encode the payload. Default: `'123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-'`
    */

@@ -1,10 +1,10 @@
 import { BaseConverter } from 'base-x';
-import { IOptions } from './types';
+import { Options } from './types';
 
 export default function encode(
   str: string,
   base: BaseConverter,
-  options: IOptions
+  options: Options
 ): string {
   const payload: string[] = [];
   return (
@@ -19,7 +19,7 @@ export function trunk(
   str: string,
   next: string,
   payload: string[],
-  options: IOptions
+  options: Options
 ): string {
   if (!next) return str;
 

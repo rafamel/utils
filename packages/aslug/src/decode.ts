@@ -1,10 +1,10 @@
 import { BaseConverter } from 'base-x';
-import { IOptions } from './types';
+import { Options } from './types';
 
 export default function decode(
   str: string,
   base: BaseConverter,
-  options: IOptions
+  options: Options
 ): string {
   const index = str.indexOf(options.separator);
 
