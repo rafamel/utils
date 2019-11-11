@@ -1,3 +1,3 @@
 export const ALPHABET =
-  '123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-';
+  '0123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-';
 export const SEPARATOR = '~';

@@ -33,7 +33,7 @@ An example use case for `aslug` would be a set of *ids* that have to be made saf
 
 Optional `options` fields include:
 
-* An `alphabet` for the payload. Defaults to: `'123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-'`.
+* An `alphabet` for the payload. Defaults to: `'0123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-'`.
 * A `separator` to be used between the readable string and the payload. Defaults to `'~'`.
 * A `target` regular expression to identify the characters to replace. Defaults to matching all characters not in `alphabet`.
 * A `map` function to determine the strategy to use when replacing characters: remove diacritics, leave empty, or any other alternative. Defaults to replacing characters for their *ASCII* equivalent.

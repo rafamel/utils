@@ -13,7 +13,7 @@ test(`wo/ special chars`, () => {
 test(`w/ special chars`, () => {
   const plain = 'foó bar-baz+$á.d,f;gs:a\'d" níño';
   const encoded =
-    'foo-bar-baza-d-f-gs-ad-nino~4cKNEusoXtkFP37Lku7lUDVAuV4EgN2mF3k6mN8fD6yo1vPG4LGdU5T2c34SGXXlgfHr1fYAvA8iFQ7Hp1GdWyYoCJT';
+    'foo-bar-baza-d-f-gs-ad-nino~qbc9Mzu8fMVsrMAcm7Zb1zcBrGkttLhd1fL6vBlALk97FI4Y7hH8eJ4Wa74vmZUtc3wlmnXrKIY39zoAN4FEYYmL9r';
 
   expect(encode(plain)).toBe(encoded);
   expect(decode(encoded)).toBe(plain);
@@ -21,7 +21,7 @@ test(`w/ special chars`, () => {
 
 test(`starts/ends in special chars`, () => {
   const plain = '~foó pπ[ §';
-  const encoded = 'foo-pp-SS~ouDkIVjro-bT6rRlu7PRsouyN8HaYaSl9zrpaVW';
+  const encoded = 'foo-pp-SS~RL-Njqw9esh-zzooMjNYSoUWMWqsRHxq9cAgz-4';
 
   expect(encode(plain)).toBe(encoded);
   expect(decode(encoded)).toBe(plain);
