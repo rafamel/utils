@@ -1,7 +1,7 @@
 import terminate from '~/index';
 import tree from 'ps-tree';
 import alive from '~/alive';
-import { wait, timed } from 'promist';
+import { wait } from 'promist';
 
 jest.mock('ps-tree');
 jest.mock('~/alive');
@@ -58,7 +58,7 @@ test(`options.filter`, async () => {
 test(`options.interval`, async () => {
   // with default interval
   mocks.alive.mockImplementation(() => [10]);
-  const p1 = timed(terminate(100));
+  const p1 = terminate(100);
   await wait(300);
   mocks.alive.mockImplementationOnce(() => []);
   await expect(p1).resolves.toEqual([]);
@@ -66,13 +66,14 @@ test(`options.interval`, async () => {
 
   // with custom interval
   mocks.alive.mockClear();
-  const p2 = timed(terminate(100, { interval: 500 }));
+  const start = Date.now();
+  const p2 = terminate(100, { interval: 500 });
   await wait(750);
   mocks.alive.mockImplementation(() => []);
 
   await expect(p2).resolves.toEqual([]);
+  expect(Date.now() - start).toBeLessThan(1500);
   expect(mocks.alive).toHaveBeenCalledTimes(3);
-  expect(p2.time).toBeLessThan(1500);
 });
 test(`options.timeout = 0`, async () => {
   mocks.alive.mockImplementationOnce(() => [10]);
@@ -81,16 +82,18 @@ test(`options.timeout = 0`, async () => {
 });
 test(`options.timeout > 0`, async () => {
   mocks.alive.mockImplementation(() => [10]);
-  const p1 = timed(terminate(100, { timeout: 500 }));
+  const start1 = Date.now();
+  const p1 = terminate(100, { timeout: 500 });
   await expect(p1).resolves.toEqual([10]);
-  expect(p1.time).toBeGreaterThanOrEqual(500);
+  expect(Date.now() - start1).toBeGreaterThanOrEqual(500);
   expect(mocks.alive.mock.calls.length).toBeGreaterThanOrEqual(15);
 
   mocks.alive.mockClear();
-  const p2 = timed(terminate(100, { timeout: 500 }));
+  const start2 = Date.now();
+  const p2 = terminate(100, { timeout: 500 });
   await wait(250);
   mocks.alive.mockImplementation(() => []);
   await expect(p2).resolves.toEqual([]);
-  expect(p2.time).toBeLessThan(500);
+  expect(Date.now() - start2).toBeLessThan(500);
   expect(mocks.alive.mock.calls.length).toBeLessThan(15);
 });

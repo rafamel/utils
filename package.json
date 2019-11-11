@@ -2,11 +2,11 @@
   "name": "utils",
   "version": "0.0.0",
   "author": "Rafa Mel",
-  "description": "Utils monorepo",
+  "description": "A monorepo of simple small utilities for everyday happiness",
   "keywords": [],
   "private": true,
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "scripts": {
     "commit": "kpo commit --",
@@ -19,13 +19,13 @@
     "clean": "kpo clean --",
     "clean:build": "kpo clean:build --",
     "clean:modules": "kpo clean:modules --",
-    "precommit": "kpo precommit --",
     "prepublishOnly": "kpo prepublishOnly --",
     "preversion": "kpo preversion --",
     "version": "kpo version --",
     "release": "kpo release --",
     "test": "kpo test --",
     "test:coverage": "kpo test:coverage --",
+    "verify": "kpo verify --",
     "validate": "kpo validate --",
     "bootstrap": "kpo bootstrap --",
     "link": "kpo link --",
@@ -41,30 +41,26 @@
     "url": "https://github.com/rafamel/utils/issues"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
+    "@babel/cli": "^7.7.0",
     "@pika/pack": "^0.4.0",
-    "@pika/plugin-build-web": "^0.4.0",
-    "@pika/plugin-standard-pkg": "^0.4.0",
-    "@riseup/library": "0.0.2",
-    "@riseup/monorepo": "0.0.2",
-    "@riseup/tooling": "0.0.2",
-    "@types/base-x": "^3.0.0",
-    "@types/jest": "^24.0.13",
-    "@types/unidecode": "^0.1.1",
+    "@pika/plugin-build-web": "^0.7.1",
+    "@pika/plugin-standard-pkg": "^0.7.1",
+    "@riseup/library": "^0.5.0",
+    "@riseup/monorepo": "^0.5.0",
+    "@riseup/tooling": "^0.5.0",
+    "@types/jest": "^24.0.22",
     "@zerollup/ts-transform-paths": "^1.7.3",
-    "coveralls": "^3.0.4",
-    "husky": "^3.0.0",
-    "jest-cli": "^24.8.0",
-    "kpo": "^0.11.0",
-    "lerna": "^3.15.0",
-    "onchange": "^6.0.0",
-    "prettier": "^1.18.2",
-    "typescript": "^3.5.2"
+    "coveralls": "^3.0.7",
+    "husky": "^3.0.9",
+    "kpo": "^0.11.1",
+    "lerna": "^3.18.4",
+    "onchange": "^6.1.0",
+    "typescript": "^3.7.2"
   },
   "dependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "kpo precommit"
+      "pre-commit": "kpo verify"
     }
   }
 }

@@ -10,8 +10,6 @@
 
 > A lossless *slug* that preserves uniqueness.
 
-If you find it useful, consider [starring the project](https://github.com/rafamel/utils/tree/master/packages/aslug) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
-
 ## Install
 
 [`npm install aslug`](https://www.npmjs.com/package/aslug)

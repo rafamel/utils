@@ -54,12 +54,7 @@ module.exports = create({
     typedoc: {
       strategy: 'deep',
       configure: {
-        exclude: [
-          '**/__mocks__/**/*',
-          '**/src/constants.ts',
-          '**/src/encode.ts',
-          '**/src/decode.ts'
-        ]
+        exclude: ['**/__mocks__/**/*']
       }
     }
   }

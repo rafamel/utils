@@ -10,8 +10,6 @@
 
 > Object merging made simple.
 
-If you find it useful, consider [starring the project](https://github.com/rafamel/utils/tree/master/packages/merge-strategies) 💪 and/or following [its author](https://github.com/rafamel) ❤️ -there's more on the way!
-
 ## Install
 
 [`npm install merge-strategies`](https://www.npmjs.com/package/merge-strategies)

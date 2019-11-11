@@ -33,7 +33,7 @@ export default async function terminateChildren(
       .filter((pid) => opts.filter(pid));
   });
 
-  for (let pid of children) {
+  for (const pid of children) {
     try {
       process.kill(pid, opts.signal);
     } catch (_) {}
@@ -47,12 +47,12 @@ export default async function terminateChildren(
     return pending;
   }
 
-  let start = Date.now();
+  const start = Date.now();
   while (
     typeof opts.timeout !== 'number' ||
     Date.now() - start < opts.timeout
   ) {
-    let next =
+    const next =
       typeof opts.timeout === 'number'
         ? Math.min(opts.interval, opts.timeout - (Date.now() - start))
         : opts.interval;
