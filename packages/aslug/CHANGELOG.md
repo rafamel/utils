@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/rafamel/utils/compare/aslug@0.3.7...aslug@0.4.0) (2019-11-11)
+
+
+### Bug Fixes
+
+* updates setup and dependencies ([6ff9ce2](https://github.com/rafamel/utils/commit/6ff9ce2651f4d1600467a0a8f909653ed047b9ab))
+
+
+### Features
+
+* **aslug:** adds 0 to the default alphabet ([40f9d3f](https://github.com/rafamel/utils/commit/40f9d3f747dd9e8ff561164bab46622cdeeacf1c))
+
+
+
+
+
 ## [0.3.7](https://github.com/rafamel/utils/compare/aslug@0.3.6...aslug@0.3.7) (2019-07-03)
 
 **Note:** Version bump only for package aslug
