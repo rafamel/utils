@@ -1,6 +1,6 @@
 export const symbol = Symbol('internal');
 
-export interface ResponseInternal<T> {
+export interface ResultInternal<T> {
   value?: T;
   error?: Error;
   success: boolean;

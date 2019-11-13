@@ -10,5 +10,5 @@
 
 * [*aslug:*](https://github.com/rafamel/utils/tree/master/packages/aslug) a lossless *slug* that preserves uniqueness.
 * [*merge-strategies:*](https://github.com/rafamel/utils/tree/master/packages/merge-strategies) object merging made simple.
-* [*response-class:*](https://github.com/rafamel/utils/tree/master/packages/response-class) because throw/catch is not always best.
+* [*result-box:*](https://github.com/rafamel/utils/tree/master/packages/result-box) because throw/catch is not always best.
 * [*terminate-children:*](https://github.com/rafamel/utils/tree/master/packages/terminate-children) terminate all children for a process.

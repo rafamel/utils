@@ -1,5 +1,5 @@
 {
-  "name": "response-class",
+  "name": "result-box",
   "version": "0.0.0",
   "author": "Rafa Mel",
   "description": "Because throw/catch is not always best",
@@ -43,7 +43,7 @@
     "watch:test": "kpo watch:test --"
   },
   "license": "MIT",
-  "homepage": "https://github.com/rafamel/utils/tree/master/packages/response-class",
+  "homepage": "https://github.com/rafamel/utils/tree/master/packages/result-box",
   "repository": {
     "type": "git",
     "url": "https://github.com/rafamel/utils"
