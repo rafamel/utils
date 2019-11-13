@@ -1,6 +1,6 @@
 {
   "name": "result-box",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Rafa Mel",
   "description": "Because throw/catch is not always best",
   "keywords": [
@@ -51,8 +51,6 @@
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"
   },
-  "devDependencies": {},
-  "dependencies": {},
   "@pika/pack": {
     "pipeline": [
       [
