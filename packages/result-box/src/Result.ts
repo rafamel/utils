@@ -1,9 +1,9 @@
 /* eslint-disable no-dupe-class-members */
 import { symbol, ResultInternal } from './internal';
 
-export class Result<T> {
-  private [symbol]: ResultInternal<T>;
-  private constructor(success: boolean, error?: Error, value?: T) {
+export class Result<T = any, S extends boolean = boolean> {
+  private [symbol]: ResultInternal<T, S>;
+  private constructor(success: S, error?: Error, value?: T) {
     /* istanbul ignore next */
     if (success && error) {
       throw Error(`Result can't succeed and contain an error`);
@@ -13,7 +13,7 @@ export class Result<T> {
 
     this[symbol] = { success, error, value };
   }
-  public get success(): boolean {
+  public get success(): S {
     return this[symbol].success;
   }
   public get value(): T {
@@ -31,11 +31,11 @@ export class Result<T> {
     return internal.error as Error;
   }
 
-  public static pass<U>(value: U): Result<U> {
-    return new Result<U>(true, undefined, value);
+  public static pass<U>(value: U): Result<U, true> {
+    return new Result(true, undefined, value || undefined);
   }
-  public static fail<U>(error: Error): Result<U> {
-    return new Result<U>(false, error);
+  public static fail(error: Error): Result<any, false> {
+    return new Result(false, error);
   }
   public static combine<R1>(r1: Result<R1>): Result<[R1]>;
   public static combine<R1, R2>(

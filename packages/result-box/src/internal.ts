@@ -1,7 +1,7 @@
 export const symbol = Symbol('internal');
 
-export interface ResultInternal<T> {
+export interface ResultInternal<T, S extends boolean = boolean> {
   value?: T;
   error?: Error;
-  success: boolean;
+  success: S;
 }
