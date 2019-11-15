@@ -18,7 +18,7 @@
 
 ### Static methods
 
-#### `Result.pass(value: any)`
+#### `Result.pass(value?: any)`
 
 Creates a successful `Result` with `value`.
 
@@ -28,7 +28,7 @@ import { Result } from 'result-box';
 const result = Result.pass('foo');
 ```
 
-#### `Result.fail(error: Error)`
+#### `Result.fail(error?: Error | string)`
 
 Creates a unsuccessful `Result` with `error`.
 

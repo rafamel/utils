@@ -4,7 +4,7 @@ describe(`Result.pass`, () => {
   test(`creates Result`, () => {
     expect(() => Result.pass('foo')).not.toThrow();
   });
-  test(`is successful`, () => {
+  test(`suceeds`, () => {
     const result = Result.pass('foo');
     expect(result.success).toBe(true);
   });
@@ -19,13 +19,18 @@ describe(`Result.pass`, () => {
       `"Can't get error of a successful result"`
     );
   });
+  test(`succeeds on empty argument`, () => {
+    const result = Result.pass();
+    expect(result.success).toBe(true);
+    expect(result.value).toBe(undefined);
+  });
 });
 
 describe(`Result.fail`, () => {
   test(`creates Result`, () => {
     expect(() => Result.fail(Error(`Foo`))).not.toThrow();
   });
-  test(`is unsuccessful`, () => {
+  test(`fails`, () => {
     const result = Result.fail(Error(`Foo`));
     expect(result.success).toBe(false);
   });
@@ -40,6 +45,20 @@ describe(`Result.fail`, () => {
     const result = Result.fail(error);
     expect(() => result.error).not.toThrow();
     expect(result.error).toBe(error);
+  });
+  test(`fails on string argument`, () => {
+    const result = Result.fail('Bar');
+    expect(result.success).toBe(false);
+    expect(result.error).toBeInstanceOf(Error);
+    expect(result.error.message).toBe('Bar');
+  });
+  test(`fails on empty argument`, () => {
+    const result = Result.fail();
+    expect(result.success).toBe(false);
+    expect(result.error).toBeInstanceOf(Error);
+    expect(result.error.message).toMatchInlineSnapshot(
+      `"Explicit operation failure"`
+    );
   });
 });
 

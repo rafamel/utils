@@ -31,11 +31,12 @@ export class Result<T = any, S extends boolean = boolean> {
     return internal.error as Error;
   }
 
-  public static pass<U>(value: U): Result<U, true> {
+  public static pass<U = void>(value?: U): Result<U, true> {
     return new Result(true, undefined, value || undefined);
   }
-  public static fail(error: Error): Result<any, false> {
-    return new Result(false, error);
+  public static fail(error?: Error | string): Result<any, false> {
+    const err = typeof error === 'string' ? Error(error) : error;
+    return new Result(false, err || Error(`Explicit operation failure`));
   }
   public static combine<R1>(r1: Result<R1>): Result<[R1]>;
   public static combine<R1, R2>(
