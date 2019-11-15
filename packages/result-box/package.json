@@ -66,5 +66,8 @@
         "@pika/plugin-build-web"
       ]
     ]
+  },
+  "dependencies": {
+    "promist": "^2.0.0"
   }
 }

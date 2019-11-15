@@ -38,6 +38,21 @@ import { Result } from 'result-box';
 const result = Result.fail(Error('Foo'));
 ```
 
+#### `Result.create(fn: () => Promise<any> | any): Promise<Result> | Result`
+
+Creates a `Result` from a function.
+
+```javascript
+
+import { Result } from 'result-box';
+
+// successful.value will be 'foo'
+const successful = Result.create(() => 'foo');
+
+// promise will resolve in a Result with an Error.
+const promise = Result.create(() => Promise.reject(Error('Foo')));
+```
+
 #### `Result.combine(...results: Result[]): Result`
 
 Creates a `Result` that will be:
@@ -48,19 +63,19 @@ Creates a `Result` that will be:
 ```javascript
 import { Result } from 'result-box';
 
+// successful.value will be ['foo', 'bar', 'baz']
+const successful = Result.combine(
+  Result.pass('foo'),
+  Result.pass('bar'),
+  Result.pass('baz')
+);
+
 // unsuccessful.error will be an Error with message 'Foo'.
 const unsuccessful = Result.combine(
   Result.pass('foo'),
   Result.fail(Error('Foo')),
   Result.pass('bar'),
   Result.fail(Error('Bar'))
-);
-
-// successful.value will be ['foo', 'bar', 'baz']
-const successful = Result.combine(
-  Result.pass('foo'),
-  Result.pass('bar'),
-  Result.pass('baz')
 );
 ```
 

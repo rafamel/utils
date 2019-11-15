@@ -1,5 +1,6 @@
 /* eslint-disable no-dupe-class-members */
 import { symbol, ResultInternal } from './internal';
+import { isPromise } from 'promist';
 
 export class Result<T = any, S extends boolean = boolean> {
   private [symbol]: ResultInternal<T, S>;
@@ -30,13 +31,32 @@ export class Result<T = any, S extends boolean = boolean> {
     }
     return internal.error as Error;
   }
-
   public static pass<U = void>(value?: U): Result<U, true> {
     return new Result(true, undefined, value || undefined);
   }
   public static fail(error?: Error | string): Result<any, false> {
     const err = typeof error === 'string' ? Error(error) : error;
     return new Result(false, err || Error(`Explicit operation failure`));
+  }
+  public static create(fn: () => never): Result;
+  public static create<T>(fn: () => Promise<T>): Promise<Result<T>>;
+  public static create<T>(fn: () => T): Result<T>;
+  public static create<T>(
+    fn: () => Promise<T> | T
+  ): Promise<Result<T>> | Result<T>;
+  public static create<T>(
+    fn: () => Promise<T> | T
+  ): Promise<Result<T>> | Result<T> {
+    try {
+      const value = fn();
+      return isPromise(value)
+        ? value
+            .then((value) => Result.pass(value))
+            .catch((err) => Result.fail(err))
+        : Result.pass(value);
+    } catch (err) {
+      return Result.fail(err);
+    }
   }
   public static combine<R1>(r1: Result<R1>): Result<[R1]>;
   public static combine<R1, R2>(

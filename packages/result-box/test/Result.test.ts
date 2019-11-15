@@ -62,6 +62,37 @@ describe(`Result.fail`, () => {
   });
 });
 
+describe(`Result.create`, () => {
+  describe(`sync`, () => {
+    test(`succeeds`, () => {
+      const result = Result.create(() => 'foo');
+      expect(result.success).toBe(true);
+      expect(result.value).toBe('foo');
+    });
+    test(`fails`, () => {
+      const error = Error(`foo`);
+      const result = Result.create(() => {
+        throw error;
+      });
+      expect(result.success).toBe(false);
+      expect(result.error).toBe(error);
+    });
+  });
+  describe(`async`, () => {
+    test(`succeeds`, async () => {
+      const result = Result.create(async () => 'foo');
+      await expect(result).resolves.toHaveProperty('success', true);
+      await expect(result).resolves.toHaveProperty('value', 'foo');
+    });
+    test(`fails`, async () => {
+      const error = Error(`foo`);
+      const result = Result.create(() => Promise.reject(error));
+      await expect(result).resolves.toHaveProperty('success', false);
+      await expect(result).resolves.toHaveProperty('error', error);
+    });
+  });
+});
+
 describe(`Result.combine`, () => {
   test(`returns first w/ error`, () => {
     const error = Error('Foo');
