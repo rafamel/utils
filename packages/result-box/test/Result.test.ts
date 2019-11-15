@@ -93,6 +93,27 @@ describe(`Result.create`, () => {
   });
 });
 
+describe(`Result.consume`, () => {
+  describe(`sync`, () => {
+    test(`succeeds`, () => {
+      expect(Result.consume(Result.pass('foo'))).toBe('foo');
+    });
+    test(`fails`, () => {
+      expect(() => Result.consume(Result.fail('Foo'))).toThrowError('Foo');
+    });
+  });
+  describe(`async`, () => {
+    test(`succeeds`, async () => {
+      const promise = Result.consume(Promise.resolve(Result.pass('foo')));
+      await expect(promise).resolves.toBe('foo');
+    });
+    test(`fails`, async () => {
+      const promise = Result.consume(Promise.resolve(Result.fail('Foo')));
+      await expect(promise).rejects.toThrowError('Foo');
+    });
+  });
+});
+
 describe(`Result.combine`, () => {
   test(`returns first w/ error`, () => {
     const error = Error('Foo');

@@ -43,7 +43,6 @@ const result = Result.fail(Error('Foo'));
 Creates a `Result` from a function.
 
 ```javascript
-
 import { Result } from 'result-box';
 
 // successful.value will be 'foo'
@@ -51,6 +50,22 @@ const successful = Result.create(() => 'foo');
 
 // promise will resolve in a Result with an Error.
 const promise = Result.create(() => Promise.reject(Error('Foo')));
+```
+
+#### `Result.consume(result: Promise<Result> | Result): Promise<any> | any`
+
+Returns the `Result` `value` if it is successful; throws with its `error` otherwise.
+
+```javascript
+import { Result } from 'result-box';
+
+// value will be 'foo'
+const value = Result.consume(Result.pass('foo'));
+
+// promise will reject with the Result error.
+const promise = Result.consume(
+  Promise.resolve(Result.fail('Foo'))
+);
 ```
 
 #### `Result.combine(...results: Result[]): Result`

@@ -58,6 +58,22 @@ export class Result<T = any, S extends boolean = boolean> {
       return Result.fail(err);
     }
   }
+  public static consume<T>(result: Promise<Result<T>>): Promise<T>;
+  public static consume<T>(result: Result<T>): T;
+  public static consume<T>(
+    result: Promise<Result<T>> | Result<T>
+  ): Promise<T> | T;
+  public static consume<T>(
+    result: Promise<Result<T>> | Result<T>
+  ): Promise<T> | T {
+    if (isPromise(result)) {
+      return result.then((result) =>
+        result.success ? result.value : Promise.reject(result.error)
+      );
+    }
+    if (result.success) return result.value;
+    throw result.error;
+  }
   public static combine<R1>(r1: Result<R1>): Result<[R1]>;
   public static combine<R1, R2>(
     r1: Result<R1>,
