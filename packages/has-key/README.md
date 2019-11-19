@@ -16,4 +16,12 @@
 
 ## Usage
 
-<!-- TODO -->
+As a notable difference with `Object.hasOwnProperty`, `has-key` functions will return `false` if a property exists but its value is `undefined`. As another key difference, some `has-key`'s functions will also return `true` for inherited properties.
+
+If a `kind` is passed, it must be any of the following: `'null'`, `'boolean'`, `'number'`, `'string'`, `'object'`, `'array'`, `'symbol'`, `'function'`.
+
+### `hasKey(item: any, key: string | string[], kind?: string): boolean`
+
+Returns `true` if `item` is an object where `key`'s values are **not `undefined`.**
+
+If a `kind` is passed, it will only return `true` if the specified properties have values of that type.
