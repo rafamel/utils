@@ -1,4 +1,4 @@
-import { hasKey, hasOwnKey } from '~/index';
+import { hasKey, hasOwnKey, hasAnyKey, hasAnyOwnKey } from '~/index';
 import { BasicKind } from '~/definitions';
 
 const defined: BasicKind[] = [
@@ -187,6 +187,55 @@ describe(`hasOwnKey`, () => {
       for (const key of defined) {
         expect(hasOwnKey(source, defined, key)).toBe(false);
         expect(hasOwnKey(inherited, defined, key)).toBe(false);
+      }
+    });
+  });
+});
+
+describe(`hasAnyKey`, () => {
+  describe(`without kind`, () => {
+    test(`false for primitives`, () => {
+      expect(hasAnyKey(undefined, ['foo'])).toBe(false);
+      expect(hasAnyKey(null, ['foo'])).toBe(false);
+      expect(hasAnyKey(false, ['foo'])).toBe(false);
+      expect(hasAnyKey('', ['foo'])).toBe(false);
+      expect(hasAnyKey('foo', ['foo'])).toBe(false);
+      expect(hasAnyKey(0, ['foo'])).toBe(false);
+      expect(hasAnyKey(10, ['foo'])).toBe(false);
+    });
+    test(`false for non existing properties`, () => {
+      expect(hasAnyKey(source, ['foo'])).toBe(false);
+      expect(hasAnyKey(inherited, ['foo'])).toBe(false);
+    });
+    test(`succeeds for existing defined properties`, () => {
+      expect(hasAnyKey(source, ['undefined'])).toBe(false);
+      expect(hasAnyKey(inherited, ['undefined'])).toBe(false);
+      expect(hasAnyKey(source, defined)).toBe(true);
+      expect(hasAnyKey(inherited, defined)).toBe(true);
+    });
+  });
+  describe(`with kind`, () => {
+    test(`false for primitives`, () => {
+      expect(hasAnyKey(undefined, ['foo'])).toBe(false);
+      expect(hasAnyKey(null, ['foo'])).toBe(false);
+      expect(hasAnyKey(false, ['foo'])).toBe(false);
+      expect(hasAnyKey('', ['foo'])).toBe(false);
+      expect(hasAnyKey('foo', ['foo'])).toBe(false);
+      expect(hasAnyKey(0, ['foo'])).toBe(false);
+      expect(hasAnyKey(10, ['foo'])).toBe(false);
+    });
+    test(`false for non existing properties`, () => {
+      for (const kind of defined) {
+        expect(hasAnyKey(source, ['foo'], kind)).toBe(false);
+        expect(hasAnyKey(inherited, ['foo'], kind)).toBe(false);
+      }
+    });
+    test(`succeeds for existing defined properties`, () => {
+      for (const key of defined) {
+        expect(hasAnyKey(source, ['undefined'], key)).toBe(false);
+        expect(hasAnyKey(inherited, ['undefined'], key)).toBe(false);
+        expect(hasAnyKey(source, defined, key)).toBe(true);
+        expect(hasAnyKey(inherited, defined, key)).toBe(true);
       }
     });
   });

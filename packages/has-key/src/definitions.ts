@@ -37,3 +37,15 @@ export type AllResultType<
   : T extends { [P in N]?: any }
   ? T & { [P in N]: Exclude<T[P], undefined | void> }
   : T & { [P in N]: any };
+
+export type AnyResultType<
+  T,
+  N extends string | number | symbol,
+  K extends BasicKind | null = null
+> = K extends BasicKind
+  ? T extends { [P in N]?: any }
+    ? T & { [P in N]?: T[P] & KindType<K> }
+    : T & { [P in N]?: KindType<K> }
+  : T extends { [P in N]?: any }
+  ? T & { [P in N]?: T[P] }
+  : T & { [P in N]?: any };
