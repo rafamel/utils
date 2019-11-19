@@ -25,3 +25,7 @@ If a `kind` is passed, it must be any of the following: `'null'`, `'boolean'`, `
 Returns `true` if `item` is an object where `key`'s values are **not `undefined`.**
 
 If a `kind` is passed, it will only return `true` if the specified properties have values of that type.
+
+### `hasOwnKey(item: any, key: string | string[], kind?: string): boolean`
+
+Similar to `hasKey`, with the difference that it will only return `true` for direct properties of an object.
