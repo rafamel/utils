@@ -45,3 +45,19 @@ export function hasAnyKey<
 
   return false;
 }
+
+export function hasAnyOwnKey<
+  T,
+  N extends string | number | symbol,
+  K extends BasicKind | null = null
+>(item: T, keys: N[], kind?: K): item is AnyResultType<T, N, K> {
+  if (item === null || typeof item !== 'object') return false;
+
+  for (const k of keys) {
+    if (Object.hasOwnProperty.call(item, k) && isKind(item, k, kind)) {
+      return true;
+    }
+  }
+
+  return false;
+}

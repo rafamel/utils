@@ -35,3 +35,7 @@ Similar to `hasKey`, with the difference that it will only return `true` for dir
 Returns `true` if `item` is an object where any of the `keys`' values are **not `undefined`.**
 
 If a `kind` is passed, it will return `true` if any of the `keys`' values are of that specific type.
+
+### `hasAnyOwnKey(item: any, keys: string[], kind?: string): boolean`
+
+Similar to `hasAnyKey`, with the difference that it will only return `true` for direct properties of an object.

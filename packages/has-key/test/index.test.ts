@@ -240,3 +240,52 @@ describe(`hasAnyKey`, () => {
     });
   });
 });
+
+describe(`hasAnyOwnKey`, () => {
+  describe(`without kind`, () => {
+    test(`false for primitives`, () => {
+      expect(hasAnyOwnKey(undefined, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(null, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(false, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey('', ['foo'])).toBe(false);
+      expect(hasAnyOwnKey('foo', ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(0, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(10, ['foo'])).toBe(false);
+    });
+    test(`false for non existing properties`, () => {
+      expect(hasAnyOwnKey(source, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(inherited, ['foo'])).toBe(false);
+    });
+    test(`succeeds for existing defined properties`, () => {
+      expect(hasAnyOwnKey(source, ['undefined'])).toBe(false);
+      expect(hasAnyOwnKey(inherited, ['undefined'])).toBe(false);
+      expect(hasAnyOwnKey(source, defined)).toBe(true);
+      expect(hasAnyOwnKey(inherited, defined)).toBe(false);
+    });
+  });
+  describe(`with kind`, () => {
+    test(`false for primitives`, () => {
+      expect(hasAnyOwnKey(undefined, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(null, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(false, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey('', ['foo'])).toBe(false);
+      expect(hasAnyOwnKey('foo', ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(0, ['foo'])).toBe(false);
+      expect(hasAnyOwnKey(10, ['foo'])).toBe(false);
+    });
+    test(`false for non existing properties`, () => {
+      for (const kind of defined) {
+        expect(hasAnyOwnKey(source, ['foo'], kind)).toBe(false);
+        expect(hasAnyOwnKey(inherited, ['foo'], kind)).toBe(false);
+      }
+    });
+    test(`succeeds for existing defined properties`, () => {
+      for (const key of defined) {
+        expect(hasAnyOwnKey(source, ['undefined'], key)).toBe(false);
+        expect(hasAnyOwnKey(inherited, ['undefined'], key)).toBe(false);
+        expect(hasAnyOwnKey(source, defined, key)).toBe(true);
+        expect(hasAnyOwnKey(inherited, defined, key)).toBe(false);
+      }
+    });
+  });
+});
