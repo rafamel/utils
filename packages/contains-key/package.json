@@ -1,6 +1,6 @@
 {
   "name": "contains-key",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Rafa Mel",
   "description": "Confirms objects have a key or a set of keys as direct or inherited properties",
   "keywords": [
