@@ -1,7 +1,7 @@
 import { BasicKind, AllResultType, AnyResultType } from './definitions';
 import { isKind } from './helpers';
 
-export function hasKey<
+export function containsKey<
   T,
   N extends string | number | symbol,
   K extends BasicKind | null = null
@@ -15,7 +15,7 @@ export function hasKey<
   return true;
 }
 
-export function hasOwnKey<
+export function containsOwnKey<
   T,
   N extends string | number | symbol,
   K extends BasicKind | null = null
@@ -32,7 +32,7 @@ export function hasOwnKey<
   return true;
 }
 
-export function hasAnyKey<
+export function containsAnyKey<
   T,
   N extends string | number | symbol,
   K extends BasicKind | null = null
@@ -46,7 +46,7 @@ export function hasAnyKey<
   return false;
 }
 
-export function hasAnyOwnKey<
+export function containsAnyOwnKey<
   T,
   N extends string | number | symbol,
   K extends BasicKind | null = null
