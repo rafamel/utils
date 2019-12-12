@@ -57,7 +57,7 @@
     "url": "https://github.com/rafamel/utils/issues"
   },
   "devDependencies": {
-    "@types/base-x": "^3.0.0",
+    "@types/base-x": "^3.0.6",
     "@types/unidecode": "^0.1.1"
   },
   "dependencies": {

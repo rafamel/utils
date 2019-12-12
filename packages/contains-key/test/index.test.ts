@@ -25,7 +25,7 @@ const source = {
   object: {},
   array: [],
   symbol: Symbol('symbol'),
-  function: () => {}
+  function: () => undefined
 };
 const inherited = Object.create(source, {});
 
