@@ -12,4 +12,5 @@
 * [*contains-key:*](https://github.com/rafamel/utils/tree/master/packages/contains-key) confirms objects have a key or a set of keys as direct or inherited properties.
 * [*merge-strategies:*](https://github.com/rafamel/utils/tree/master/packages/merge-strategies) object merging made simple.
 * [*result-box:*](https://github.com/rafamel/utils/tree/master/packages/result-box) because throw/catch is not always best.
+* [*proxy-handler:*](https://github.com/rafamel/utils/tree/master/packages/result-box) a proxy object handler implementation.
 * [*terminate-children:*](https://github.com/rafamel/utils/tree/master/packages/terminate-children) terminate all children for a process.
