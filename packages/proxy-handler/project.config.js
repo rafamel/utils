@@ -4,7 +4,7 @@ const pkg = require('./package.json');
 
 module.exports = create({
   // Whether it is a monorepo child project
-  monorepo: false,
+  monorepo: true,
   // Enables typescript and declaration files
   typescript: true,
   // Paths used on build
