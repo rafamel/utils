@@ -1,6 +1,6 @@
 {
   "name": "proxy-handler",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Rafa Mel",
   "description": "Proxy object handler implementation",
   "keywords": [
@@ -52,8 +52,6 @@
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"
   },
-  "devDependencies": {},
-  "dependencies": {},
   "@pika/pack": {
     "pipeline": [
       [
