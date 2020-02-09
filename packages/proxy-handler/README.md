@@ -13,3 +13,54 @@
 ## Install
 
 [`npm install proxy-handler`](https://www.npmjs.com/package/proxy-handler)
+
+## Usage
+
+The `Handler` class redirects to a *source* object by default for all handler methods. You can extend the `Handler` class or select certain calls to be disabled.
+
+### new Handler(source: () => object, disable?: object)
+
+As a verbose example without deselecting any methods:
+
+```javascript
+import { Handler } from 'proxy-handler';
+
+let item = { foo: 'foo' };
+const handler = new Handler(() => item);
+const wrap = new Proxy({}, handler);
+
+console.log(wrap.foo); // 'foo'
+
+wrap.foo = 'bar';
+console.log(wrap.foo); // 'bar'
+console.log(item.foo); // 'bar'
+
+item = { foo: 'baz' };
+console.log(wrap.foo); // 'baz'
+```
+
+We can also disable certain methods:
+
+```javascript
+import { Handler } from 'proxy-handler';
+
+const item = { foo: 'foo' };
+const handler = new Handler(() => item, { set: true });
+const wrap = new Proxy({}, handler);
+
+wrap.foo = 'bar';
+console.log(wrap.foo); // 'foo'
+```
+
+### Handler.proxy(source: () => object, disable?: object)
+
+We can achieve the same with `Handler.proxy`, which will return directly the proxy object, making it a little less verbose.
+
+```javascript
+import { Handler } from 'proxy-handler';
+
+const item = { foo: 'foo' };
+const wrap = Handler.proxy(() => item);
+
+console.log(wrap.foo); // 'foo'
+```
