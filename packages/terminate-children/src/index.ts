@@ -2,7 +2,7 @@ import tree from 'ps-tree';
 import alive from './alive';
 
 export interface Options {
-  signal?: string;
+  signal?: NodeJS.Signals;
   interval?: number;
   timeout?: number | null;
   filter?: (pid: number) => boolean;
