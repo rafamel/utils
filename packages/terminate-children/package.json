@@ -1,6 +1,6 @@
 {
   "name": "terminate-children",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "Rafa Mel",
   "description": "Terminate all children for a process",
   "keywords": [

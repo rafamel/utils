@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/rafamel/utils/compare/terminate-children@0.1.3...terminate-children@0.1.4) (2020-02-19)
+
+**Note:** Version bump only for package terminate-children
+
+
+
+
+
 ## [0.1.3](https://github.com/rafamel/utils/compare/terminate-children@0.1.2...terminate-children@0.1.3) (2019-11-11)
 
 
