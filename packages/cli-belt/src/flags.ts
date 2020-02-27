@@ -33,7 +33,7 @@ export default function flags(
 
   const regex = /[\n\r]\s*(?:(-[a-z-]+)[ \t]*,[ \t]*)?(--[a-z-]+)(\s*<.*>)?( +.*)?$/gim;
   const matches = execall(regex, help);
-  for (let match of matches) {
+  for (const match of matches) {
     const sub = match.subMatches;
 
     if (!sub[1]) continue;
@@ -43,7 +43,7 @@ export default function flags(
       // prettier-ignore
       opts.mode === 'no-dash' ? sub[1].slice(2)
         : opts.mode === 'camelcase' ? camelcase(sub[1]) : sub[1];
-    if (opts.safe && flags.hasOwnProperty(key)) {
+    if (opts.safe && Object.hasOwnProperty.call(flags, key)) {
       throw Error(`Flag ${key} found twice`);
     }
 
@@ -62,7 +62,7 @@ export default function flags(
           ? sub[0].slice(1)
           : sub[0];
 
-      if (opts.safe && aliases.hasOwnProperty(item.alias)) {
+      if (opts.safe && Object.hasOwnProperty.call(aliases, item.alias)) {
         throw Error(`Alias ${item.alias} found twice`);
       }
       aliases[item.alias] = key;

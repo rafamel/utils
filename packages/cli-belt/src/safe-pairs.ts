@@ -20,8 +20,8 @@ export default function safePairs(
   options: ISafePairsOpts = {}
 ): boolean {
   const aKeys = Object.keys(a);
-  for (let key of aKeys) {
-    if (!b.hasOwnProperty(key)) {
+  for (const key of aKeys) {
+    if (!Object.hasOwnProperty.call(b, key)) {
       if (options.fail) {
         throw Error(`Second pair element doesn't reproduce keys`);
       } else {
