@@ -1,3 +1,34 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.0.0](https://github.com/rafamel/cli-belt/compare/cli-belt@0.3.1...cli-belt@1.0.0) (2020-02-27)
+
+
+### Bug Fixes
+
+* **cli-belt:** updates dependencies ([a0c489c](https://github.com/rafamel/cli-belt/commit/a0c489c6dfca2a05e1a8e9a3aeb819fb79d2670b))
+
+
+### chore
+
+* **cli-belt:** requires node 12 ([06f960f](https://github.com/rafamel/cli-belt/commit/06f960f08a8e89be78848909dc6cc79aedcedec5))
+
+
+### Features
+
+* **cli-belt:** exports types; minor refactor ([641430f](https://github.com/rafamel/cli-belt/commit/641430f716554911459691dd530f41568423c874))
+
+
+### BREAKING CHANGES
+
+* **cli-belt:** Requires Node 12
+
+
+
+
+
 ## [0.3.1](https://github.com/rafamel/utils/compare/cli-belt@0.3.0...cli-belt@0.3.1) (2019-05-16)
 
 
@@ -57,6 +88,3 @@
 * adds types ([347f73a](https://github.com/rafamel/utils/commit/347f73a))
 * **tail:** sets str input as optional ([db9f48a](https://github.com/rafamel/utils/commit/db9f48a))
 * exports tail from entry point ([f6f3e75](https://github.com/rafamel/utils/commit/f6f3e75))
-
-
-
