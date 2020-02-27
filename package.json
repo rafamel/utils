@@ -1,0 +1,134 @@
+{
+  "name": "cli-belt",
+  "version": "0.3.1",
+  "author": "Rafa Mel",
+  "description": "An utility belt to complement your arguments parser of choice",
+  "keywords": [
+    "cli",
+    "command line",
+    "arg",
+    "args",
+    "arguments",
+    "help",
+    "parse",
+    "flags",
+    "command",
+    "bin",
+    "package",
+    "load",
+    "up"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "main": "pkg/dist-node/index.js",
+  "types": "pkg/dist-types/index.d.ts",
+  "scripts": {
+    "start": "kpo start --",
+    "build": "kpo build --",
+    "build.force": "kpo build.force --",
+    "commit": "kpo commit --",
+    "semantic": "kpo semantic --",
+    "release": "kpo release --",
+    "watch": "kpo watch --",
+    "fix": "kpo fix --",
+    "fix.format": "kpo fix.format --",
+    "fix.scripts": "kpo fix.scripts --",
+    "types": "kpo types --",
+    "lint": "kpo lint --",
+    "lint.md": "kpo lint.md --",
+    "lint.scripts": "kpo lint.scripts --",
+    "test": "kpo test --",
+    "test.force": "kpo test.force --",
+    "test.watch": "kpo test.watch --",
+    "validate": "kpo validate --",
+    "docs": "kpo docs --",
+    "changelog": "kpo changelog --",
+    "update": "kpo update --",
+    "outdated": "kpo outdated --",
+    "clean": "kpo clean --",
+    "clean.top": "kpo clean.top --",
+    "clean.modules": "kpo clean.modules --",
+    "prepublishOnly": "kpo prepublishOnly --",
+    "preversion": "kpo preversion --",
+    "version": "kpo version --"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/rafamel/cli-belt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafamel/cli-belt"
+  },
+  "bugs": {
+    "url": "https://github.com/rafamel/cli-belt/issues"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@pika/pack": "^0.3.7",
+    "@types/camelcase": "^5.2.0",
+    "@types/find-up": "^2.1.1",
+    "@types/jest": "^24.0.12",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "@typescript-eslint/parser": "^1.7.0",
+    "@zerollup/ts-transform-paths": "^1.7.1",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "commitizen": "^3.1.1",
+    "conventional-changelog-cli": "^2.0.21",
+    "conventional-recommended-bump": "^5.0.0",
+    "coveralls": "^3.0.3",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-node": "^9.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-restricted-globals": "^0.2.0",
+    "husky": "^2.3.0",
+    "jest-cli": "^24.8.0",
+    "kpo": "^0.5.2",
+    "markdownlint-cli": "^0.16.0",
+    "onchange": "^5.2.0",
+    "prettier": "^1.17.0",
+    "slimconf": "^0.9.0",
+    "ttypescript": "^1.5.6",
+    "typedoc": "^0.14.2",
+    "typescript": "3.4.5"
+  },
+  "dependencies": {
+    "@types/normalize-package-data": "^2.4.0",
+    "camelcase": "^5.3.1",
+    "chalk": "^2.4.2",
+    "errorish": "^0.4.0",
+    "execall": "^2.0.0",
+    "find-up": "^4.0.0",
+    "fs-extra": "^8.0.1",
+    "normalize-package-data": "^2.5.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "kpo precommit"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "@pika/pack": {
+    "pipeline": []
+  }
+}
