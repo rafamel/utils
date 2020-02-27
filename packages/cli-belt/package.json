@@ -64,17 +64,17 @@
   },
   "devDependencies": {
     "@types/camelcase": "^5.2.0",
-    "@types/find-up": "^2.1.1",
+    "@types/find-up": "^4.0.0",
     "@types/fs-extra": "^8.1.0"
   },
   "dependencies": {
     "@types/normalize-package-data": "^2.4.0",
     "camelcase": "^5.3.1",
-    "chalk": "^2.4.2",
-    "errorish": "^0.4.0",
+    "chalk": "^3.0.0",
+    "errorish": "^0.5.0",
     "execall": "^2.0.0",
     "find-up": "^4.0.0",
-    "fs-extra": "^8.0.1",
+    "fs-extra": "^8.1.0",
     "normalize-package-data": "^2.5.0"
   }
 }

@@ -2,7 +2,7 @@
 import error from '~/error';
 import chalk from 'chalk';
 
-chalk.enabled = false;
+chalk.level = 0;
 console.error = jest.fn();
 console.debug = jest.fn();
 const logger = { error: jest.fn(), debug: jest.fn() } as any;
