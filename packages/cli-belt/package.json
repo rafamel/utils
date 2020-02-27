@@ -1,0 +1,80 @@
+{
+  "name": "cli-belt",
+  "version": "0.3.1",
+  "author": "Rafa Mel",
+  "description": "An utility belt to complement your arguments parser of choice",
+  "keywords": [
+    "cli",
+    "command line",
+    "arg",
+    "args",
+    "arguments",
+    "help",
+    "parse",
+    "flags",
+    "command",
+    "bin",
+    "package",
+    "load",
+    "up"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "main": "pkg/dist/index.js",
+  "types": "pkg/dist/index.d.ts",
+  "scripts": {
+    "commit": "kpo commit --",
+    "semantic": "kpo semantic --",
+    "fix": "kpo fix --",
+    "fix:scripts": "kpo fix:scripts --",
+    "lint": "kpo lint --",
+    "lint:md": "kpo lint:md --",
+    "lint:scripts": "kpo lint:scripts --",
+    "clean": "kpo clean --",
+    "clean:build": "kpo clean:build --",
+    "clean:modules": "kpo clean:modules --",
+    "prepublishOnly": "kpo prepublishOnly --",
+    "preversion": "kpo preversion --",
+    "version": "kpo version --",
+    "build": "kpo build --",
+    "build:transpile": "kpo build:transpile --",
+    "build:types": "kpo build:types --",
+    "fix:code": "kpo fix:code --",
+    "lint:code": "kpo lint:code --",
+    "lint:types": "kpo lint:types --",
+    "test": "kpo test --",
+    "verify": "kpo verify --",
+    "validate": "kpo validate --",
+    "docs": "kpo docs --",
+    "build:pack": "kpo build:pack --",
+    "build:static": "kpo build:static --",
+    "release": "kpo release --",
+    "watch": "kpo watch --",
+    "watch:test": "kpo watch:test --"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/rafamel/cli-belt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafamel/cli-belt"
+  },
+  "bugs": {
+    "url": "https://github.com/rafamel/cli-belt/issues"
+  },
+  "devDependencies": {
+    "@types/camelcase": "^5.2.0",
+    "@types/find-up": "^2.1.1",
+    "@types/fs-extra": "^8.1.0"
+  },
+  "dependencies": {
+    "@types/normalize-package-data": "^2.4.0",
+    "camelcase": "^5.3.1",
+    "chalk": "^2.4.2",
+    "errorish": "^0.4.0",
+    "execall": "^2.0.0",
+    "find-up": "^4.0.0",
+    "fs-extra": "^8.0.1",
+    "normalize-package-data": "^2.5.0"
+  }
+}
