@@ -1,12 +1,11 @@
-import loadPackage from '~/load-package';
+import { loadPackage } from '~/load-package';
 import up from 'find-up';
 import fs from 'fs-extra';
-import { IOfType } from '~/types';
 
 jest.mock('find-up');
 jest.mock('fs-extra');
 
-const mocks: IOfType<jest.Mock<any, any>> = {
+const mocks: Record<string, jest.Mock<any, any>> = {
   up,
   read: fs.readJSON
 } as any;

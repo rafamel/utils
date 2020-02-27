@@ -1,5 +1,4 @@
-import flags from '~/flags';
-import { IOfType, IFlag } from '~/types';
+import { flags, Flag } from '~/flags';
 
 const help = `
 Usage: foo [options]
@@ -38,7 +37,7 @@ foo --bar --file ./path
   foo --bar-baz --env test
 `;
 
-const items: IOfType<IFlag> = {
+const items: Record<string, Flag> = {
   '--foo': { description: 'Foo' },
   '--help': { description: 'Show help' },
   '--foo-bar': { description: 'Foo bar' },
@@ -77,7 +76,7 @@ const items: IOfType<IFlag> = {
     argument: 'number'
   }
 };
-const aliases: IOfType<string> = {
+const aliases: Record<string, string> = {
   '-b': '--bar',
   '-v': '--volumes',
   '-z': '--baz',
@@ -95,7 +94,7 @@ test(`succeeds w/ mode = 'keep'`, () => {
 test(`succeeds w/ mode = 'no-dash'`, () => {
   expect(flags(help, { mode: 'no-dash' })).toEqual({
     options: Object.entries(items).reduce(
-      (acc: IOfType<IFlag>, [key, value]) => {
+      (acc: Record<string, Flag>, [key, value]) => {
         acc[key.slice(2)] = {
           ...value,
           alias: value.alias ? value.alias.slice(1) : undefined
@@ -105,7 +104,7 @@ test(`succeeds w/ mode = 'no-dash'`, () => {
       {}
     ),
     aliases: Object.entries(aliases).reduce(
-      (acc: IOfType<string>, [key, value]) => {
+      (acc: Record<string, string>, [key, value]) => {
         acc[key.slice(1)] = value.slice(2);
         return acc;
       },
@@ -132,7 +131,7 @@ test(`succeeds w/ mode = 'camelcase'`, () => {
   };
   expect(flags(help, { mode: 'camelcase' })).toEqual({
     options: Object.entries(items).reduce(
-      (acc: IOfType<IFlag>, [key, value]) => {
+      (acc: Record<string, Flag>, [key, value]) => {
         acc[subs(key.slice(2))] = {
           ...value,
           alias: value.alias ? value.alias.slice(1) : undefined
@@ -142,7 +141,7 @@ test(`succeeds w/ mode = 'camelcase'`, () => {
       {}
     ),
     aliases: Object.entries(aliases).reduce(
-      (acc: IOfType<string>, [key, value]) => {
+      (acc: Record<string, string>, [key, value]) => {
         acc[key.slice(1)] = subs(value.slice(2));
         return acc;
       },

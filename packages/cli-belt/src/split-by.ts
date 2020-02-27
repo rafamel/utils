@@ -1,7 +1,7 @@
 /**
  * Splits `argv` into two arrays by the first `separator` found. If it's not found, the second array returned will be empty.
  */
-export default function splitBy(
+export function splitBy(
   argv: string[],
   separator: string = '--'
 ): [string[], string[]] {

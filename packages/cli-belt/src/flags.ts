@@ -1,8 +1,13 @@
 import execall from 'execall';
 import camelcase from 'camelcase';
-import { IOfType, IFlag } from './types';
 
-export interface IFlagsOpts {
+export interface Flag {
+  alias?: string;
+  argument?: string;
+  description: string;
+}
+
+export interface FlagsOptions {
   /**
    * If false, `flags` won't perform safety checks. Default: `true`.
    */
@@ -16,10 +21,10 @@ export interface IFlagsOpts {
 /**
  * Parses a `help` string and returns an object with options, aliases, arugments, and descriptions.
  */
-export default function flags(
+export function flags(
   help: string,
-  options?: IFlagsOpts
-): { options: IOfType<IFlag>; aliases: IOfType<string> } {
+  options?: FlagsOptions
+): { options: Record<string, Flag>; aliases: Record<string, string> } {
   const opts = Object.assign({ safe: true, mode: 'keep' }, options);
 
   if (opts.safe) {
@@ -28,8 +33,8 @@ export default function flags(
     }
   }
 
-  const aliases: IOfType<string> = {};
-  const flags: IOfType<IFlag> = {};
+  const aliases: Record<string, string> = {};
+  const flags: Record<string, Flag> = {};
 
   const regex = /[\n\r]\s*(?:(-[a-z-]+)[ \t]*,[ \t]*)?(--[a-z-]+)(\s*<.*>)?( +.*)?$/gim;
   const matches = execall(regex, help);
@@ -48,7 +53,7 @@ export default function flags(
     }
 
     // description
-    const item: IFlag = {
+    const item: Flag = {
       description: sub[3] ? sub[3].trim() : ''
     };
 

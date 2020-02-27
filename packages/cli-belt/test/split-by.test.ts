@@ -1,4 +1,4 @@
-import splitBy from '~/split-by';
+import { splitBy } from '~/split-by';
 
 test(`succeeds`, () => {
   const arr = ['foo', 'bar', 'baz', '--', 'foobar', 'foobaz', 'barbaz'];

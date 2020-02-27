@@ -1,14 +1,13 @@
 import chalk from 'chalk';
-import { IOfType } from './types';
 
-export type TLogger = IOfType<any> & {
+export interface Logger extends Record<string, any> {
   error: (message: any) => void;
   debug: (message: any) => void;
-};
+}
 
-export interface IErrorOpts {
+export interface ErrorOptions {
   exit?: 0 | 1 | 2;
-  logger?: TLogger;
+  logger?: Logger;
   debug?: boolean;
 }
 
@@ -20,9 +19,9 @@ export interface IErrorOpts {
  *  - `logger`: if passed, it will use that instead of console.error
  *  - `debug`: if true, it will also log the error itself after its message -if logger is passed, it will use logger.debug instead of console.debug
  */
-export default function error(err: Error, options: IErrorOpts = {}): void {
-  const logger = options.logger || console;
+export function error(err: Error, options?: ErrorOptions): void {
+  const logger = (options && options.logger) || console;
   logger.error(chalk.bold.red('Error: ') + chalk.bold(err.message));
-  if (options.debug) logger.debug(err);
-  if (options.exit !== undefined) process.exit(options.exit);
+  if (options && options.debug) logger.debug(err);
+  if (options && options.exit !== undefined) process.exit(options.exit);
 }

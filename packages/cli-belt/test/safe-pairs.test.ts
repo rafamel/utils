@@ -1,4 +1,4 @@
-import safePairs from '~/safe-pairs';
+import { safePairs } from '~/safe-pairs';
 
 const a = { foo: 'foo', bar: 'bar', baz: 'baz' };
 const b = { foo: 'baz', bar: 'bar', baz: 'foo', foobar: 'foobaz' };
