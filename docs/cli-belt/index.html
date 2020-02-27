@@ -1,0 +1,279 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>cli-belt 0.3.1</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">cli-belt 0.3.1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> cli-belt 0.3.1</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#cli-belt" id="cli-belt" style="color: inherit; text-decoration: none;">
+					<h1>cli-belt</h1>
+				</a>
+				<p><a href="https://www.npmjs.com/package/cli-belt"><img src="https://img.shields.io/npm/v/cli-belt.svg" alt="Version"></a>
+					<a href="https://travis-ci.org/rafamel/utils"><img src="https://img.shields.io/travis/rafamel/utils/master.svg" alt="Build Status"></a>
+					<a href="https://coveralls.io/github/rafamel/utils"><img src="https://img.shields.io/coveralls/rafamel/utils/master.svg" alt="Coverage"></a>
+					<a href="https://david-dm.org/rafamel/utils.svg?path=packages%2Fcli-belt"><img src="https://img.shields.io/david/rafamel/utils.svg?path=packages%2Fcli-belt" alt="Dependencies"></a>
+					<a href="https://snyk.io/test/npm/cli-belt"><img src="https://img.shields.io/snyk/vulnerabilities/npm/cli-belt.svg" alt="Vulnerabilities"></a>
+					<a href="https://github.com/rafamel/utils/blob/master/LICENSE"><img src="https://img.shields.io/github/license/rafamel/utils.svg" alt="License"></a>
+				<a href="https://www.npmjs.com/package/cli-belt"><img src="https://img.shields.io/npm/types/cli-belt.svg" alt="Types"></a></p>
+				<blockquote>
+					<p>An utility belt to complement your arguments parser of choice.</p>
+				</blockquote>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<p><a href="https://www.npmjs.com/package/cli-belt"><code>npm install cli-belt</code></a></p>
+				<a href="#motivation" id="motivation" style="color: inherit; text-decoration: none;">
+					<h2>Motivation</h2>
+				</a>
+				<p>Most solutions for creating command line interfaces have a too high degree of magic going on that prevents proper control over how arguments are parsed, which arguments are parsed, and so on. On the other hand, using barebones argument parsers can require much boilerplate. <code>cli-belt</code> intends to complement the later, reducing the amount of boilerplate needed. I&#39;ve found <a href="https://github.com/zeit/arg"><code>arg</code></a> to be a blissful middle ground for argument parsing, but which parser you use is entirely up to you.</p>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<p>These are all of <code>cli-belt</code>&#39;s helper functions -<a href="https://rafamel.github.io/cli-belt/globals.html">see docs:</a></p>
+				<ul>
+					<li><a href="https://rafamel.github.io/cli-belt/globals.html#loadpackage"><code>loadPackage</code></a> finds and returns the contents of the first <code>package.json</code> found, recursing up from a <code>dir</code>.</li>
+					<li><a href="https://rafamel.github.io/cli-belt/globals.html#flags"><code>flags</code></a> parses a <code>help</code> string and returns an object with options, aliases, arguments, and descriptions.</li>
+					<li><a href="https://rafamel.github.io/cli-belt/globals.html#safepairs"><code>safePairs</code></a> ensures all properties of an object exist in another.</li>
+					<li><a href="https://rafamel.github.io/cli-belt/globals.html#splitby"><code>splitBy</code></a> splits an arguments array into two arrays by the first <code>separator</code>.</li>
+					<li><a href="https://rafamel.github.io/cli-belt/globals.html#error"><code>error</code></a> formats and prints an error message, optionally exiting the process.</li>
+				</ul>
+				<a href="#usage-example" id="usage-example" style="color: inherit; text-decoration: none;">
+					<h2>Usage example</h2>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { loadPackage, flags, safePairs, splitBy, error } <span class="hljs-keyword">from</span> <span class="hljs-string">'cli-belt'</span>;
+<span class="hljs-keyword">import</span> { stripIndent <span class="hljs-keyword">as</span> indent } <span class="hljs-keyword">from</span> <span class="hljs-string">'common-tags'</span>;
+<span class="hljs-keyword">import</span> arg <span class="hljs-keyword">from</span> <span class="hljs-string">'arg'</span>;
+<span class="hljs-keyword">import</span> logger <span class="hljs-keyword">from</span> <span class="hljs-string">'loglevel'</span>;
+<span class="hljs-keyword">import</span> spawn <span class="hljs-keyword">from</span> <span class="hljs-string">'await-spawn'</span>;
+
+main().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> error(err, { <span class="hljs-attr">exit</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">debug</span>: <span class="hljs-literal">true</span>, logger }));
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// Get description and version from `package.json`</span>
+  <span class="hljs-keyword">const</span> pkg = <span class="hljs-keyword">await</span> loadPackage(__dirname, { <span class="hljs-attr">title</span>: <span class="hljs-literal">true</span> });
+
+  <span class="hljs-keyword">const</span> help = indent<span class="hljs-string">`
+    <span class="hljs-subst">${pkg.description || <span class="hljs-string">''</span>}</span>
+
+    Usage: example [options] -- [echoArgs]
+
+    Options:
+      -e, --env &lt;environment&gt;    Node environment
+      -h, --help                 Show help
+      -v, --version              Show version number
+
+    Examples:
+      $ example -v
+      $ example --help
+      $ example -- "this will get printed because we're spawning echo"
+  `</span>;
+
+  <span class="hljs-comment">// Get flags and aliases from help</span>
+  <span class="hljs-keyword">const</span> { options, aliases } = flags(help);
+
+  <span class="hljs-comment">// Define option types</span>
+  <span class="hljs-keyword">const</span> types = {
+    <span class="hljs-string">'--env'</span>: <span class="hljs-built_in">String</span>,
+    <span class="hljs-string">'--help'</span>: <span class="hljs-built_in">Boolean</span>,
+    <span class="hljs-string">'--version'</span>: <span class="hljs-built_in">Boolean</span>
+  };
+
+  <span class="hljs-comment">// Ensure all parsed flags have a defined type,</span>
+  <span class="hljs-comment">// and that they have all been successfully parsed and exist on help</span>
+  safePairs(types, options, { <span class="hljs-attr">fail</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">bidirectional</span>: <span class="hljs-literal">true</span> });
+
+  <span class="hljs-comment">// Add aliases to the ones explicitly typed</span>
+  <span class="hljs-built_in">Object</span>.assign(types, aliases);
+
+  <span class="hljs-comment">// Only pass to `arg` arguments before '--'</span>
+  <span class="hljs-comment">// arguments after '--' will be passed to spawn</span>
+  <span class="hljs-keyword">const</span> [argv, args] = splitBy(process.argv.slice(<span class="hljs-number">2</span>), <span class="hljs-string">'--'</span>);
+  <span class="hljs-keyword">const</span> cmd = arg(types, {
+    argv,
+    <span class="hljs-attr">permissive</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">stopAtPositional</span>: <span class="hljs-literal">true</span>
+  });
+
+  <span class="hljs-comment">// Handle options</span>
+  <span class="hljs-keyword">if</span> (cmd._.length) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`Unknown command <span class="hljs-subst">${cmd._[<span class="hljs-number">0</span>]}</span>`</span>);
+  <span class="hljs-keyword">if</span> (cmd[<span class="hljs-string">'--help'</span>]) <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.log(help);
+  <span class="hljs-keyword">if</span> (cmd[<span class="hljs-string">'--version'</span>]) <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.log(pkg.version);
+
+  <span class="hljs-keyword">const</span> env = cmd[<span class="hljs-string">'--env'</span>] ? { <span class="hljs-attr">NODE_ENV</span>: cmd[<span class="hljs-string">'--env'</span>] } : {};
+  <span class="hljs-keyword">await</span> spawn(<span class="hljs-string">'echo'</span>, args, { env, <span class="hljs-attr">stdio</span>: <span class="hljs-string">'inherit'</span> });
+}</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/erroroptions.html" class="tsd-kind-icon">Error<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/flag.html" class="tsd-kind-icon">Flag</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/flagsoptions.html" class="tsd-kind-icon">Flags<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/loadpackageoptions.html" class="tsd-kind-icon">Load<wbr>Package<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/logger.html" class="tsd-kind-icon">Logger</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/safepairsoptions.html" class="tsd-kind-icon">Safe<wbr>Pairs<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#error" class="tsd-kind-icon">error</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#flags" class="tsd-kind-icon">flags</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#loadpackage" class="tsd-kind-icon">load<wbr>Package</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#safepairs" class="tsd-kind-icon">safe<wbr>Pairs</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#splitby" class="tsd-kind-icon">split<wbr>By</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

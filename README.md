@@ -9,6 +9,7 @@
 ## Packages
 
 * [*aslug:*](https://github.com/rafamel/utils/tree/master/packages/aslug) a lossless *slug* that preserves uniqueness.
+* [*cli-belt:*](https://github.com/rafamel/utils/tree/master/packages/cli-belt) an utility belt to complement your arguments parser of choice.
 * [*contains-key:*](https://github.com/rafamel/utils/tree/master/packages/contains-key) confirms objects have a key or a set of keys as direct or inherited properties.
 * [*merge-strategies:*](https://github.com/rafamel/utils/tree/master/packages/merge-strategies) object merging made simple.
 * [*result-box:*](https://github.com/rafamel/utils/tree/master/packages/result-box) because throw/catch is not always best.
