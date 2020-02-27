@@ -54,13 +54,13 @@
     "watch:test": "kpo watch:test --"
   },
   "license": "MIT",
-  "homepage": "https://github.com/rafamel/cli-belt",
+  "homepage": "https://github.com/rafamel/utils/tree/master/packages/cli-belt",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafamel/cli-belt"
+    "url": "https://github.com/rafamel/utils"
   },
   "bugs": {
-    "url": "https://github.com/rafamel/cli-belt/issues"
+    "url": "https://github.com/rafamel/utils/issues"
   },
   "devDependencies": {
     "@types/camelcase": "^5.2.0",
