@@ -5,8 +5,11 @@ module.exports.scripts = {
   ...scripts,
   bootstrap: 'lerna bootstrap',
   link: 'lerna link',
-  docs: [scripts.docs, kpo.copy('./assets/index.html', './docs/index.html')],
 
   /* Hooks */
-  postinstall: 'kpo bootstrap'
+  postinstall: 'kpo bootstrap',
+  preversion: [
+    scripts.preversion,
+    kpo.copy('./assets/index.html', './docs/index.html')
+  ]
 };
