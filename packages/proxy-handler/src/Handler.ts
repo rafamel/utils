@@ -1,5 +1,7 @@
 /* istanbul ignore file */
 
+export type Source<T> = (...args: Array<void | undefined>) => T;
+
 export type Disable = { [P in DisableKeys]?: boolean };
 export type DisableKeys = Exclude<
   keyof ProxyHandler<any>,
@@ -8,7 +10,7 @@ export type DisableKeys = Exclude<
 
 export class Handler<T extends object> implements Required<ProxyHandler<T>> {
   public static proxy<T extends object, U extends object = T>(
-    source: () => T,
+    source: Source<T>,
     memoize?: boolean,
     disable?: Disable
   ): U {
@@ -16,7 +18,7 @@ export class Handler<T extends object> implements Required<ProxyHandler<T>> {
   }
   private source: () => T;
   private disable: Disable;
-  public constructor(source: () => T, memoize?: boolean, disable?: Disable) {
+  public constructor(source: Source<T>, memoize?: boolean, disable?: Disable) {
     this.disable = disable || {};
     this.source = memoize
       ? () => {
