@@ -20,13 +20,13 @@ Most solutions for creating command line interfaces have a too high degree of ma
 
 ## Documentation
 
-These are all of `cli-belt`'s helper functions -[see docs:](https://rafamel.github.io/cli-belt/globals.html)
+These are all of `cli-belt`'s helper functions -[see docs:](https://rafamel.github.io/utils/cli-belt/globals.html)
 
-* [`loadPackage`](https://rafamel.github.io/cli-belt/globals.html#loadpackage) finds and returns the contents of the first `package.json` found, recursing up from a `dir`.
-* [`flags`](https://rafamel.github.io/cli-belt/globals.html#flags) parses a `help` string and returns an object with options, aliases, arguments, and descriptions.
-* [`safePairs`](https://rafamel.github.io/cli-belt/globals.html#safepairs) ensures all properties of an object exist in another.
-* [`splitBy`](https://rafamel.github.io/cli-belt/globals.html#splitby) splits an arguments array into two arrays by the first `separator`.
-* [`error`](https://rafamel.github.io/cli-belt/globals.html#error) formats and prints an error message, optionally exiting the process.
+* [`loadPackage`](https://rafamel.github.io/utils/cli-belt/globals.html#loadpackage) finds and returns the contents of the first `package.json` found, recursing up from a `dir`.
+* [`flags`](https://rafamel.github.io/utils/cli-belt/globals.html#flags) parses a `help` string and returns an object with options, aliases, arguments, and descriptions.
+* [`safePairs`](https://rafamel.github.io/utils/cli-belt/globals.html#safepairs) ensures all properties of an object exist in another.
+* [`splitBy`](https://rafamel.github.io/utils/cli-belt/globals.html#splitby) splits an arguments array into two arrays by the first `separator`.
+* [`error`](https://rafamel.github.io/utils/cli-belt/globals.html#error) formats and prints an error message, optionally exiting the process.
 
 ## Usage example
 
