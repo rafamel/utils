@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-export type DisableInput = { [P in DisableKeys]?: boolean };
+export type Disable = { [P in DisableKeys]?: boolean };
 export type DisableKeys = Exclude<
   keyof ProxyHandler<any>,
   'apply' | 'construct'
@@ -9,15 +9,22 @@ export type DisableKeys = Exclude<
 export class Handler<T extends object> implements Required<ProxyHandler<T>> {
   public static proxy<T extends object, U extends object = T>(
     source: () => T,
-    disable?: DisableInput
+    memoize?: boolean,
+    disable?: Disable
   ): U {
-    return new Proxy({}, new this(source, disable)) as U;
+    return new Proxy({}, new this(source, memoize, disable)) as U;
   }
   private source: () => T;
-  private disable: DisableInput;
-  public constructor(source: () => T, disable?: DisableInput) {
-    this.source = source;
+  private disable: Disable;
+  public constructor(source: () => T, memoize?: boolean, disable?: Disable) {
     this.disable = disable || {};
+    this.source = memoize
+      ? () => {
+          const value = source();
+          this.source = () => value;
+          return value;
+        }
+      : source;
   }
   private get self(): T {
     return this.source();

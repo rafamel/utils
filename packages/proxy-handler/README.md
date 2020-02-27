@@ -18,7 +18,7 @@
 
 The `Handler` class redirects to a *source* object by default for all handler methods. You can extend the `Handler` class or select certain calls to be disabled.
 
-### new Handler(source: () => object, disable?: object)
+### new Handler(source: () => object, memoize?: boolean, disable?: object)
 
 As a verbose example without deselecting any methods:
 
@@ -39,20 +39,28 @@ item = { foo: 'baz' };
 console.log(wrap.foo); // 'baz'
 ```
 
-We can also disable certain methods:
+We can also make the source getter run once, when the first property is accessed:
+
+```javascript
+import { Handler } from 'proxy-handler';
+
+const handler = new Handler(() => ({}), true);
+```
+
+Or disable certain methods:
 
 ```javascript
 import { Handler } from 'proxy-handler';
 
 const item = { foo: 'foo' };
-const handler = new Handler(() => item, { set: true });
+const handler = new Handler(() => item, false, { set: true });
 const wrap = new Proxy({}, handler);
 
 wrap.foo = 'bar';
 console.log(wrap.foo); // 'foo'
 ```
 
-### Handler.proxy(source: () => object, disable?: object)
+### Handler.proxy(source: () => object, memoize?: boolean, disable?: object)
 
 We can achieve the same with `Handler.proxy`, which will return directly the proxy object, making it a little less verbose.
 
