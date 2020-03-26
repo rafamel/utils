@@ -61,7 +61,7 @@
     "@types/unidecode": "^0.1.1"
   },
   "dependencies": {
-    "base-x": "^3.0.5",
+    "base-x": "^3.0.8",
     "escape-string-regexp": "^2.0.0",
     "unidecode": "^0.1.8"
   },
