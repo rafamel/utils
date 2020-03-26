@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/rafamel/utils/compare/aslug@0.4.1...aslug@0.4.2) (2020-03-26)
+
+
+### Bug Fixes
+
+* **deps:** updates dependencies ([7ab94e3](https://github.com/rafamel/utils/commit/7ab94e3ee12c8dac58a4dcd0f7dca8a82742adbe))
+
+
+
+
+
 ## [0.4.1](https://github.com/rafamel/utils/compare/aslug@0.4.0...aslug@0.4.1) (2020-02-09)
 
 

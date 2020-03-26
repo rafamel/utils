@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/rafamel/utils/compare/cli-belt@1.0.1...cli-belt@1.0.2) (2020-03-26)
+
+
+### Bug Fixes
+
+* **deps:** updates dependencies ([7ab94e3](https://github.com/rafamel/utils/commit/7ab94e3ee12c8dac58a4dcd0f7dca8a82742adbe))
+
+
+
+
+
 ## [1.0.1](https://github.com/rafamel/utils/compare/cli-belt@1.0.0...cli-belt@1.0.1) (2020-02-27)
 
 **Note:** Version bump only for package cli-belt

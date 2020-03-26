@@ -1,6 +1,6 @@
 {
   "name": "equal-strategies",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Rafa Mel",
   "description": "Equality evaluation strategies",
   "keywords": [
@@ -56,7 +56,6 @@
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"
   },
-  "devDependencies": {},
   "dependencies": {
     "lodash.isequal": "^4.5.0",
     "shallow-equal-object": "^1.1.1"
