@@ -6,7 +6,8 @@
   "keywords": [
     "proxy",
     "object",
-    "handler"
+    "handler",
+    "wrap"
   ],
   "engines": {
     "node": ">=12"

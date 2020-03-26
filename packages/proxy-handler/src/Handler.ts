@@ -1,99 +1,102 @@
 /* istanbul ignore file */
-
-export type Source<T> = (...args: Array<void | undefined>) => T;
-
-export type Disable = { [P in DisableKeys]?: boolean };
-export type DisableKeys = Exclude<
-  keyof ProxyHandler<any>,
-  'apply' | 'construct'
->;
+import { SourceFn, HandlerOptions, SwitchableKey } from './types';
 
 export class Handler<T extends object> implements Required<ProxyHandler<T>> {
   public static proxy<T extends object, U extends object = T>(
-    source: Source<T>,
-    memoize?: boolean,
-    disable?: Disable
+    source: SourceFn<T>,
+    options?: HandlerOptions
   ): U {
-    return new Proxy({}, new this(source, memoize, disable)) as U;
+    return new Proxy({}, new this(source, options)) as U;
   }
-  private source: () => T;
-  private disable: Disable;
-  public constructor(source: Source<T>, memoize?: boolean, disable?: Disable) {
-    this.disable = disable || {};
-    this.source = memoize
+  private fn: () => T;
+  private options: HandlerOptions;
+  public constructor(source: SourceFn<T>, options?: HandlerOptions) {
+    this.options = options || {};
+    this.fn = this.options.memoize
       ? () => {
           const value = source();
-          this.source = () => value;
+          this.fn = () => value;
           return value;
         }
       : source;
   }
-  private get self(): T {
-    return this.source();
+  private conditional<T, U>(
+    key: SwitchableKey,
+    fallback: T,
+    fn: () => U
+  ): T | U {
+    return this.options.disable && this.options.disable[key] ? fallback : fn();
+  }
+  public get source(): T {
+    return this.fn();
   }
   public getPrototypeOf(_: T): object | null {
-    return this.disable.getPrototypeOf
-      ? null
-      : Reflect.getPrototypeOf(this.self);
+    return this.conditional('getPrototypeOf', null, () =>
+      Reflect.getPrototypeOf(this.source)
+    );
   }
   public setPrototypeOf(_: T, value: any): boolean {
-    return this.disable.setPrototypeOf
-      ? false
-      : Reflect.setPrototypeOf(this.self, value);
+    return this.conditional('setPrototypeOf', false, () =>
+      Reflect.setPrototypeOf(this.source, value)
+    );
   }
   public isExtensible(_: T): boolean {
-    return this.disable.isExtensible ? false : Reflect.isExtensible(this.self);
+    return this.conditional('isExtensible', false, () =>
+      Reflect.isExtensible(this.source)
+    );
   }
   public preventExtensions(_: T): boolean {
-    return this.disable.preventExtensions
-      ? false
-      : Reflect.preventExtensions(this.self);
+    return this.conditional('preventExtensions', false, () =>
+      Reflect.preventExtensions(this.source)
+    );
   }
   public getOwnPropertyDescriptor(
     _: T,
     key: PropertyKey
   ): PropertyDescriptor | undefined {
-    return this.disable.getOwnPropertyDescriptor
-      ? undefined
-      : Reflect.getOwnPropertyDescriptor(this.self, key);
+    return this.conditional('getOwnPropertyDescriptor', undefined, () =>
+      Reflect.getOwnPropertyDescriptor(this.source, key)
+    );
   }
   public has(_: T, key: PropertyKey): boolean {
-    return this.disable.has ? false : Reflect.has(this.self, key);
+    return this.conditional('has', false, () => Reflect.has(this.source, key));
   }
   public get(_: T, key: PropertyKey, receiver: any): any {
-    return this.disable.get ? undefined : Reflect.get(this.self, key, receiver);
+    return this.conditional('get', undefined, () =>
+      Reflect.get(this.source, key, receiver)
+    );
   }
   public set(_: T, key: PropertyKey, value: any, receiver: any): boolean {
-    return this.disable.set
-      ? false
-      : Reflect.set(this.self, key, value, receiver);
+    return this.conditional('set', false, () =>
+      Reflect.set(this.source, key, value, receiver)
+    );
   }
   public deleteProperty(_: T, key: PropertyKey): boolean {
-    return this.disable.deleteProperty
-      ? false
-      : Reflect.deleteProperty(this.self, key);
+    return this.conditional('deleteProperty', false, () =>
+      Reflect.deleteProperty(this.source, key)
+    );
   }
   public defineProperty(
     _: T,
     key: PropertyKey,
     attributes: PropertyDescriptor
   ): boolean {
-    return this.disable.defineProperty
-      ? false
-      : Reflect.defineProperty(this.self, key, attributes);
+    return this.conditional('defineProperty', false, () =>
+      Reflect.defineProperty(this.source, key, attributes)
+    );
   }
   public enumerate(_: T): PropertyKey[] {
-    return this.disable.enumerate
-      ? []
-      : Array.from(Reflect.enumerate(this.self));
+    return this.conditional('enumerate', [], () =>
+      Array.from(Reflect.enumerate(this.source))
+    );
   }
   public ownKeys(_: T): PropertyKey[] {
-    return this.disable.ownKeys ? [] : Reflect.ownKeys(this.self);
+    return this.conditional('ownKeys', [], () => Reflect.ownKeys(this.source));
   }
   public apply(_: T, self: any, args?: any): any {
-    return Reflect.apply(this.self as Function, self, args);
+    return Reflect.apply(this.source as Function, self, args);
   }
   public construct(_: T, args: any, target?: any): object {
-    return Reflect.construct(this.self as Function, args, target);
+    return Reflect.construct(this.source as Function, args, target);
   }
 }
