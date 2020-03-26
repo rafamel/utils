@@ -57,7 +57,10 @@
     "url": "https://github.com/rafamel/utils/issues"
   },
   "devDependencies": {},
-  "dependencies": {},
+  "dependencies": {
+    "lodash.isequal": "^4.5.0",
+    "shallow-equal-object": "^1.1.1"
+  },
   "@pika/pack": {
     "pipeline": [
       [
