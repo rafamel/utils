@@ -13,3 +13,31 @@
 ## Install
 
 [`npm install equal-strategies`](https://www.npmjs.com/package/equal-strategies)
+
+## Usage
+
+### Strategies
+
+There are four comparison strategies:
+
+#### `strict(value: any, query: any): boolean`
+
+Simple strict equality comparison.
+
+#### `partial(value: any, query: any): boolean`
+
+Shallow equality comparison that ignores any missing properties in `value` and strict compares *arrays*.
+
+#### `shallow(value: any, query: any): boolean`
+
+Shallow equality comparison.
+
+#### `deep(value: any, query: any): boolean`
+
+Deep equality comparison.
+
+### Utils
+
+#### `compare(kind: string, value: any, query: any): boolean`
+
+A conveniency function, with `kind` being either `"strict"`, `"partial"`, `"shallow"`, or `"deep"`.
