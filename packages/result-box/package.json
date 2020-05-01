@@ -68,6 +68,6 @@
     ]
   },
   "dependencies": {
-    "promist": "^2.0.2"
+    "promist": "^3.0.0"
   }
 }
