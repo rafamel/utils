@@ -1,6 +1,6 @@
 import unidecode from 'unidecode';
 import basex from 'base-x';
-import escape from 'escape-string-regexp';
+import escape from './escape';
 import encode from './encode';
 import decode from './decode';
 import { Options } from './types';

@@ -1,6 +1,13 @@
 /* eslint-disable no-dupe-class-members */
-import { symbol, ResultInternal } from './internal';
 import { isPromise } from 'promist';
+
+const symbol = Symbol('internal');
+
+interface ResultInternal<T, S extends boolean = boolean> {
+  value?: T;
+  error?: Error;
+  success: S;
+}
 
 export class Result<T = any, S extends boolean = boolean> {
   private [symbol]: ResultInternal<T, S>;

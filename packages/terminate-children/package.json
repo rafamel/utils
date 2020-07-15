@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@types/ps-tree": "^1.1.0",
-    "promist": "^2.0.2"
+    "promist": "^3.0.0"
   },
   "dependencies": {
     "ps-tree": "^1.2.0"

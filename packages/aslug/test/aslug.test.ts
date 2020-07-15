@@ -47,8 +47,9 @@ describe(`options`, () => {
       expect(typeof opts).toBe('object');
       if (doAlphabet) expect(opts.alphabet).toBe(ALPHABET);
       if (doSeparator) expect(opts.separator).toBe('~');
-      if (doTarget)
+      if (doTarget) {
         expect(opts.target.toString()).toBe(`/[^${ALPHABET.slice(0, -1)}\\-]/`);
+      }
 
       if (doMap) {
         const map = opts.map;
