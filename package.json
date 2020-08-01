@@ -54,7 +54,7 @@
     "husky": "^4.2.5",
     "kpo": "^0.11.1",
     "lerna": "^3.22.1",
-    "onchange": "^6.1.1",
+    "onchange": "^7.0.0",
     "typescript": "^3.9.6"
   },
   "dependencies": {},
