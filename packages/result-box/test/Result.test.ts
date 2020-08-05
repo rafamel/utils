@@ -1,4 +1,4 @@
-import { Result } from '~/Result';
+import { Result } from '../src/Result';
 
 describe(`Result.pass`, () => {
   test(`creates Result`, () => {

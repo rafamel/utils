@@ -1,5 +1,5 @@
 /* eslint-disable no-dupe-class-members */
-import { isPromise } from 'promist';
+import { isPromiseLike } from './helpers/is-promise';
 import { CreateResult } from './types';
 
 const symbol = Symbol('internal');
@@ -67,10 +67,13 @@ export class Result<
   ): CreateResult<T, E> {
     try {
       const value = fn();
-      return (isPromise(value)
-        ? value
-            .then((value) => Result.pass(value))
-            .catch((err) => Result.fail(map ? map(err) : err))
+      return (isPromiseLike(value)
+        ? Promise.resolve(
+            value.then(
+              (value) => Result.pass(value),
+              (err) => Result.fail(map ? map(err) : err)
+            )
+          )
         : Result.pass(value)) as any;
     } catch (err) {
       const error = map ? map(err) : err;
@@ -85,9 +88,11 @@ export class Result<
   public static consume<T>(
     result: Promise<Result<T>> | Result<T>
   ): Promise<T> | T {
-    if (isPromise(result)) {
-      return result.then((result) =>
-        result.success ? result.value : Promise.reject(result.error)
+    if (isPromiseLike(result)) {
+      return Promise.resolve(
+        result.then((result) =>
+          result.success ? result.value : Promise.reject(result.error)
+        )
       );
     }
     if (result.success) return result.value;
