@@ -1,6 +1,6 @@
 {
   "name": "result-box",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Rafa Mel",
   "description": "Because throw/catch is not always best",
   "keywords": [
@@ -66,6 +66,5 @@
         "@pika/plugin-build-web"
       ]
     ]
-  },
-  "dependencies": {}
+  }
 }

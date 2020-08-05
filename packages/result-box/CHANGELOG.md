@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rafamel/utils/compare/result-box@0.1.2...result-box@0.2.0) (2020-08-05)
+
+
+### Features
+
+* **result-box:** allows for an error map function on create; allows for Result returning function o ([8d8ba92](https://github.com/rafamel/utils/commit/8d8ba92edd31325df299085d9e25321f8880e0cf))
+
+
+### BREAKING CHANGES
+
+* **result-box:** Result.fail does no longer take a string or undefined as an argument: Result must
+fail with an Error
+
+
+
+
+
 ## [0.1.2](https://github.com/rafamel/utils/compare/result-box@0.1.1...result-box@0.1.2) (2020-07-15)
 
 
