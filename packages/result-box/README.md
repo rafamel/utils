@@ -28,7 +28,7 @@ import { Result } from 'result-box';
 const result = Result.pass('foo');
 ```
 
-#### `Result.fail(error?: Error | string)`
+#### `Result.fail(error: Error)`
 
 Creates a unsuccessful `Result` with `error`.
 
@@ -38,9 +38,9 @@ import { Result } from 'result-box';
 const result = Result.fail(Error('Foo'));
 ```
 
-#### `Result.create(fn: () => Promise<any> | any): Promise<Result> | Result`
+#### `Result.create(fn: () => Promise<any> | any, map: map?: (error: Error) => E): Promise<Result> | Result`
 
-Creates a `Result` from a function.
+Creates a `Result` from a function. Allows for an optional error map function.
 
 ```javascript
 import { Result } from 'result-box';
@@ -68,7 +68,7 @@ const promise = Result.consume(
 );
 ```
 
-#### `Result.combine(...results: Result[]): Result`
+#### `Result.combine(...results: Array<Result | () => Result>): Result`
 
 Creates a `Result` that will be:
 
@@ -81,15 +81,15 @@ import { Result } from 'result-box';
 // successful.value will be ['foo', 'bar', 'baz']
 const successful = Result.combine(
   Result.pass('foo'),
-  Result.pass('bar'),
+  () => Result.pass('bar'),
   Result.pass('baz')
 );
 
 // unsuccessful.error will be an Error with message 'Foo'.
 const unsuccessful = Result.combine(
   Result.pass('foo'),
-  Result.fail(Error('Foo')),
-  Result.pass('bar'),
+  () => Result.fail(Error('Foo')),
+  () => Result.pass('bar'),
   Result.fail(Error('Bar'))
 );
 ```
