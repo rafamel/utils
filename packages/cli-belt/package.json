@@ -73,7 +73,7 @@
     "chalk": "^4.1.0",
     "errorish": "^0.5.0",
     "execall": "^2.0.0",
-    "find-up": "^4.0.0",
+    "find-up": "^5.0.0",
     "fs-extra": "^9.0.1",
     "normalize-package-data": "^2.5.0"
   }
