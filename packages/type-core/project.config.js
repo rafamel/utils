@@ -17,7 +17,7 @@ module.exports = create({
     // Build project on version bump. Boolean.
     build: true,
     // Generate docs from TS on version bump. Boolean.
-    docs: true
+    docs: false
   },
   assign: {
     todo: ['xxx', 'fixme', 'todo', 'refactor'],

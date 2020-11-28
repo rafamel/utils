@@ -24,6 +24,6 @@ export type BinaryFn<T extends [any, any], U = void> = (...args: T) => U;
 export type MultiaryFn<T extends any[], U = void> = (...args: T) => U;
 export type VariadicFn<T = any> = (...args: any[]) => T;
 
-/* Helpers */
+/* Utils */
 export type Union<A, B, C = B, D = B, E = B> = A | B | C | D | E;
 export type Intersection<A, B, C = B, D = B, E = B> = A & B & C & D & E;
