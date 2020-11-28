@@ -16,3 +16,4 @@
 * [*result-box:*](https://github.com/rafamel/utils/tree/master/packages/result-box) because throw/catch is not always best.
 * [*proxy-handler:*](https://github.com/rafamel/utils/tree/master/packages/proxy-handler) a proxy object handler implementation.
 * [*terminate-children:*](https://github.com/rafamel/utils/tree/master/packages/terminate-children) terminate all children for a process.
+* [*type-core:*](https://github.com/rafamel/utils/tree/master/packages/type-core) a types utility belt for TypeScript.
