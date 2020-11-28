@@ -1,3 +1,1 @@
-export function main(): null {
-  return null;
-}
+export * from './types';
