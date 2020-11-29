@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rafamel/utils/compare/type-core@0.1.0...type-core@0.2.0) (2020-11-29)
+
+
+### Bug Fixes
+
+* **type-core:** fixes isIterable ([be061e4](https://github.com/rafamel/utils/commit/be061e4aed33d66a1b1b7ec8e5cb81aa4d311957))
+
+
+### Features
+
+* **type-core:** adds isEventEmitterLike, isEventEmitter, isEventTarget to TypeGuard ([a8438e6](https://github.com/rafamel/utils/commit/a8438e6d5e9bfacebcda73bf778899dbcfd10611))
+
+
+
+
+
 # 0.1.0 (2020-11-28)
 
 
