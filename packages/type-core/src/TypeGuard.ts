@@ -34,40 +34,40 @@ export class TypeGuard {
   public static isFunction(item: any): item is VariadicFn {
     return typeof item === 'function';
   }
-  public static isObject(item: any): item is any {
-    return typeof item === 'object' && !TypeGuard.isNull(item);
-  }
   public static isObjectLike(item: any): item is any {
     return TypeGuard.isObject(item) || TypeGuard.isFunction(item);
   }
-  public static isRecord(item: any): item is Members<unknown> {
-    return TypeGuard.isObject(item) && !TypeGuard.isArray(item);
+  public static isObject(item: any): item is any {
+    return typeof item === 'object' && !TypeGuard.isNull(item);
   }
   public static isRecordLike(item: any): item is Members<unknown> {
     return TypeGuard.isRecord(item) || TypeGuard.isFunction(item);
   }
+  public static isRecord(item: any): item is Members<unknown> {
+    return TypeGuard.isObject(item) && !TypeGuard.isArray(item);
+  }
   public static isArray(item: any): item is unknown[] {
     return Array.isArray(item);
   }
+  public static isPromiseLike(item: any): item is PromiseLike<unknown> {
+    return Boolean(item) && TypeGuard.isFunction(item.then);
+  }
   public static isPromise(item: any): item is Promise<unknown> {
     return (
-      TypeGuard.isObject(item) &&
+      Boolean(item) &&
       TypeGuard.isFunction(item.then) &&
       TypeGuard.isFunction(item.catch) &&
       TypeGuard.isFunction(item.finally)
     );
   }
-  public static isPromiseLike(item: any): item is PromiseLike<unknown> {
-    return TypeGuard.isObject(item) && TypeGuard.isFunction(item.then);
-  }
   public static isIterable(item: any): item is Iterable<unknown> {
     return (
-      TypeGuard.isObject(item) && TypeGuard.isFunction(item[Symbol.iterator])
+      !TypeGuard.isEmpty(item) && TypeGuard.isFunction(item[Symbol.iterator])
     );
   }
   public static isIterator(
     item: any
   ): item is Iterator<unknown, unknown, unknown> {
-    return TypeGuard.isObject(item) && TypeGuard.isFunction(item.next);
+    return Boolean(item) && TypeGuard.isFunction(item.next);
   }
 }

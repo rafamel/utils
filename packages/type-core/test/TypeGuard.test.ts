@@ -247,6 +247,7 @@ test(`isPromiseLike`, () => {
   assert(!TypeGuard.isPromiseLike(() => undefined));
 });
 test(`isIterable`, () => {
+  assert(TypeGuard.isIterable(''));
   assert(TypeGuard.isIterable([]));
   assert(TypeGuard.isIterable({ [Symbol.iterator]: noop }));
   assert(!TypeGuard.isIterable({ next: noop }));
@@ -255,7 +256,6 @@ test(`isIterable`, () => {
   assert(!TypeGuard.isIterable(1));
   assert(!TypeGuard.isIterable(1n));
   assert(!TypeGuard.isIterable(true));
-  assert(!TypeGuard.isIterable('foo'));
   assert(!TypeGuard.isIterable({}));
   assert(!TypeGuard.isIterable(Symbol('')));
   assert(!TypeGuard.isIterable(() => undefined));
