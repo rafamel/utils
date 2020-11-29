@@ -4,6 +4,7 @@
   "include": ["src/**/*", "test/**/*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "./",
     "paths": {
       "~/*": ["src/*"]

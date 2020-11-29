@@ -1,4 +1,11 @@
-import { Empty, FalseLike, VariadicFn, Members, Primitive } from './types';
+import {
+  Empty,
+  FalseLike,
+  VariadicFn,
+  Members,
+  Primitive,
+  Intersection
+} from './types';
 
 export class TypeGuard {
   public static isUndefined(item: any): item is undefined {
@@ -69,5 +76,43 @@ export class TypeGuard {
     item: any
   ): item is Iterator<unknown, unknown, unknown> {
     return Boolean(item) && TypeGuard.isFunction(item.next);
+  }
+  public static isEventEmitterLike(
+    item: any
+  ): item is Intersection<
+    Partial<NodeJS.EventEmitter>,
+    Pick<NodeJS.EventEmitter, 'addListener' | 'removeListener'>
+  > {
+    return (
+      Boolean(item) &&
+      TypeGuard.isFunction(item.addListener) &&
+      TypeGuard.isFunction(item.removeListener)
+    );
+  }
+  public static isEventEmitter(item: any): item is NodeJS.EventEmitter {
+    return (
+      TypeGuard.isEventEmitterLike(item) &&
+      TypeGuard.isFunction(item.on) &&
+      TypeGuard.isFunction(item.once) &&
+      TypeGuard.isFunction(item.off) &&
+      TypeGuard.isFunction(item.removeAllListeners) &&
+      TypeGuard.isFunction(item.setMaxListeners) &&
+      TypeGuard.isFunction(item.getMaxListeners) &&
+      TypeGuard.isFunction(item.listeners) &&
+      TypeGuard.isFunction(item.rawListeners) &&
+      TypeGuard.isFunction(item.emit) &&
+      TypeGuard.isFunction(item.listenerCount) &&
+      TypeGuard.isFunction(item.prependListener) &&
+      TypeGuard.isFunction(item.prependOnceListener) &&
+      TypeGuard.isFunction(item.eventNames)
+    );
+  }
+  public static isEventTarget(item: any): item is EventTarget {
+    return (
+      Boolean(item) &&
+      TypeGuard.isFunction(item.addEventListener) &&
+      TypeGuard.isFunction(item.removeEventListener) &&
+      TypeGuard.isFunction(item.dispatchEvent)
+    );
   }
 }

@@ -274,3 +274,144 @@ test(`isIterator`, () => {
   assert(!TypeGuard.isIterator(Symbol('')));
   assert(!TypeGuard.isIterator(() => undefined));
 });
+test(`isEventEmitterLike`, () => {
+  assert(
+    TypeGuard.isEventEmitterLike({
+      addListener: noop,
+      removeListener: noop,
+      on: noop,
+      once: noop,
+      off: noop,
+      removeAllListeners: noop,
+      setMaxListeners: noop,
+      getMaxListeners: noop,
+      listeners: noop,
+      rawListeners: noop,
+      emit: noop,
+      listenerCount: noop,
+      prependListener: noop,
+      prependOnceListener: noop,
+      eventNames: noop
+    })
+  );
+  assert(
+    TypeGuard.isEventEmitterLike({
+      addListener: noop,
+      removeListener: noop
+    })
+  );
+  assert(
+    !TypeGuard.isEventEmitterLike({
+      addEventListener: noop,
+      removeEventListener: noop,
+      dispatchEvent: noop
+    })
+  );
+  assert(!TypeGuard.isEventEmitterLike(undefined));
+  assert(!TypeGuard.isEventEmitterLike(null));
+  assert(!TypeGuard.isEventEmitterLike(1));
+  assert(!TypeGuard.isEventEmitterLike(1n));
+  assert(!TypeGuard.isEventEmitterLike(true));
+  assert(!TypeGuard.isEventEmitterLike('foo'));
+  assert(!TypeGuard.isEventEmitterLike({}));
+  assert(!TypeGuard.isEventEmitterLike([]));
+  assert(!TypeGuard.isEventEmitterLike({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isEventEmitterLike(Symbol('')));
+  assert(!TypeGuard.isEventEmitterLike(() => undefined));
+});
+test(`isEventEmitter`, () => {
+  assert(
+    TypeGuard.isEventEmitter({
+      addListener: noop,
+      removeListener: noop,
+      on: noop,
+      once: noop,
+      off: noop,
+      removeAllListeners: noop,
+      setMaxListeners: noop,
+      getMaxListeners: noop,
+      listeners: noop,
+      rawListeners: noop,
+      emit: noop,
+      listenerCount: noop,
+      prependListener: noop,
+      prependOnceListener: noop,
+      eventNames: noop
+    })
+  );
+  assert(
+    !TypeGuard.isEventEmitter({
+      addListener: noop,
+      removeListener: noop
+    })
+  );
+  assert(
+    !TypeGuard.isEventEmitterLike({
+      addEventListener: noop,
+      removeEventListener: noop,
+      dispatchEvent: noop
+    })
+  );
+  assert(!TypeGuard.isEventEmitter(undefined));
+  assert(!TypeGuard.isEventEmitter(null));
+  assert(!TypeGuard.isEventEmitter(1));
+  assert(!TypeGuard.isEventEmitter(1n));
+  assert(!TypeGuard.isEventEmitter(true));
+  assert(!TypeGuard.isEventEmitter('foo'));
+  assert(!TypeGuard.isEventEmitter({}));
+  assert(!TypeGuard.isEventEmitter([]));
+  assert(!TypeGuard.isEventEmitter({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isEventEmitter(Symbol('')));
+  assert(!TypeGuard.isEventEmitter(() => undefined));
+});
+test(`isEventTarget`, () => {
+  assert(
+    TypeGuard.isEventTarget({
+      addEventListener: noop,
+      removeEventListener: noop,
+      dispatchEvent: noop
+    })
+  );
+  assert(
+    !TypeGuard.isEventTarget({
+      addEventListener: noop,
+      removeEventListener: noop
+    })
+  );
+  assert(
+    !TypeGuard.isEventTarget({
+      addListener: noop,
+      removeListener: noop,
+      on: noop,
+      once: noop,
+      off: noop,
+      removeAllListeners: noop,
+      setMaxListeners: noop,
+      getMaxListeners: noop,
+      listeners: noop,
+      rawListeners: noop,
+      emit: noop,
+      listenerCount: noop,
+      prependListener: noop,
+      prependOnceListener: noop,
+      eventNames: noop
+    })
+  );
+  assert(
+    !TypeGuard.isEventTarget({
+      addListener: noop,
+      removeListener: noop
+    })
+  );
+  assert(!TypeGuard.isEventTarget(undefined));
+  assert(!TypeGuard.isEventTarget(null));
+  assert(!TypeGuard.isEventTarget(1));
+  assert(!TypeGuard.isEventTarget(1n));
+  assert(!TypeGuard.isEventTarget(true));
+  assert(!TypeGuard.isEventTarget('foo'));
+  assert(!TypeGuard.isEventTarget({}));
+  assert(!TypeGuard.isEventTarget([]));
+  assert(!TypeGuard.isEventTarget({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isEventTarget(Symbol('')));
+  assert(!TypeGuard.isEventTarget(() => undefined));
+});

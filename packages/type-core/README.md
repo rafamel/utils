@@ -64,3 +64,6 @@ An exported object with methods:
 * `isPromiseLike(item: any):  item is PromiseLike<unknown>`: item is a *thenable*.
 * `isIterable(item: any): item is Iterable<unknown>`
 * `isIterator(item: any): item is Iterator<unknown, unknown, unknown>`
+* `isEventEmitterLike(item: any): item is Partial<NodeJS.EventEmitter>`
+* `isEventEmitter(item: any): item is NodeJS.EventEmitter`
+* `isEventTarget(item: any): item is EventTarget`
