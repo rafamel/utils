@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/rafamel/utils/compare/type-core@0.2.0...type-core@0.3.0) (2020-11-30)
+
+
+### Features
+
+* **type-core:** adds MaybePromise and Optional types ([b603fae](https://github.com/rafamel/utils/commit/b603faecc73545e9f289486f6c9e807683a4a30a))
+
+
+
+
+
 # [0.2.0](https://github.com/rafamel/utils/compare/type-core@0.1.0...type-core@0.2.0) (2020-11-29)
 
 
