@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/rafamel/utils/compare/type-core@0.3.0...type-core@0.4.0) (2020-12-06)
+
+
+### Features
+
+* **type-core:** adds Constructor definition ([fa3694f](https://github.com/rafamel/utils/commit/fa3694f65bb34c4219d0d8946346d7582b9887bf))
+
+
+
+
+
 # [0.3.0](https://github.com/rafamel/utils/compare/type-core@0.2.0...type-core@0.3.0) (2020-11-30)
 
 
