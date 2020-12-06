@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/array-type */
+
 /* Basic Types */
 export type NonDefined = undefined | void;
 export type Empty = NonDefined | null;
@@ -40,4 +42,25 @@ export type MaybePromiseLike<T> = Union<PromiseLike<T>, T>;
 
 /* Utils */
 export type Union<A, B, C = B, D = B, E = B> = A | B | C | D | E;
+
 export type Intersection<A, B, C = B, D = B, E = B> = A & B & C & D & E;
+
+export type KeyOf<
+  T extends ReadonlyArray<any> | ArrayLike<any> | Members
+> = T extends ReadonlyArray<any>
+  ? number
+  : T extends ArrayLike<any>
+  ? number
+  : T extends object
+  ? keyof T
+  : never;
+
+export type ValueOf<
+  T extends ReadonlyArray<any> | ArrayLike<any> | Members
+> = T extends ReadonlyArray<any>
+  ? T[number]
+  : T extends ArrayLike<any>
+  ? T[number]
+  : T extends object
+  ? T[keyof T]
+  : never;
