@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/rafamel/utils/compare/type-core@0.4.0...type-core@0.5.0) (2020-12-06)
+
+
+### Features
+
+* **type-core:** adds KeyOf and ValueOf types ([52b92c7](https://github.com/rafamel/utils/commit/52b92c7c599adf7edf84cb533671bbd8408d56f9))
+
+
+
+
+
 # [0.4.0](https://github.com/rafamel/utils/compare/type-core@0.3.0...type-core@0.4.0) (2020-12-06)
 
 
