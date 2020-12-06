@@ -28,6 +28,12 @@ export type BinaryFn<T extends [any, any], U = void> = (...args: T) => U;
 export type MultiaryFn<T extends any[], U = void> = (...args: T) => U;
 export type VariadicFn<T = any> = (...args: any[]) => T;
 
+/* Constructor */
+export interface Constructor<T = any> {
+  new (...args: any[]): T;
+  prototype: T;
+}
+
 /* Promises */
 export type MaybePromise<T> = Union<Promise<T>, T>;
 export type MaybePromiseLike<T> = Union<PromiseLike<T>, T>;
