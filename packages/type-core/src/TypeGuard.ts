@@ -3,22 +3,29 @@ import {
   FalseLike,
   VariadicFn,
   Members,
+  ID,
   Primitive,
   Intersection
 } from './types';
 
 export class TypeGuard {
-  public static isUndefined(item: any): item is undefined {
-    return item === undefined;
-  }
-  public static isNull(item: any): item is null {
-    return item === null;
+  public static isID(item: any): item is ID {
+    return TypeGuard.isString(item) || TypeGuard.isNumber(item);
   }
   public static isEmpty(item: any): item is Empty {
     return TypeGuard.isUndefined(item) || TypeGuard.isNull(item);
   }
   public static isFalseLike(item: any): item is FalseLike {
     return !item;
+  }
+  public static isPrimitive(item: any): item is Primitive {
+    return !TypeGuard.isObjectLike(item);
+  }
+  public static isNull(item: any): item is null {
+    return item === null;
+  }
+  public static isUndefined(item: any): item is undefined {
+    return item === undefined;
   }
   public static isBoolean(item: any): item is boolean {
     return typeof item === 'boolean';
@@ -34,9 +41,6 @@ export class TypeGuard {
   }
   public static isSymbol(item: any): item is symbol {
     return typeof item === 'symbol';
-  }
-  public static isPrimitive(item: any): item is Primitive {
-    return !TypeGuard.isObjectLike(item);
   }
   public static isFunction(item: any): item is VariadicFn {
     return typeof item === 'function';

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/array-type */
 
 /* Basic Types */
+export type ID = number | string;
 export type NonDefined = undefined | void;
 export type Empty = NonDefined | null;
 export type FalseLike = Empty | false | '' | 0 | 0n;

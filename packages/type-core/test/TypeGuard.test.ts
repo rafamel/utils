@@ -3,31 +3,18 @@ import assert from 'assert';
 
 const noop = (): void => undefined;
 
-test(`isUndefined`, () => {
-  assert(TypeGuard.isUndefined(undefined));
-  assert(!TypeGuard.isUndefined(null));
-  assert(!TypeGuard.isUndefined(0));
-  assert(!TypeGuard.isUndefined(0n));
-  assert(!TypeGuard.isUndefined(false));
-  assert(!TypeGuard.isUndefined(''));
-  assert(!TypeGuard.isUndefined({}));
-  assert(!TypeGuard.isUndefined([]));
-  assert(!TypeGuard.isUndefined({ [Symbol.iterator]: noop }));
-  assert(!TypeGuard.isUndefined(Symbol('')));
-  assert(!TypeGuard.isUndefined(() => undefined));
-});
-test(`isNull`, () => {
-  assert(TypeGuard.isNull(null));
-  assert(!TypeGuard.isNull(undefined));
-  assert(!TypeGuard.isNull(0));
-  assert(!TypeGuard.isNull(0n));
-  assert(!TypeGuard.isNull(false));
-  assert(!TypeGuard.isNull(''));
-  assert(!TypeGuard.isNull({}));
-  assert(!TypeGuard.isNull([]));
-  assert(!TypeGuard.isNull({ [Symbol.iterator]: noop }));
-  assert(!TypeGuard.isNull(Symbol('')));
-  assert(!TypeGuard.isNull(() => undefined));
+test(`isID`, () => {
+  assert(TypeGuard.isID(0));
+  assert(TypeGuard.isID(''));
+  assert(!TypeGuard.isID(undefined));
+  assert(!TypeGuard.isID(null));
+  assert(!TypeGuard.isID(0n));
+  assert(!TypeGuard.isID(false));
+  assert(!TypeGuard.isID({}));
+  assert(!TypeGuard.isID([]));
+  assert(!TypeGuard.isID({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isID(Symbol('')));
+  assert(!TypeGuard.isID(() => undefined));
 });
 test(`isEmpty`, () => {
   assert(TypeGuard.isEmpty(null));
@@ -58,6 +45,45 @@ test(`isFalseLike`, () => {
   assert(!TypeGuard.isFalseLike({ [Symbol.iterator]: noop }));
   assert(!TypeGuard.isFalseLike(Symbol('')));
   assert(!TypeGuard.isFalseLike(() => undefined));
+});
+test(`isPrimitive`, () => {
+  assert(TypeGuard.isPrimitive(undefined));
+  assert(TypeGuard.isPrimitive(null));
+  assert(TypeGuard.isPrimitive(0));
+  assert(TypeGuard.isPrimitive(0n));
+  assert(TypeGuard.isPrimitive(false));
+  assert(TypeGuard.isPrimitive(''));
+  assert(TypeGuard.isPrimitive(Symbol('')));
+  assert(!TypeGuard.isPrimitive({}));
+  assert(!TypeGuard.isPrimitive([]));
+  assert(!TypeGuard.isPrimitive({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isSymbol(() => undefined));
+});
+test(`isUndefined`, () => {
+  assert(TypeGuard.isUndefined(undefined));
+  assert(!TypeGuard.isUndefined(null));
+  assert(!TypeGuard.isUndefined(0));
+  assert(!TypeGuard.isUndefined(0n));
+  assert(!TypeGuard.isUndefined(false));
+  assert(!TypeGuard.isUndefined(''));
+  assert(!TypeGuard.isUndefined({}));
+  assert(!TypeGuard.isUndefined([]));
+  assert(!TypeGuard.isUndefined({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isUndefined(Symbol('')));
+  assert(!TypeGuard.isUndefined(() => undefined));
+});
+test(`isNull`, () => {
+  assert(TypeGuard.isNull(null));
+  assert(!TypeGuard.isNull(undefined));
+  assert(!TypeGuard.isNull(0));
+  assert(!TypeGuard.isNull(0n));
+  assert(!TypeGuard.isNull(false));
+  assert(!TypeGuard.isNull(''));
+  assert(!TypeGuard.isNull({}));
+  assert(!TypeGuard.isNull([]));
+  assert(!TypeGuard.isNull({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isNull(Symbol('')));
+  assert(!TypeGuard.isNull(() => undefined));
 });
 test(`isBoolean`, () => {
   assert(TypeGuard.isBoolean(true));
@@ -123,19 +149,6 @@ test(`isSymbol`, () => {
   assert(!TypeGuard.isSymbol({}));
   assert(!TypeGuard.isSymbol([]));
   assert(!TypeGuard.isSymbol({ [Symbol.iterator]: noop }));
-  assert(!TypeGuard.isSymbol(() => undefined));
-});
-test(`isPrimitive`, () => {
-  assert(TypeGuard.isPrimitive(undefined));
-  assert(TypeGuard.isPrimitive(null));
-  assert(TypeGuard.isPrimitive(0));
-  assert(TypeGuard.isPrimitive(0n));
-  assert(TypeGuard.isPrimitive(false));
-  assert(TypeGuard.isPrimitive(''));
-  assert(TypeGuard.isPrimitive(Symbol('')));
-  assert(!TypeGuard.isPrimitive({}));
-  assert(!TypeGuard.isPrimitive([]));
-  assert(!TypeGuard.isPrimitive({ [Symbol.iterator]: noop }));
   assert(!TypeGuard.isSymbol(() => undefined));
 });
 test(`isFunction`, () => {
