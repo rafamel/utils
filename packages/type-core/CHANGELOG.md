@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/rafamel/utils/compare/type-core@0.5.0...type-core@0.6.0) (2020-12-09)
+
+
+### Features
+
+* **type-core:** defines ID and implements TypeGuard.isID ([2acbe26](https://github.com/rafamel/utils/commit/2acbe26213c843bb1efa6b9be2ba6c1b08c94ef6))
+
+
+
+
+
 # [0.5.0](https://github.com/rafamel/utils/compare/type-core@0.4.0...type-core@0.5.0) (2020-12-06)
 
 
