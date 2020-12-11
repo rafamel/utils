@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/rafamel/utils/compare/type-core@0.6.0...type-core@0.7.0) (2020-12-11)
+
+
+### Features
+
+* **type-core:** adds isAsyncIterable to TypeGuard ([7514833](https://github.com/rafamel/utils/commit/75148336ad55f45cab0ea4be9bfcddb98bf8af84))
+
+
+
+
+
 # [0.6.0](https://github.com/rafamel/utils/compare/type-core@0.5.0...type-core@0.6.0) (2020-12-09)
 
 
