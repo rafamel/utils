@@ -76,9 +76,17 @@ export class TypeGuard {
       !TypeGuard.isEmpty(item) && TypeGuard.isFunction(item[Symbol.iterator])
     );
   }
+  public static isAsyncIterable(item: any): item is AsyncIterable<unknown> {
+    return (
+      !TypeGuard.isEmpty(item) &&
+      TypeGuard.isFunction(item[Symbol.asyncIterator])
+    );
+  }
   public static isIterator(
     item: any
-  ): item is Iterator<unknown, unknown, unknown> {
+  ): item is
+    | Iterator<unknown, unknown, unknown>
+    | AsyncIterator<unknown, unknown, unknown> {
     return Boolean(item) && TypeGuard.isFunction(item.next);
   }
   public static isEventEmitterLike(

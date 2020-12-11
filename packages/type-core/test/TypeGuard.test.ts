@@ -263,6 +263,7 @@ test(`isIterable`, () => {
   assert(TypeGuard.isIterable(''));
   assert(TypeGuard.isIterable([]));
   assert(TypeGuard.isIterable({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isIterable({ [Symbol.asyncIterator]: noop }));
   assert(!TypeGuard.isIterable({ next: noop }));
   assert(!TypeGuard.isIterable(undefined));
   assert(!TypeGuard.isIterable(null));
@@ -272,6 +273,20 @@ test(`isIterable`, () => {
   assert(!TypeGuard.isIterable({}));
   assert(!TypeGuard.isIterable(Symbol('')));
   assert(!TypeGuard.isIterable(() => undefined));
+});
+test(`isAsyncIterable`, () => {
+  assert(TypeGuard.isAsyncIterable({ [Symbol.asyncIterator]: noop }));
+  assert(!TypeGuard.isAsyncIterable(undefined));
+  assert(!TypeGuard.isAsyncIterable(null));
+  assert(!TypeGuard.isAsyncIterable(0));
+  assert(!TypeGuard.isAsyncIterable(0n));
+  assert(!TypeGuard.isAsyncIterable(false));
+  assert(!TypeGuard.isAsyncIterable(''));
+  assert(!TypeGuard.isAsyncIterable({}));
+  assert(!TypeGuard.isAsyncIterable([]));
+  assert(!TypeGuard.isAsyncIterable({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isAsyncIterable(Symbol('')));
+  assert(!TypeGuard.isAsyncIterable(() => undefined));
 });
 test(`isIterator`, () => {
   assert(TypeGuard.isIterator({ next: noop }));
