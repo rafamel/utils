@@ -27,10 +27,10 @@ A *result* is a plain *object* with fields `success` and `data`. Type definition
 
 Type definitions are provided for a successful *result*, a failed *result*, and a combination of them:
 
-* [`Result.Box`:](https://rafamel.github.io/utils/result-box/result.html#box) a successful or failed *result*.
-* [`Result.Break`:](https://rafamel.github.io/utils/result-box/result.html#break) a successful *result*, a failed *result*, or `null`.
-* [`Result.Success`:](https://rafamel.github.io/utils/result-box/result.html#success) a successful *result*.
-* [`Result.Failure`:](https://rafamel.github.io/utils/result-box/result.html#failure) a failed *result*.
+* [`Result.Box`:](https://rafamel.github.io/utils/result-box/modules/result.html#box) a successful or failed *result*.
+* [`Result.Break`:](https://rafamel.github.io/utils/result-box/modules/result.html#break) a successful *result*, a failed *result*, or `null`.
+* [`Result.Success`:](https://rafamel.github.io/utils/result-box/modules/result.html#success) a successful *result*.
+* [`Result.Failure`:](https://rafamel.github.io/utils/result-box/modules/result.html#failure) a failed *result*.
 
 ```typescript
 import { Result } from 'result-box';
