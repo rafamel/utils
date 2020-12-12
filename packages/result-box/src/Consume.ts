@@ -60,6 +60,7 @@ export class Consume {
           subs = subscription;
         },
         next(result: Result.Break<T>) {
+          /* istanbul ignore next */
           if (unsubscribe) return;
 
           let value: any;
@@ -73,6 +74,7 @@ export class Consume {
             obs.next(value);
           } else {
             obs.error(error[0]);
+            /* istanbul ignore next */
             if (typeof subs !== 'undefined') {
               subs.unsubscribe();
             } else if (typeof subscription !== 'undefined') {
@@ -90,6 +92,7 @@ export class Consume {
         }
       });
 
+      /* istanbul ignore next */
       if (unsubscribe) subscription.unsubscribe();
       return () => subscription.unsubscribe();
     });
