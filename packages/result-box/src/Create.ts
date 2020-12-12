@@ -173,10 +173,12 @@ export class Create {
     observables: Array<Result.Break<S, F>>
   ): Result.Break<S[], F>;
   /**
-   * Combines multiple results. Takes either a record or an array of *result.*
-   * Returns a *result* that will be failed if any of the input results
-   * fail, or succeed with `data` of a record or array of input `result.data`
-   * values if all are successful.
+   * Combines multiple results. Takes either a record or an
+   * array of *result.*
+   * Returns a *result* that will be failed if any of the
+   * input results fail, otherwise return `null` if any of the
+   * inputs are `null`, or succeed with `data` of a
+   * record or array of the result's `data` fields.
    */
   public static combine(
     results: Members<Result.Break> | Result.Break[]
@@ -184,23 +186,31 @@ export class Create {
     if (TypeGuard.isArray(results)) {
       const data: any[] = [];
 
+      let isNull = false;
       for (const result of results) {
-        if (!result) return null;
-        if (!result.success) return Create.failure(result.data);
-        data.push(result.data);
+        if (!result) {
+          isNull = true;
+        } else {
+          if (!result.success) return Create.failure(result.data);
+          data.push(result.data);
+        }
       }
 
-      return Create.success(data);
+      return isNull ? null : Create.success(data);
     } else {
       const data: any = {};
 
+      let isNull = false;
       for (const [key, result] of Object.entries(results)) {
-        if (!result) return null;
-        if (!result.success) return Create.failure(result.data);
-        data[key] = result.data;
+        if (!result) {
+          isNull = true;
+        } else {
+          if (!result.success) return Create.failure(result.data);
+          data[key] = result.data;
+        }
       }
 
-      return Create.success(data);
+      return isNull ? null : Create.success(data);
     }
   }
 }
