@@ -51,6 +51,10 @@
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"
   },
+  "dependencies": {
+    "multitude": "0.0.1",
+    "type-core": "^0.7.0"
+  },
   "@pika/pack": {
     "pipeline": [
       [
