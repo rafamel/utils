@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/rafamel/utils/compare/result-box@0.2.0...result-box@0.3.0) (2020-12-12)
+
+
+### Bug Fixes
+
+* **result-box:** Create.combine always fails if any of the results is a failure even if there is a n ([a42ae25](https://github.com/rafamel/utils/commit/a42ae25aa4c1ae994e236033a00a811105586454))
+
+
+### Features
+
+* **result-box:** reboots result-box with an entirely new implementation for creation, consumption, ([42168bf](https://github.com/rafamel/utils/commit/42168bfc75e038a9eb0a10a249154b3d4fd8dc0b))
+
+
+### BREAKING CHANGES
+
+* **result-box:** The api for the library has changed entirely. Please review the latest
+documentation.
+
+
+
+
+
 # [0.2.0](https://github.com/rafamel/utils/compare/result-box@0.1.2...result-box@0.2.0) (2020-08-05)
 
 

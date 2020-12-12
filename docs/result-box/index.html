@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>result-box 0.2.0</title>
+	<title>result-box 0.3.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">result-box 0.2.0</a>
+					<a href="index.html" class="title">result-box 0.3.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> result-box 0.2.0</h1>
+			<h1> result-box 0.3.0</h1>
 		</div>
 	</div>
 </header>
@@ -94,10 +94,10 @@
 				</a>
 				<p>Type definitions are provided for a successful <em>result</em>, a failed <em>result</em>, and a combination of them:</p>
 				<ul>
-					<li><a href="https://rafamel.github.io/utils/result-box/result.html#box"><code>Result.Box</code>:</a> a successful or failed <em>result</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/result.html#break"><code>Result.Break</code>:</a> a successful <em>result</em>, a failed <em>result</em>, or <code>null</code>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/result.html#success"><code>Result.Success</code>:</a> a successful <em>result</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/result.html#failure"><code>Result.Failure</code>:</a> a failed <em>result</em>.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/modules/result.html#box"><code>Result.Box</code>:</a> a successful or failed <em>result</em>.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/modules/result.html#break"><code>Result.Break</code>:</a> a successful <em>result</em>, a failed <em>result</em>, or <code>null</code>.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/modules/result.html#success-1"><code>Result.Success</code>:</a> a successful <em>result</em>.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/modules/result.html#failure"><code>Result.Failure</code>:</a> a failed <em>result</em>.</li>
 				</ul>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Result } <span class="hljs-keyword">from</span> <span class="hljs-string">'result-box'</span>;
 
@@ -127,7 +127,7 @@
 					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#execute"><code>Create.execute</code>:</a> creates a <em>result</em> from a function.</li>
 					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#promise"><code>Create.promise</code>:</a> returns a <em>Promise</em> of a <em>result</em> from an input <em>Promise</em>.</li>
 					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#observable"><code>Create.observable</code>:</a> returns an <em>Observable</em> of <em>result</em> from an input <em>Observable</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#observable"><code>Create.combine</code>:</a> combines a record or array of <em>result</em>.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#combine"><code>Create.combine</code>:</a> combines a record or array of <em>result</em>.</li>
 				</ul>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Create } <span class="hljs-keyword">from</span> <span class="hljs-string">'result-box'</span>;
 
@@ -147,10 +147,10 @@
 				</a>
 				<p>All operations return a unary function taking a <em>result</em> as an argument. You can straightforwardly pipe them with a pipe function such as the ones provided by the <a href="https://www.npmjs.com/package/pipettes"><code>pipettes</code></a> package.</p>
 				<ul>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#fallback"><code>Operate.fallback</code>:</a> creates a successful <em>result</em> when null.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#transform"><code>Operate.transform</code>:</a> transforms a <em>result</em> into its <code>data</code>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#map"><code>Operate.map</code>:</a> maps a <em>result</em> <code>data</code>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#flip"><code>Operate.flip</code>:</a> optionally converts a successful <em>result</em> into a failed result and vice-versa.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#fallback-1"><code>Operate.fallback</code>:</a> creates a successful <em>result</em> when null.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#transform-1"><code>Operate.transform</code>:</a> transforms a <em>result</em> into its <code>data</code>.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#map-1"><code>Operate.map</code>:</a> maps a <em>result</em> <code>data</code>.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#flip-1"><code>Operate.flip</code>:</a> optionally converts a successful <em>result</em> into a failed result and vice-versa.</li>
 					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#tap"><code>Operate.tap</code>:</a> allows for the execution of side effects.</li>
 				</ul>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Result, Operate } <span class="hljs-keyword">from</span> <span class="hljs-string">'result-box'</span>;
@@ -183,7 +183,7 @@
 				</a>
 				<p>Consumption utility functions:</p>
 				<ul>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/consume.html#result"><code>Consume.result</code>:</a> consumes a <em>result</em>.</li>
+					<li><a href="https://rafamel.github.io/utils/result-box/classes/consume.html#result-1"><code>Consume.result</code>:</a> consumes a <em>result</em>.</li>
 					<li><a href="https://rafamel.github.io/utils/result-box/classes/consume.html#promise"><code>Consume.promise</code>:</a> consumes a <em>Promise</em> of a <em>result</em>.</li>
 					<li><a href="https://rafamel.github.io/utils/result-box/classes/consume.html#observable"><code>Consume.observable</code>:</a> consumes an <em>Observable</em> of <em>result</em>.</li>
 				</ul>
