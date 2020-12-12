@@ -38,6 +38,11 @@ export declare namespace Operate {
 }
 
 export class Operate {
+  /**
+   * For an input of a *result* or `null`,
+   * the returning function returns the *result* if not `null`,
+   * or a successful *result* of `value` if `null`.
+   */
   public static fallback<T extends Result.Break, U>(
     value: U
   ): UnaryFn<T, Operate.Fallback<T, U>> {
@@ -45,6 +50,10 @@ export class Operate {
       return (result || Create.success(value)) as any;
     };
   }
+  /**
+   * Maps a *result* to their `data`, with optional
+   * remaps for `data` upon a successful and/or failed *result.*
+   */
   public static transform<
     T extends Result.Break,
     U = Result.SuccessType<T>,
@@ -62,6 +71,9 @@ export class Operate {
       }
     };
   }
+  /**
+   * Maps a *result* to a *result* with different `data` values.
+   */
   public static map<
     T extends Result.Break,
     U extends UnaryFn<Result.SuccessType<T>, any> | Empty,
@@ -76,6 +88,12 @@ export class Operate {
       }
     };
   }
+  /**
+   * Allows to optionally convert an input successful *result* into a
+   * failed *Result* with the same `data`, and vice-versa.
+   * @param onSuccess whether to flip a successful *result* to a failed *result*
+   * @param onFailure whether to flip a failed *result* to a successful *result*
+   */
   public static flip<
     T extends Result.Break,
     U extends boolean | Empty,
@@ -90,6 +108,10 @@ export class Operate {
       }
     };
   }
+  /**
+   * Allows for the execution of side effects upon
+   * a successful or failed *result.*
+   */
   public static tap<T extends Result.Break>(
     onSuccess?: UnaryFn<Result.SuccessType<T>> | Empty,
     onFailure?: UnaryFn<Result.FailureType<T>> | Empty

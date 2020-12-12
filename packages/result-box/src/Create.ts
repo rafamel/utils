@@ -20,12 +20,23 @@ export declare namespace Create {
 }
 
 export class Create {
+  /**
+   * Creates a successful *result* with `data`.
+   */
   public static success<S>(data: S): Result.Success<S> {
     return { success: true, data };
   }
+  /**
+   * Creates a failed *result* with `data`.
+   */
   public static failure<F>(data: F): Result.Failure<F> {
     return { success: false, data };
   }
+  /**
+   * Creates a *result* that will be successful and contain the
+   * return value of `fn` as `data`, or otherwise be failed if
+   * `fn` throws.
+   */
   public static execute<S>(fn: NullaryFn<S>): Result.Box<S, Error> {
     try {
       const value = fn();
@@ -34,6 +45,11 @@ export class Create {
       return Create.failure(err);
     }
   }
+  /**
+   * Returns a *Promise* of a *result,* that will be successful if `promise`
+   * resolves, and failed otherwise.
+   * @param promise a promise or a promise returning function
+   */
   public static async promise<S>(
     promise: MaybePromiseLike<S> | NullaryFn<MaybePromiseLike<S>>
   ): Promise<Result.Box<S, Error>> {
@@ -44,6 +60,13 @@ export class Create {
       return Create.failure(err);
     }
   }
+  /**
+   * Returns an *Observable* of *result,* that will be successful
+   * as long as the original `observable` doesn't error, and failed otherwise.
+   * @param Constructor an ES Observable constructor
+   * @param observable an ES Observable
+   * @param completeOnFail whether the resulting observable should complete after a failed *result*
+   */
   public static observable<S>(
     Constructor: Push.LikeConstructor,
     observable: Push.Like<S>,
@@ -149,6 +172,12 @@ export class Create {
   public static combine<S, F>(
     observables: Array<Result.Break<S, F>>
   ): Result.Break<S[], F>;
+  /**
+   * Combines multiple results. Takes either a record or an array of *result.*
+   * Returns a *result* that will be failed if any of the input results
+   * fail, or succeed with `data` of a record or array of input `result.data`
+   * values if all are successful.
+   */
   public static combine(
     results: Members<Result.Break> | Result.Break[]
   ): Result.Break {

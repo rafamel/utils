@@ -1,8 +1,11 @@
 export declare namespace Result {
-  /* Definition */
+  /** A successful or failed *result* */
   export type Box<S = any, F = any> = Success<S> | Failure<F>;
+  /** A successful *result,* failed *result,* or `null` */
   export type Break<S = any, F = any> = Box<S, F> | null;
+  /** A successful *result* */
   export type Success<S = any> = { success: true; data: S };
+  /** A failed *result* */
   export type Failure<F = any> = { success: false; data: F };
 
   /* Utility */
