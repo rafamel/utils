@@ -3,7 +3,7 @@ const { scripts } = require('./project.config');
 
 module.exports.scripts = {
   ...scripts,
-  bootstrap: 'lerna bootstrap',
+  bootstrap: ['lerna bootstrap', 'kpo @type-core build', 'kpo :stream build'],
   link: 'lerna link',
 
   /* Hooks */
