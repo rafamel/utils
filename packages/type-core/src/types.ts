@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/array-type */
+/* eslint-disable @typescript-eslint/ban-types */
 
 /* Basic Types */
 export type ID = number | string;
@@ -13,6 +14,25 @@ export type Primitive =
   | symbol
   | null
   | undefined;
+
+/* Serial */
+type NativeArray<T> = Array<T>;
+export declare namespace Serial {
+  export type Type = Primitive | Array | Object;
+  export type Primitive = boolean | number | string | null | undefined;
+  // eslint-disable-next-line
+  export interface Array extends NativeArray<Type> {}
+  export interface Object {
+    [key: string]: Type;
+  }
+  export type Generalize<T extends Type> =
+    | T
+    | (T extends boolean ? boolean : never)
+    | (T extends number ? number : never)
+    | (T extends string ? string : never)
+    | (T extends Type[] ? Array : never)
+    | (T extends object ? Object : never);
+}
 
 /* Records */
 export type Members<T = any> = Record<any, T>;
@@ -65,3 +85,13 @@ export type ValueOf<
   : T extends object
   ? T[keyof T]
   : never;
+
+export type Generalize<T> =
+  | T
+  | (T extends bigint ? bigint : never)
+  | (T extends boolean ? boolean : never)
+  | (T extends number ? number : never)
+  | (T extends string ? string : never)
+  | (T extends symbol ? symbol : never)
+  | (T extends any[] ? any[] : never)
+  | (T extends object ? object : never);

@@ -38,7 +38,7 @@ module.exports = create({
           {
             files: ['*'],
             rules: {
-              // 'rule-name': 0
+              '@typescript-eslint/no-namespace': 0
             }
           }
         ]
