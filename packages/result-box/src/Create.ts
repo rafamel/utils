@@ -188,12 +188,9 @@ export class Create {
 
       let isNull = false;
       for (const result of results) {
-        if (!result) {
-          isNull = true;
-        } else {
-          if (!result.success) return Create.failure(result.data);
-          data.push(result.data);
-        }
+        if (!result) isNull = true;
+        else if (result.success) data.push(result.data);
+        else return result;
       }
 
       return isNull ? null : Create.success(data);
@@ -202,12 +199,9 @@ export class Create {
 
       let isNull = false;
       for (const [key, result] of Object.entries(results)) {
-        if (!result) {
-          isNull = true;
-        } else {
-          if (!result.success) return Create.failure(result.data);
-          data[key] = result.data;
-        }
+        if (!result) isNull = true;
+        else if (result.success) data[key] = result.data;
+        else return result;
       }
 
       return isNull ? null : Create.success(data);
