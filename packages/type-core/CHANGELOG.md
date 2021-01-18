@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/rafamel/utils/compare/type-core@0.7.0...type-core@0.8.0) (2021-01-18)
+
+
+### Features
+
+* **type-core:** adds Generalize type and Serial types ([af95617](https://github.com/rafamel/utils/commit/af956178cf76d70f5607601f66d45a7ecd0604db))
+
+
+
+
+
 # [0.7.0](https://github.com/rafamel/utils/compare/type-core@0.6.0...type-core@0.7.0) (2020-12-11)
 
 
