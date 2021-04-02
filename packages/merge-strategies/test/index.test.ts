@@ -56,14 +56,29 @@ describe(`merge`, () => {
       d: [4, 5, 6]
     });
   });
+  test(`undefined keys are treated as non existent`, () => {
+    expect(
+      merge({ a: 1, b: { c: 2 } }, { a: undefined, b: { c: undefined } })
+    ).toEqual({ a: 1, b: { c: 2 } });
+    expect(merge({ a: 1, b: { c: 2 } }, { a: null, b: { c: null } })).toEqual({
+      a: null,
+      b: { c: null }
+    });
+  });
   test(`doesn't assign to defaults`, () => {
     const defaults = { a: 1 };
     expect(merge(defaults, {})).not.toBe(defaults);
     expect(merge(defaults, {})).toEqual({ a: 1 });
   });
   test(`inner mutation doesn't affect defaults`, () => {
-    const defaults = { a: { b: 2 } };
+    const defaults = { a: { b: 2, c: [{}, {}] }, b: 2 };
     const obj = merge(defaults, {}) as any;
+    obj.b = 1;
+    expect(defaults.a).not.toBe(1);
+    obj.a.c[0].a = 1;
+    expect(Object.keys(defaults.a.c[0]).length).toBe(0);
+    obj.a.c.push({});
+    expect(defaults.a.c.length).toBe(2);
     obj.a.b = 5;
     expect(defaults.a.b).toBe(2);
   });
@@ -93,6 +108,15 @@ describe(`deep`, () => {
       d: [1, 2, 3, 4, 5, 6]
     });
   });
+  test(`undefined keys are treated as non existent`, () => {
+    expect(
+      deep({ a: 1, b: { c: 2 } }, { a: undefined, b: { c: undefined } })
+    ).toEqual({ a: 1, b: { c: 2 } });
+    expect(deep({ a: 1, b: { c: 2 } }, { a: null, b: { c: null } })).toEqual({
+      a: null,
+      b: { c: null }
+    });
+  });
   test(`doesn't assign to defaults`, () => {
     const defaults = { a: 1 };
     expect(deep(defaults, {})).not.toBe(defaults);
@@ -104,11 +128,21 @@ describe(`deep`, () => {
     obj.a.b = 5;
     expect(defaults.a.b).toBe(2);
   });
-  test(`inner array mutation doesn't affect defaults`, () => {
-    const defaults = { a: { b: [1, 2] } };
+  test(`inner mutation doesn't affect defaults`, () => {
+    const defaults = { a: { b: [{}, {}], c: [{}, {}] }, b: 2 };
     const obj = deep(defaults, { a: { b: [3, 4] } }) as any;
-    expect(defaults.a.b).toEqual([1, 2]);
-    obj.a.b = [5, 6];
-    expect(defaults.a.b).toEqual([1, 2]);
+    obj.b = 1;
+    obj.a.b[0].foo = 1;
+    expect(Object.keys(defaults.a.b[0]).length).toBe(0);
+    obj.a.b.push(7);
+    expect(defaults.a.b.length).toBe(2);
+    obj.a.b = [{}];
+    expect(defaults.a.b.length).toBe(2);
+    obj.a.c[0].foo = 1;
+    expect(Object.keys(defaults.a.c[0]).length).toBe(0);
+    obj.a.c.push(7);
+    expect(defaults.a.c.length).toBe(2);
+    obj.a.c = [{}];
+    expect(defaults.a.c.length).toBe(2);
   });
 });
