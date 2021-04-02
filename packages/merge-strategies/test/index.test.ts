@@ -1,4 +1,4 @@
-import { shallow, merge, deep } from '~/index';
+import { shallow, merge, deep } from '../src';
 
 describe(`shallow`, () => {
   test(`returns shallow merge`, () => {
@@ -19,14 +19,24 @@ describe(`shallow`, () => {
     expect(shallow(null, { a: 1 })).not.toBe({ a: 1 });
     expect(shallow({ a: 1 }, null)).toEqual(null);
   });
+  test(`undefined keys are treated as non existent`, () => {
+    expect(shallow({ a: 1 }, { a: undefined })).toEqual({ a: 1 });
+    expect(shallow({ a: 1 }, { a: null })).toEqual({ a: null });
+  });
   test(`doesn't assign to defaults`, () => {
     const defaults = { a: 1 };
     expect(shallow(defaults, {})).not.toBe(defaults);
     expect(shallow(defaults, {})).toEqual({ a: 1 });
   });
   test(`inner mutation doesn't affect defaults`, () => {
-    const defaults = { a: { b: 2 } };
+    const defaults = { a: { b: 2, c: [{}, {}] }, b: 2 };
     const obj = shallow(defaults, {}) as any;
+    obj.b = 1;
+    expect(defaults.a).not.toBe(1);
+    obj.a.c[0].a = 1;
+    expect(Object.keys(defaults.a.c[0]).length).toBe(0);
+    obj.a.c.push({});
+    expect(defaults.a.c.length).toBe(2);
     obj.a.b = 5;
     expect(defaults.a.b).toBe(2);
   });

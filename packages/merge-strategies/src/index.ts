@@ -1,33 +1,33 @@
-import clonedeep from 'lodash.clonedeep';
 import { mergeWith } from './helpers/merge-with';
 
 export type Merge<D, T> = T & (D extends object ? T & D : T);
 
 /**
- * If both `defaults` and `value` are objects, they will be shallow merged.
- * Mutations to the returned object won't have an effect over `defaults`.
- */
-export function shallow<D, T = Partial<D>>(defaults: D, value: T): Merge<D, T> {
-  const data: any =
-    typeof value === 'object' &&
-    value !== null &&
-    !Array.isArray(value) &&
-    typeof defaults === 'object' &&
-    defaults !== null &&
-    !Array.isArray(defaults)
-      ? Object.assign(clonedeep(defaults), value)
-      : value;
-  return data;
-}
-
-/**
- * If both `defaults` and `value` are objects, they will be deep merged.
- * Keys with `undefined` values will be treated as non existent, and will acquire their value at `defaults`.
+ * If both `defaults` and `data` are objects, they will be shallow merged.
+ * Keys with `undefined` values in a `data` object will acquire their value at `defaults`.
  * Mutations to the returned object won't have an effect over `defaults`.
  * Arrays won't be merged.
  */
-export function merge<D, T = Partial<D>>(defaults: D, value: T): Merge<D, T> {
-  return mergeWith(defaults, value, (obj, src) => {
+export function shallow<D, T = Partial<D>>(defaults: D, data: T): Merge<D, T> {
+  return mergeWith(defaults, data, (obj, src, stack) => {
+    if (!stack || typeof stack.size !== 'number') {
+      throw Error(`merge stack error`);
+    }
+
+    return stack.size > 0 || Array.isArray(src) || Array.isArray(obj)
+      ? mergeWith(src, undefined, undefined)
+      : undefined;
+  });
+}
+
+/**
+ * If both `defaults` and `data` are objects, they will be deep merged.
+ * Keys with `undefined` values in a `data` object will acquire their value at `defaults`.
+ * Mutations to the returned object won't have an effect over `defaults`.
+ * Arrays won't be merged.
+ */
+export function merge<D, T = Partial<D>>(defaults: D, data: T): Merge<D, T> {
+  return mergeWith(defaults, data, (obj, src) => {
     return Array.isArray(src) || Array.isArray(obj)
       ? mergeWith(src, undefined, undefined)
       : undefined;
@@ -35,13 +35,13 @@ export function merge<D, T = Partial<D>>(defaults: D, value: T): Merge<D, T> {
 }
 
 /**
- * If both the `defaults` and `value` are objects, they will be deep merged.
- * Keys with `undefined` values will be treated as non existent, and will acquire their value at `defaults`.
+ * If both `defaults` and `data` are objects, they will be deep merged.
+ * Keys with `undefined` values in a `data` object will acquire their value at `defaults`.
  * Mutations to the returned object won't have an effect over `defaults`.
  * Arrays will be concatenated.
  */
-export function deep<D, T = Partial<D>>(defaults: D, value: T): Merge<D, T> {
-  return mergeWith(defaults, value, (obj, src) => {
+export function deep<D, T = Partial<D>>(defaults: D, data: T): Merge<D, T> {
+  return mergeWith(defaults, data, (obj, src) => {
     const isObjArray = Array.isArray(obj);
     const isSrcArray = Array.isArray(src);
 

@@ -4,13 +4,13 @@ const noop = (): void => undefined;
 
 export function mergeWith(
   defaults: any,
-  value: any,
+  data: any,
   fn?: (obj: any, src: any, stack?: { size?: number }) => any
 ): any {
-  const { data } = lodashMergeWith(
+  const { value } = lodashMergeWith(
     {},
-    { data: defaults },
-    value === undefined ? undefined : { data: value },
+    { value: defaults },
+    data === undefined ? undefined : { value: data },
     fn
       ? (obj, src, _k, _o, _s, ...stack: any[]) => {
           return fn(obj, src, stack[0]);
@@ -18,5 +18,5 @@ export function mergeWith(
       : noop
   );
 
-  return data;
+  return value;
 }
