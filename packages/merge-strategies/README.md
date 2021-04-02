@@ -16,11 +16,14 @@
 
 ## Usage
 
-All functions return a new object -they are not mutated-, and take in objects of any type. If they receive scalars instead of `Array`s or `object`s, `value` will be returned.
+All functions return a new object -they are not mutated-, and take in objects of any type. If they receive scalars instead of `Array`s or `object`s, `data` will be returned.
 
-### shallow(defaults, value)
+### shallow(defaults, data)
 
-If both `defaults` and `value` are objects, they will be shallow merged.
+* If both `defaults` and `data` are objects, they will be shallow merged.
+* Keys with `undefined` values in a `data` object will acquire their value at `defaults`.
+* Mutations to the returned object won't have an effect over `defaults`.
+* Arrays won't be merged.
 
 ```javascript
 import { shallow } from 'merge-strategies';
@@ -32,9 +35,12 @@ shallow(
 );
 ```
 
-### merge(defaults, value)
+### merge(defaults, data)
 
-If both `defaults` and `value` are objects, they will be deep merged.
+* If both `defaults` and `data` are objects, they will be deep merged.
+* Keys with `undefined` values in a `data` object will acquire their value at `defaults`.
+* Mutations to the returned object won't have an effect over `defaults`.
+* Arrays won't be merged.
 
 ```javascript
 import { merge } from 'merge-strategies';
@@ -46,9 +52,12 @@ merge(
 );
 ```
 
-### deep(defaults, value)
+### deep(defaults, data)
 
-If both the `defaults` and `value` are objects, they will be deep merged. Arrays will be concatenated.
+* If both `defaults` and `data` are objects, they will be deep merged.
+* Keys with `undefined` values in a `data` object will acquire their value at `defaults`.
+* Mutations to the returned object won't have an effect over `defaults`.
+* Arrays will be concatenated.
 
 ```javascript
 import { deep } from 'merge-strategies';
