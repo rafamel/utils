@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/rafamel/utils/compare/merge-strategies@0.1.6...merge-strategies@0.2.0) (2021-04-02)
+
+
+### Bug Fixes
+
+* **merge-strategies:** fix shallow inconsistent behavior ([b1ddffc](https://github.com/rafamel/utils/commit/b1ddffc065cc057d7bf8de272394c70a791e08d2))
+* **merge-strategies:** fixes array handling for merge and deep ([3023820](https://github.com/rafamel/utils/commit/3023820b7e221d0d0e1854e6638f5b79d2e78e1b))
+
+
+### BREAKING CHANGES
+
+* **merge-strategies:** The shallow function will now assign to keys in any inner data object with an
+undefined value its value at the defaults object, if any. Previously, the merge and deep functions
+did already behave in this manner. As a product of the alignment in behavior with merge and deep,
+there might be additional edge cases in which the usage of shallow might break your implementation.
+It is suggested that you test your use case after upgrading.
+* **merge-strategies:** Any usage of the merge or deep functions that relies on the mutation of the
+returned object to mutate the defaults argument will cease working. Mutations to the returned object
+won't have an effect over defaults.
+
+
+
+
+
 ## [0.1.6](https://github.com/rafamel/utils/compare/merge-strategies@0.1.5...merge-strategies@0.1.6) (2020-02-19)
 
 **Note:** Version bump only for package merge-strategies
