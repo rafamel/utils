@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/rafamel/utils/compare/type-core@0.8.0...type-core@0.9.0) (2021-04-09)
+
+
+### Features
+
+* **type-core:** add Deep.Required and Deep.Partial types ([beb4c9e](https://github.com/rafamel/utils/commit/beb4c9ea77d85836a579557ff40de9c3095cc03a))
+
+
+
+
+
 # [0.8.0](https://github.com/rafamel/utils/compare/type-core@0.7.0...type-core@0.8.0) (2021-01-18)
 
 
