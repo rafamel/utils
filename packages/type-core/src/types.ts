@@ -44,6 +44,33 @@ export type Optional<T extends Members, K extends keyof T> = Intersection<
   { [P in K]?: T[P] }
 >;
 
+export declare namespace Deep {
+  export type Required<T> = T extends VariadicFn
+    ? T
+    : T extends Array<infer U>
+    ? Private.DeepRequiredArray<U>
+    : T extends object
+    ? Private.DeepRequiredObject<T>
+    : T;
+
+  export type Partial<T> = T extends VariadicFn
+    ? T
+    : T extends Array<infer U>
+    ? Private.DeepPartialArray<U>
+    : T extends object
+    ? Private.DeepPartialObject<T>
+    : T | undefined;
+}
+
+declare namespace Private {
+  type DeepRequiredArray<T> = Array<Deep.Required<Exclude<T, undefined>>>;
+  type DeepRequiredObject<T> = {
+    [P in keyof T]-?: Deep.Required<Exclude<T[P], undefined>>;
+  };
+  export type DeepPartialArray<T> = Array<Deep.Partial<T>>;
+  export type DeepPartialObject<T> = { [P in keyof T]?: Deep.Partial<T[P]> };
+}
+
 /* Functions */
 export type NullaryFn<T = void> = () => T;
 export type UnaryFn<T = void, U = void> = (arg: T) => U;
