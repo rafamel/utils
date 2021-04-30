@@ -5,7 +5,7 @@ export interface Constructor<T = any> {
 }
 
 /* Records */
-export type Members<T = any> = Record<any, T>;
+export type Dictionary<T = any> = Record<any, T>;
 
 /* Promises */
 export type MaybePromise<T> = Promise<T> | T;

@@ -1,4 +1,4 @@
-import { Members } from './structural';
+import { Dictionary } from './structural';
 import { VariadicFn } from './functions';
 
 /* Any */
@@ -7,7 +7,7 @@ export type Intersection<A, B, C = B, D = B, E = B> = A & B & C & D & E;
 
 /* Structures */
 export type KeyOf<
-  T extends ReadonlyArray<any> | ArrayLike<any> | Members
+  T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary
 > = T extends ReadonlyArray<any>
   ? number
   : T extends ArrayLike<any>
@@ -16,7 +16,7 @@ export type KeyOf<
   ? keyof T
   : never;
 export type ValueOf<
-  T extends ReadonlyArray<any> | ArrayLike<any> | Members
+  T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary
 > = T extends ReadonlyArray<any>
   ? T[number]
   : T extends ArrayLike<any>
@@ -26,10 +26,10 @@ export type ValueOf<
   : never;
 
 /* Records */
-export type Replace<T extends Members, U> = {
+export type Replace<T extends Dictionary, U> = {
   [P in keyof T]: U;
 };
-export type Optional<T extends Members, K extends keyof T> = Intersection<
+export type Optional<T extends Dictionary, K extends keyof T> = Intersection<
   Omit<T, K>,
   { [P in K]?: T[P] }
 >;
