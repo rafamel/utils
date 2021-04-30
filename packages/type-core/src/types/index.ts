@@ -1,4 +1,4 @@
-export * from './core';
+export * from './basic-types';
 export * from './functions';
-export * from './mapping';
 export * from './structural';
+export * from './utils';

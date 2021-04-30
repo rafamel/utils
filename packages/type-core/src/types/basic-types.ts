@@ -1,4 +1,4 @@
-/* Basic Types */
+/* Primitives */
 export type ID = number | string;
 export type NonDefined = undefined | void;
 export type Nullable = undefined | null;
@@ -13,7 +13,7 @@ export type Primitive =
   | null
   | undefined;
 
-/* Mapping */
+/* Utils */
 export type Generalize<T> =
   | T
   | (T extends bigint ? bigint : never)
