@@ -1,7 +1,7 @@
 import { Push } from 'multitude/definitions';
 import {
   MaybePromiseLike,
-  Members,
+  Dictionary,
   ValueOf,
   NullaryFn,
   TypeGuard
@@ -9,10 +9,10 @@ import {
 import { Result } from './Result';
 
 export declare namespace Create {
-  export type CombineSuccessType<T extends Members<Result.Break>> = {
+  export type CombineSuccessType<T extends Dictionary<Result.Break>> = {
     [P in keyof T]: Result.SuccessType<T[P]>;
   };
-  export type CombineFailureType<T extends Members<Result.Break>> = ValueOf<
+  export type CombineFailureType<T extends Dictionary<Result.Break>> = ValueOf<
     {
       [P in keyof T]: Result.FailureType<T[P]>;
     }
@@ -88,10 +88,10 @@ export class Create {
       return () => subscription.unsubscribe();
     });
   }
-  public static combine<T extends Members<Result.Box>>(
+  public static combine<T extends Dictionary<Result.Box>>(
     members: T
   ): Result.Box<Create.CombineSuccessType<T>, Create.CombineFailureType<T>>;
-  public static combine<T extends Members<Result.Break>>(
+  public static combine<T extends Dictionary<Result.Break>>(
     members: T
   ): Result.Break<Create.CombineSuccessType<T>, Create.CombineFailureType<T>>;
   public static combine<SA, FA>(
@@ -181,7 +181,7 @@ export class Create {
    * record or array of the result's `data` fields.
    */
   public static combine(
-    results: Members<Result.Break> | Result.Break[]
+    results: Dictionary<Result.Break> | Result.Break[]
   ): Result.Break {
     if (TypeGuard.isArray(results)) {
       const data: any[] = [];
