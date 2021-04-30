@@ -16,25 +16,39 @@
 
 ## Types
 
-[See source.](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L1)
-
-* Primitives
+* [Primitives](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/basic-types.ts#L1)
+  * `ID`
   * `NonDefined`
+  * `Nullable`
   * `Empty`
   * `FalseLike`
   * `Primitive`
-* Records
-  * `Members`
-  * `Replace`
-* Functions
+* [Serial](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/basic-types.ts#L27)
+  * `Serial.Type`
+  * `Serial.Primitive`
+  * `Serial.Array`
+  * `Serial.Object`
+* [Structural](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/structural.ts#L1)
+  * `Dictionary`
+  * `Constructor`
+  * `MaybePromise`
+  * `MaybePromiseLike`
+* [Functions](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/functions.ts#L1)
   * `NullaryFn`
   * `UnaryFn`
   * `BinaryFn`
   * `MultiaryFn`
   * `VariadicFn`
-* Utils
+* [Utils](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/utils.ts#L1)
   * `Union`
   * `Intersection`
+  * `KeyOf`
+  * `ValueOf`
+  * `Retype`
+  * `Replace`
+  * `Optional`
+  * `Deep.Required`
+  * `Deep.Partial`
 
 ## Utilities
 
