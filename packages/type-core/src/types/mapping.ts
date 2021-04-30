@@ -26,7 +26,7 @@ export type ValueOf<
   : never;
 
 /* Records */
-export type Redefine<T> = Dictionary extends T ? { [K in keyof T]: T[K] } : T;
+export type Retype<T> = Dictionary extends T ? { [K in keyof T]: T[K] } : T;
 export type Replace<T extends Dictionary, U> = {
   [P in keyof T]: U;
 };
