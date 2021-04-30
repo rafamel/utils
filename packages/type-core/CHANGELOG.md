@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/rafamel/utils/compare/type-core@0.10.0...type-core@0.11.0) (2021-04-30)
+
+
+### improvement
+
+* **type-core:** rename Redefine type to more descriptive Retype ([104ef98](https://github.com/rafamel/utils/commit/104ef98eeec12a18531d0d4f254d12d4f912b81a))
+
+
+### BREAKING CHANGES
+
+* **type-core:** Redefine type has been renamed to Retype
+
+
+
+
+
 # [0.10.0](https://github.com/rafamel/utils/compare/type-core@0.9.0...type-core@0.10.0) (2021-04-30)
 
 
