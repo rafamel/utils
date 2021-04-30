@@ -19,7 +19,7 @@
 * [Primitives](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/basic-types.ts#L1)
   * `ID`
   * `NonDefined`
-  * `Nullable`
+  * `Nullish`
   * `Empty`
   * `FalseLike`
   * `Primitive`
@@ -44,7 +44,7 @@
   * `Intersection`
   * `KeyOf`
   * `ValueOf`
-  * `Retype`
+  * `Index`
   * `Replace`
   * `Optional`
   * `Deep.Required`
@@ -58,25 +58,28 @@
 
 An exported object with methods:
 
-* `isUndefined(item: any): item is undefined`
+* `isID(item: any): item is ID`
+* `isNullish(item: any): item is Nullish`
+* `isEmpty(item: any): item is Empty`
+* `isFalseLike(item: any): item is FalseLike`
+* `isPrimitive(item: any): item is Primitive`: includes *bigint, boolean, number, string, symbol, null,* and *undefined.*
 * `isNull(item: any): item is null`
-* `isEmpty(item: any): item is Empty`: includes *null* and *undefined.*
-* `isFalseLike(item: any): item is FalseLike`: item is *falsy*.
+* `isUndefined(item: any): item is undefined`
 * `isBoolean(item: any): item is boolean`
 * `isString(item: any): item is string`
 * `isNumber(item: any): item is number`
 * `isBigInt(item: any): item is bigint`
 * `isSymbol(item: any): item is symbol`
-* `isPrimitive(item: any): item is Primitive`: includes *bigint, boolean, number, string, symbol, null,* and *undefined.*
 * `isFunction(item: any): item is VariadicFn`
-* `isObject(item: any): item is any`: excludes *null*, includes array.
 * `isObjectLike(item: any): item is any`: excludes *null*, includes array and function.
-* `isRecord(item: any): item is Members<unknown>`: excludes *null*, array, and function.
+* `isObject(item: any): item is any`: excludes *null*, includes array.
 * `isRecordLike(item: any): item is Members<unknown>`, excludes `null` and array, includes function.
+* `isRecord(item: any): item is Members<unknown>`: excludes *null*, array, and function.
 * `isArray(item: any): item is unknown[]`
-* `isPromise(item: any): item is Promise<unknown>`: item is a *Promise*.
 * `isPromiseLike(item: any):  item is PromiseLike<unknown>`: item is a *thenable*.
+* `isPromise(item: any): item is Promise<unknown>`: item is a *Promise*.
 * `isIterable(item: any): item is Iterable<unknown>`
+* `isAsyncIterable(item: any): item is AsyncIterable<unknown>`
 * `isIterator(item: any): item is Iterator<unknown, unknown, unknown>`
 * `isEventEmitterLike(item: any): item is Partial<NodeJS.EventEmitter>`
 * `isEventEmitter(item: any): item is NodeJS.EventEmitter`
