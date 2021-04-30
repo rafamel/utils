@@ -2,18 +2,22 @@ import {
   Empty,
   FalseLike,
   VariadicFn,
-  Members,
+  Dictionary,
   ID,
   Primitive,
-  Intersection
+  Intersection,
+  Nullable
 } from './types';
 
 export class TypeGuard {
   public static isID(item: any): item is ID {
     return TypeGuard.isString(item) || TypeGuard.isNumber(item);
   }
-  public static isEmpty(item: any): item is Empty {
+  public static isNullable(item: any): item is Nullable {
     return TypeGuard.isUndefined(item) || TypeGuard.isNull(item);
+  }
+  public static isEmpty(item: any): item is Empty {
+    return TypeGuard.isNullable(item);
   }
   public static isFalseLike(item: any): item is FalseLike {
     return !item;
@@ -51,10 +55,10 @@ export class TypeGuard {
   public static isObject(item: any): item is any {
     return typeof item === 'object' && !TypeGuard.isNull(item);
   }
-  public static isRecordLike(item: any): item is Members<unknown> {
+  public static isRecordLike(item: any): item is Dictionary<unknown> {
     return TypeGuard.isRecord(item) || TypeGuard.isFunction(item);
   }
-  public static isRecord(item: any): item is Members<unknown> {
+  public static isRecord(item: any): item is Dictionary<unknown> {
     return TypeGuard.isObject(item) && !TypeGuard.isArray(item);
   }
   public static isArray(item: any): item is unknown[] {

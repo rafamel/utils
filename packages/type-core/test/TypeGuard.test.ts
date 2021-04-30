@@ -16,6 +16,19 @@ test(`isID`, () => {
   assert(!TypeGuard.isID(Symbol('')));
   assert(!TypeGuard.isID(() => undefined));
 });
+test(`isNullable`, () => {
+  assert(TypeGuard.isNullable(null));
+  assert(TypeGuard.isNullable(undefined));
+  assert(!TypeGuard.isNullable(0));
+  assert(!TypeGuard.isNullable(0n));
+  assert(!TypeGuard.isNullable(false));
+  assert(!TypeGuard.isNullable(''));
+  assert(!TypeGuard.isNullable({}));
+  assert(!TypeGuard.isNullable([]));
+  assert(!TypeGuard.isNullable({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isNullable(Symbol('')));
+  assert(!TypeGuard.isNullable(() => undefined));
+});
 test(`isEmpty`, () => {
   assert(TypeGuard.isEmpty(null));
   assert(TypeGuard.isEmpty(undefined));
