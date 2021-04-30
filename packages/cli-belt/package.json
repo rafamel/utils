@@ -75,6 +75,6 @@
     "execall": "^2.0.0",
     "find-up": "^4.0.0",
     "fs-extra": "^9.0.1",
-    "normalize-package-data": "^2.5.0"
+    "normalize-package-data": "^3.0.0"
   }
 }
