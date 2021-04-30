@@ -5,7 +5,7 @@ import { VariadicFn } from './functions';
 export type Union<A, B, C = B, D = B, E = B> = A | B | C | D | E;
 export type Intersection<A, B, C = B, D = B, E = B> = A & B & C & D & E;
 
-/* Structures */
+/* Extract */
 export type KeyOf<
   T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary
 > = T extends ReadonlyArray<any>
@@ -15,6 +15,7 @@ export type KeyOf<
   : T extends object
   ? keyof T
   : never;
+
 export type ValueOf<
   T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary
 > = T extends ReadonlyArray<any>
@@ -25,8 +26,8 @@ export type ValueOf<
   ? T[keyof T]
   : never;
 
-/* Records */
-export type Retype<T> = Dictionary extends T ? { [K in keyof T]: T[K] } : T;
+/* Map */
+export type Index<T> = { [K in keyof T]: T[K] };
 export type Replace<T extends Dictionary, U> = {
   [P in keyof T]: U;
 };
@@ -34,6 +35,7 @@ export type Optional<T extends Dictionary, K extends keyof T> = Intersection<
   Omit<T, K>,
   { [P in K]?: T[P] }
 >;
+
 export declare namespace Deep {
   export type Required<T> = T extends VariadicFn
     ? T

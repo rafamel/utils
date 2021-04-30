@@ -6,18 +6,18 @@ import {
   ID,
   Primitive,
   Intersection,
-  Nullable
+  Nullish
 } from './types';
 
 export class TypeGuard {
   public static isID(item: any): item is ID {
     return TypeGuard.isString(item) || TypeGuard.isNumber(item);
   }
-  public static isNullable(item: any): item is Nullable {
+  public static isNullish(item: any): item is Nullish {
     return TypeGuard.isUndefined(item) || TypeGuard.isNull(item);
   }
   public static isEmpty(item: any): item is Empty {
-    return TypeGuard.isNullable(item);
+    return TypeGuard.isNullish(item);
   }
   public static isFalseLike(item: any): item is FalseLike {
     return !item;

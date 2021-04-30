@@ -1,7 +1,7 @@
 /* Primitives */
 export type ID = number | string;
 export type NonDefined = undefined | void;
-export type Nullable = undefined | null;
+export type Nullish = undefined | null;
 export type Empty = NonDefined | null;
 export type FalseLike = Empty | false | '' | 0 | 0n;
 export type Primitive =

@@ -17,17 +17,17 @@ test(`isID`, () => {
   assert(!TypeGuard.isID(() => undefined));
 });
 test(`isNullable`, () => {
-  assert(TypeGuard.isNullable(null));
-  assert(TypeGuard.isNullable(undefined));
-  assert(!TypeGuard.isNullable(0));
-  assert(!TypeGuard.isNullable(0n));
-  assert(!TypeGuard.isNullable(false));
-  assert(!TypeGuard.isNullable(''));
-  assert(!TypeGuard.isNullable({}));
-  assert(!TypeGuard.isNullable([]));
-  assert(!TypeGuard.isNullable({ [Symbol.iterator]: noop }));
-  assert(!TypeGuard.isNullable(Symbol('')));
-  assert(!TypeGuard.isNullable(() => undefined));
+  assert(TypeGuard.isNullish(null));
+  assert(TypeGuard.isNullish(undefined));
+  assert(!TypeGuard.isNullish(0));
+  assert(!TypeGuard.isNullish(0n));
+  assert(!TypeGuard.isNullish(false));
+  assert(!TypeGuard.isNullish(''));
+  assert(!TypeGuard.isNullish({}));
+  assert(!TypeGuard.isNullish([]));
+  assert(!TypeGuard.isNullish({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isNullish(Symbol('')));
+  assert(!TypeGuard.isNullish(() => undefined));
 });
 test(`isEmpty`, () => {
   assert(TypeGuard.isEmpty(null));
