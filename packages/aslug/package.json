@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "base-x": "^3.0.8",
-    "escape-string-regexp": "^4.0.0",
+    "escape-string-regexp": "^5.0.0",
     "unidecode": "^0.1.8"
   },
   "@pika/pack": {
