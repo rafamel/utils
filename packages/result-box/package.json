@@ -1,6 +1,6 @@
 {
   "name": "result-box",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "Rafa Mel",
   "description": "Because throw/catch is not always best",
   "keywords": [
@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "multitude": "0.0.1",
-    "type-core": "^0.9.0"
+    "type-core": "^0.10.0"
   },
   "@pika/pack": {
     "pipeline": [

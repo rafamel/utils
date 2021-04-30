@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/rafamel/utils/compare/result-box@0.3.2...result-box@0.3.3) (2021-04-30)
+
+
+### Bug Fixes
+
+* **result-box:** update to latest type-core ([1adb06a](https://github.com/rafamel/utils/commit/1adb06ac509df24983ae1a7878d4e889e34141c8))
+
+
+
+
+
 ## [0.3.2](https://github.com/rafamel/utils/compare/result-box@0.3.1...result-box@0.3.2) (2021-04-09)
 
 **Note:** Version bump only for package result-box

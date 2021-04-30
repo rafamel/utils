@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/rafamel/utils/compare/type-core@0.9.0...type-core@0.10.0) (2021-04-30)
+
+
+### Features
+
+* **type-core:** add Nullable type and TypeGuard.isNullable method ([70844a3](https://github.com/rafamel/utils/commit/70844a3e7a2028d9f3ba4b2da43f373e8a03c604))
+* **type-core:** add Redefine type ([b7f95de](https://github.com/rafamel/utils/commit/b7f95de56f5f0dedd85b49eee5d7d6a174a2b0d0))
+
+
+### improvement
+
+* **type-core:** rename Members type to more descriptive Dictionary ([190bf81](https://github.com/rafamel/utils/commit/190bf8164c4d52f65994538a2b2832def72cd336))
+
+
+### BREAKING CHANGES
+
+* **type-core:** Members type has been renamed to Dictionary
+
+
+
+
+
 # [0.9.0](https://github.com/rafamel/utils/compare/type-core@0.8.0...type-core@0.9.0) (2021-04-09)
 
 
