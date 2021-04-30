@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/rafamel/utils/compare/type-core@0.11.0...type-core@0.12.0) (2021-04-30)
+
+
+### improvement
+
+* **type-core:** rename Retype and Nullable to more descriptive Index and Nullish ([1fce3e6](https://github.com/rafamel/utils/commit/1fce3e6dc27b68bd933f17abef9b33bd4dcf03d0))
+
+
+### BREAKING CHANGES
+
+* **type-core:** Retype and Nullable are renamed to Index and Nullish
+
+
+
+
+
 # [0.11.0](https://github.com/rafamel/utils/compare/type-core@0.10.0...type-core@0.11.0) (2021-04-30)
 
 
