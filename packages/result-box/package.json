@@ -52,7 +52,7 @@
     "url": "https://github.com/rafamel/utils/issues"
   },
   "dependencies": {
-    "multitude": "0.0.1",
+    "multitude": "0.0.5",
     "type-core": "^0.12.0"
   },
   "@pika/pack": {
