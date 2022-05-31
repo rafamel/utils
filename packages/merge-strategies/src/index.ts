@@ -1,4 +1,4 @@
-import { mergeWith } from './helpers/merge-with';
+import { mergeWith } from './merge-with';
 
 export type Merge<D, T> = T & (D extends object ? T & D : T);
 
@@ -11,7 +11,7 @@ export type Merge<D, T> = T & (D extends object ? T & D : T);
 export function shallow<D, T = Partial<D>>(defaults: D, data: T): Merge<D, T> {
   return mergeWith(defaults, data, (obj, src, stack) => {
     if (!stack || typeof stack.size !== 'number') {
-      throw Error(`merge stack error`);
+      throw new Error(`merge stack error`);
     }
 
     return stack.size > 0 || Array.isArray(src) || Array.isArray(obj)

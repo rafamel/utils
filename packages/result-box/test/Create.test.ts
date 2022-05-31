@@ -1,6 +1,8 @@
-import { Create } from '../src/Create';
+import { test } from '@jest/globals';
+import assert from 'node:assert';
 import { Observable } from 'multitude';
-import assert from 'assert';
+
+import { Create } from '../src/Create';
 
 test(`Create.success`, () => {
   const result = Create.success('foo');
@@ -15,7 +17,7 @@ test(`Create.execute: success`, () => {
   assert.deepStrictEqual(result, { success: true, data: 'foo' });
 });
 test(`Create.execute: failure`, () => {
-  const err = Error('foo');
+  const err = new Error('foo');
   const result = Create.execute(() => {
     throw err;
   });
@@ -34,7 +36,7 @@ test(`Create.promise: promise resolution`, async () => {
   assert.deepStrictEqual(await result, { success: true, data: 'foo' });
 });
 test(`Create.promise: promise rejection`, async () => {
-  const err = Error('foo');
+  const err = new Error('foo');
   const result = Create.promise(Promise.reject(err));
 
   assert(result instanceof Promise);
@@ -47,7 +49,7 @@ test(`Create.promise: sync function value`, async () => {
   assert.deepStrictEqual(await result, { success: true, data: 'foo' });
 });
 test(`Create.promise: sync function exception`, async () => {
-  const err = Error('foo');
+  const err = new Error('foo');
   const result = Create.promise(() => {
     throw err;
   });
@@ -62,7 +64,7 @@ test(`Create.promise: async function resolution`, async () => {
   assert.deepStrictEqual(await result, { success: true, data: 'foo' });
 });
 test(`Create.promise: async function rejection`, async () => {
-  const err = Error('foo');
+  const err = new Error('foo');
   const result = Create.promise(() => Promise.reject(err));
 
   assert(result instanceof Promise);
@@ -94,7 +96,7 @@ test(`Create.observable: observable completes case`, () => {
   ]);
 });
 test(`Create.observable: observable errors case, no completeOnFail`, () => {
-  const error = Error('foo');
+  const error = new Error('foo');
   const obs = new Observable((obs) => {
     obs.next(1);
     obs.next(2);
@@ -122,7 +124,7 @@ test(`Create.observable: observable errors case, no completeOnFail`, () => {
   ]);
 });
 test(`Create.observable: observable errors case, completeOnFail`, () => {
-  const error = Error('foo');
+  const error = new Error('foo');
   const obs = new Observable((obs) => {
     obs.next(1);
     obs.next(2);

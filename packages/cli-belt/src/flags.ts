@@ -27,16 +27,18 @@ export function flags(
 ): { options: Record<string, Flag>; aliases: Record<string, string> } {
   const opts = Object.assign({ safe: true, mode: 'keep' }, options);
 
-  if (opts.safe) {
-    if (/\s*--([a-z-]*)\s*(<[a-z-\s]*>)?,\s*-([a-z-]*)/i.exec(help)) {
-      throw Error(`Alias found last in help -should be first`);
-    }
+  if (
+    opts.safe &&
+    /\s*--([a-z-]*)\s*(<[\sa-z-]*>)?,\s*-([a-z-]*)/i.test(help)
+  ) {
+    throw new Error(`Alias found last in help -should be first`);
   }
 
   const aliases: Record<string, string> = {};
   const flags: Record<string, Flag> = {};
 
-  const regex = /[\n\r]\s*(?:(-[a-z-]+)[ \t]*,[ \t]*)?(--[a-z-]+)(\s*<.*>)?( +.*)?$/gim;
+  const regex =
+    /[\n\r]\s*(?:(-[a-z-]+)[\t ]*,[\t ]*)?(--[a-z-]+)(\s*<.*>)?( +.*)?$/gim;
   const matches = execall(regex, help);
   for (const match of matches) {
     const sub = match.subMatches;
@@ -49,7 +51,7 @@ export function flags(
       opts.mode === 'no-dash' ? sub[1].slice(2)
         : opts.mode === 'camelcase' ? camelcase(sub[1]) : sub[1];
     if (opts.safe && Object.hasOwnProperty.call(flags, key)) {
-      throw Error(`Flag ${key} found twice`);
+      throw new Error(`Flag ${key} found twice`);
     }
 
     // description
@@ -60,7 +62,7 @@ export function flags(
     // alias
     if (sub[0]) {
       if (opts.safe && sub[0].length > 2) {
-        throw Error(`Aliases must be a single character`);
+        throw new Error(`Aliases must be a single character`);
       }
       item.alias =
         opts.mode === 'no-dash' || opts.mode === 'camelcase'
@@ -68,7 +70,7 @@ export function flags(
           : sub[0];
 
       if (opts.safe && Object.hasOwnProperty.call(aliases, item.alias)) {
-        throw Error(`Alias ${item.alias} found twice`);
+        throw new Error(`Alias ${item.alias} found twice`);
       }
       aliases[item.alias] = key;
     }

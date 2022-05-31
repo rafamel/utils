@@ -1,6 +1,8 @@
-import { Consume } from '../src/Consume';
+import { test } from '@jest/globals';
+import assert from 'node:assert';
 import { Observable } from 'multitude';
-import assert from 'assert';
+
+import { Consume } from '../src/Consume';
 
 test(`Consume.result: null`, () => {
   const data = Consume.result(null);
@@ -22,7 +24,7 @@ test(`Consume.result: failure`, () => {
   assert(thrown instanceof Error);
 });
 test(`Consume.result: Error failure`, () => {
-  const error = Error('foo');
+  const error = new Error('foo');
   let thrown: any;
   try {
     Consume.result({ success: false, data: error });
@@ -33,7 +35,7 @@ test(`Consume.result: Error failure`, () => {
   assert(thrown === error);
 });
 test(`Consume.result: failure, object w/ error throwing getter`, () => {
-  const error = Error('foo');
+  const error = new Error('foo');
   let thrown: any;
 
   try {
@@ -103,7 +105,7 @@ test(`Consume.promise: failure promise`, async () => {
   assert(promise instanceof Promise);
 });
 test(`Consume.promise: Error failure`, async () => {
-  const error = Error('foo');
+  const error = new Error('foo');
 
   let thrown: any;
   let promise: any;
@@ -118,7 +120,7 @@ test(`Consume.promise: Error failure`, async () => {
   assert(promise instanceof Promise);
 });
 test(`Consume.promise: Error failure promise`, async () => {
-  const error = Error('foo');
+  const error = new Error('foo');
 
   let thrown: any;
   let promise: any;
@@ -186,7 +188,7 @@ test(`Consume.observable: eventual failure case`, () => {
   assert.deepStrictEqual(values, [1, 2]);
 });
 test(`Consume.observable: eventual Error failure case`, () => {
-  const error = Error('foo');
+  const error = new Error('foo');
   const obs = new Observable((obs) => {
     obs.next({ success: true, data: 1 });
     obs.next({ success: true, data: 2 });
@@ -216,7 +218,7 @@ test(`Consume.observable: eventual Error failure case`, () => {
   assert.deepStrictEqual(values, [1, 2]);
 });
 test(`Consume.observable: relays errors`, () => {
-  const error = Error('foo');
+  const error = new Error('foo');
   const obs = new Observable((obs) => {
     obs.error(error);
     obs.next({ success: true, data: 1 });

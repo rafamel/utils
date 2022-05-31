@@ -21,7 +21,7 @@ export function safePairs(
   for (const key of aKeys) {
     if (!Object.hasOwnProperty.call(b, key)) {
       if (options.fail) {
-        throw Error(`Second pair element doesn't reproduce keys`);
+        throw new Error(`Second pair element doesn't reproduce keys`);
       } else {
         return false;
       }
@@ -32,7 +32,7 @@ export function safePairs(
     const bKeys = Object.keys(b);
     if (aKeys.length !== bKeys.length) {
       if (options.fail) {
-        throw Error(`Second pair element doesn't reproduce keys`);
+        throw new Error(`Second pair element doesn't reproduce keys`);
       } else {
         return false;
       }

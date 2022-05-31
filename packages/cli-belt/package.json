@@ -1,8 +1,13 @@
 {
   "name": "cli-belt",
+  "description": "An utility belt to complement your arguments parser of choice",
   "version": "1.0.3",
   "author": "Rafa Mel",
-  "description": "An utility belt to complement your arguments parser of choice",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "cli",
     "command line",
@@ -18,42 +23,29 @@
     "load",
     "up"
   ],
+  "type": "module",
+  "types": "./build/index.d.ts",
+  "exports": "./build/index.js",
+  "files": [
+    "build/"
+  ],
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
-  "main": "pkg/dist/index.js",
-  "types": "pkg/dist/index.d.ts",
   "scripts": {
-    "commit": "kpo commit --",
-    "semantic": "kpo semantic --",
-    "fix": "kpo fix --",
-    "fix:scripts": "kpo fix:scripts --",
-    "lint": "kpo lint --",
-    "lint:md": "kpo lint:md --",
-    "lint:scripts": "kpo lint:scripts --",
-    "clean": "kpo clean --",
-    "clean:build": "kpo clean:build --",
-    "clean:modules": "kpo clean:modules --",
-    "prepublishOnly": "kpo prepublishOnly --",
-    "preversion": "kpo preversion --",
-    "version": "kpo version --",
+    "node": "kpo node --",
     "build": "kpo build --",
-    "build:transpile": "kpo build:transpile --",
-    "build:types": "kpo build:types --",
-    "fix:code": "kpo fix:code --",
-    "lint:code": "kpo lint:code --",
-    "lint:types": "kpo lint:types --",
-    "test": "kpo test --",
-    "verify": "kpo verify --",
-    "validate": "kpo validate --",
+    "tarball": "kpo tarball --",
     "docs": "kpo docs --",
-    "build:pack": "kpo build:pack --",
-    "build:static": "kpo build:static --",
+    "fix": "kpo fix --",
+    "lint": "kpo lint --",
+    "test": "kpo test --",
+    "commit": "kpo commit --",
     "release": "kpo release --",
-    "watch": "kpo watch --",
-    "watch:test": "kpo watch:test --"
+    "distribute": "kpo distribute --",
+    "validate": "kpo validate --",
+    "version": "kpo version --"
   },
-  "license": "MIT",
   "homepage": "https://github.com/rafamel/utils/tree/master/packages/cli-belt",
   "repository": {
     "type": "git",
@@ -62,19 +54,12 @@
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"
   },
-  "devDependencies": {
-    "@types/camelcase": "^5.2.0",
-    "@types/find-up": "^4.0.0",
-    "@types/fs-extra": "^9.0.1"
-  },
   "dependencies": {
-    "@types/normalize-package-data": "^2.4.0",
     "camelcase": "^6.0.0",
-    "chalk": "^4.1.0",
-    "errorish": "^0.5.0",
-    "execall": "^2.0.0",
-    "find-up": "^4.0.0",
-    "fs-extra": "^9.0.1",
-    "normalize-package-data": "^2.5.0"
+    "chalk": "^5.0.1",
+    "errorish": "^1.0.0",
+    "execall": "^3.0.0",
+    "find-up": "^6.3.0",
+    "normalize-package-data": "^4.0.0"
   }
 }

@@ -1,4 +1,6 @@
-import { flags, Flag } from '~/flags';
+import { test, expect } from '@jest/globals';
+
+import { flags, Flag } from '../src/flags';
 
 const help = `
 Usage: foo [options]

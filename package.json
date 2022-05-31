@@ -1,37 +1,31 @@
 {
   "name": "utils",
+  "description": "A monorepo of simple small utilities for everyday happiness",
   "version": "0.0.0",
   "author": "Rafa Mel",
-  "description": "A monorepo of simple small utilities for everyday happiness",
-  "keywords": [],
+  "license": "MIT",
   "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "keywords": [],
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "scripts": {
-    "commit": "kpo commit --",
-    "semantic": "kpo semantic --",
-    "fix": "kpo fix --",
-    "fix:scripts": "kpo fix:scripts --",
+    "run": "kpo run --",
+    "execute": "kpo execute --",
+    "build": "kpo build --",
     "lint": "kpo lint --",
-    "lint:md": "kpo lint:md --",
-    "lint:scripts": "kpo lint:scripts --",
-    "clean": "kpo clean --",
-    "clean:build": "kpo clean:build --",
-    "clean:modules": "kpo clean:modules --",
-    "prepublishOnly": "kpo prepublishOnly --",
-    "preversion": "kpo preversion --",
-    "version": "kpo version --",
+    "coverage": "kpo coverage --",
+    "commit": "kpo commit --",
     "release": "kpo release --",
-    "test": "kpo test --",
-    "test:coverage": "kpo test:coverage --",
-    "verify": "kpo verify --",
+    "distribute": "kpo distribute --",
     "validate": "kpo validate --",
-    "bootstrap": "kpo bootstrap --",
-    "link": "kpo link --",
-    "postinstall": "kpo postinstall --"
+    "postinstall": "kpo postinstall --",
+    "preversion": "kpo preversion --",
+    "version": "kpo version --"
   },
-  "license": "MIT",
   "homepage": "https://github.com/rafamel/utils",
   "repository": {
     "type": "git",
@@ -41,26 +35,14 @@
     "url": "https://github.com/rafamel/utils/issues"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@pika/pack": "^0.4.0",
-    "@pika/plugin-build-web": "^0.9.2",
-    "@pika/plugin-standard-pkg": "^0.9.2",
-    "@riseup/library": "^0.5.0",
-    "@riseup/monorepo": "^0.5.0",
-    "@riseup/tooling": "^0.5.0",
-    "@types/jest": "^26.0.4",
-    "@zerollup/ts-transform-paths": "^1.7.18",
-    "coveralls": "^3.1.0",
-    "husky": "^4.2.5",
-    "kpo": "^0.11.1",
-    "lerna": "^3.22.1",
-    "onchange": "^6.1.1",
-    "typescript": "^3.9.6"
-  },
-  "dependencies": {},
-  "husky": {
-    "hooks": {
-      "pre-commit": "kpo verify"
-    }
+    "@jest/globals": "^28.1.0",
+    "@riseup/library": "^0.20.0",
+    "@riseup/monorepo": "^0.20.0",
+    "@riseup/tooling": "^0.20.0",
+    "@riseup/universal": "^0.20.0",
+    "@riseup/utils": "^0.20.0",
+    "kpo": "^0.23.2",
+    "lerna": "^5.0.0",
+    "typescript": "^4.7.2"
   }
 }

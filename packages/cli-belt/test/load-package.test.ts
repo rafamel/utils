@@ -1,51 +1,63 @@
-import { loadPackage } from '~/load-package';
-import up from 'find-up';
-import fs from 'fs-extra';
+import { jest, describe, test, expect } from '@jest/globals';
 
-jest.mock('find-up');
-jest.mock('fs-extra');
+import {
+  loadPackageImplementation,
+  LoadPackageOptions
+} from '../src/load-package/load-package';
 
-const mocks: Record<string, jest.Mock<any, any>> = {
-  up,
-  read: fs.readJSON
-} as any;
+function create(findUpMock?: any, readMock?: any): Record<string, any> {
+  const res = { findUp: {}, readJSON: { name: 'Foo' } };
+  const findUp: any = findUpMock || jest.fn(async () => res.findUp);
+  const readJSON: any = readMock || jest.fn(async () => res.readJSON);
 
-beforeEach(() => Object.values(mocks).forEach((mock) => mock.mockClear()));
-
-const res = { up: {}, read: { name: 'Foo' } };
-mocks.up.mockImplementation(async () => res.up);
-mocks.read.mockImplementation(async () => res.read);
+  return {
+    res,
+    findUp,
+    readJSON,
+    loadPackage(dir: string, options?: LoadPackageOptions) {
+      return loadPackageImplementation(dir, options || {}, {
+        findUp,
+        readJSON
+      });
+    }
+  };
+}
 
 describe(`reads package`, () => {
   test(`calls up w/ dir`, async () => {
+    const { loadPackage, findUp } = create();
     await loadPackage('foo/bar');
-    expect(mocks.up).toHaveBeenCalledTimes(1);
-    expect(mocks.up).toHaveBeenCalledWith('package.json', {
+    expect(findUp).toHaveBeenCalledTimes(1);
+    expect(findUp).toHaveBeenCalledWith('package.json', {
       cwd: 'foo/bar',
       type: 'file'
     });
   });
   test(`fails if package is not found`, async () => {
-    mocks.up.mockImplementationOnce(async () => null);
+    const { loadPackage } = create(async () => null);
 
     await expect(
       loadPackage('foo/bar')
     ).rejects.toThrowErrorMatchingInlineSnapshot(`"package couldn't be found"`);
   });
   test(`calls readJSON w/ path`, async () => {
+    const { loadPackage, readJSON, res } = create();
     await loadPackage('foo/bar');
 
-    expect(mocks.read).toHaveBeenCalledTimes(1);
-    expect(mocks.read.mock.calls[0][0]).toBe(res.up);
+    expect(readJSON).toHaveBeenCalledTimes(1);
+    expect(readJSON.mock.calls[0][0]).toBe(res.findUp);
   });
   test(`fails on package read error`, async () => {
-    mocks.read.mockImplementationOnce(() => Promise.reject(Error()));
+    const { loadPackage } = create(null, () => {
+      return Promise.reject(new Error('foo'));
+    });
 
     await expect(loadPackage('foo/bar')).rejects.toThrowError();
   });
 });
 describe(`normalize`, () => {
   test(`is active by default`, async () => {
+    const { loadPackage } = create();
     await expect(loadPackage('foo/bar', { normalize: true })).resolves
       .toMatchInlineSnapshot(`
             Object {
@@ -57,6 +69,7 @@ describe(`normalize`, () => {
           `);
   });
   test(`normalize = true`, async () => {
+    const { loadPackage } = create();
     await expect(loadPackage('foo/bar')).resolves.toMatchInlineSnapshot(`
             Object {
               "_id": "Foo@",
@@ -67,26 +80,30 @@ describe(`normalize`, () => {
           `);
   });
   test(`normalize = false`, async () => {
+    const { loadPackage, res } = create();
     await expect(loadPackage('foo/bar', { normalize: false })).resolves.toBe(
-      res.read
+      res.readJSON
     );
   });
 });
 describe(`process.title`, () => {
   test(`is not set by default`, async () => {
+    const { loadPackage } = create();
     await loadPackage('foo/bar');
     expect(process.title).not.toBe('Foo');
   });
   test(`title = false`, async () => {
+    const { loadPackage } = create();
     await loadPackage('foo/bar');
     expect(process.title).not.toBe('Foo');
   });
   test(`title = false & !pkg.name`, async () => {
-    mocks.read.mockImplementationOnce(async () => ({}));
+    const { loadPackage } = create(null, async () => ({}));
     await loadPackage('foo/bar', { title: true });
     expect(process.title).not.toBe('Foo');
   });
   test(`title = true`, async () => {
+    const { loadPackage } = create();
     await loadPackage('foo/bar', { title: true });
     expect(process.title).toBe('Foo');
   });

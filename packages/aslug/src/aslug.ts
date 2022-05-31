@@ -1,13 +1,25 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import basex, { BaseConverter } from 'base-x';
 import unidecode from 'unidecode';
-import basex from 'base-x';
-import escape from './escape';
+
 import encode from './encode';
 import decode from './decode';
+import escape from './escape';
 import { Options } from './types';
 import { ALPHABET, SEPARATOR } from './constants';
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default function aslug(options: Partial<Options> = {}) {
+export default function aslug(options?: Partial<Options>) {
+  return implementation(options, { basex, encode, decode });
+}
+
+export function implementation(
+  options: Partial<Options> = {},
+  deps: {
+    basex: (alphabet: string) => BaseConverter;
+    encode: (str: string, base: BaseConverter, options: Options) => string;
+    decode: (str: string, base: BaseConverter, options: Options) => string;
+  }
+) {
   const opts = Object.assign(
     { alphabet: ALPHABET, separator: SEPARATOR },
     options
@@ -25,7 +37,7 @@ export default function aslug(options: Partial<Options> = {}) {
     }
   }
   if (options.separator !== undefined && options.separator.length !== 1) {
-    throw Error(`separator must be a single character`);
+    throw new Error(`separator must be a single character`);
   }
 
   /* Additional defaults */
@@ -34,11 +46,12 @@ export default function aslug(options: Partial<Options> = {}) {
   }
   opts.map = options.map
     ? (char: string) => {
-        const str = (options as Options).map(char);
+        const map = (options as Options).map;
+        const str = map(char);
         return str.search((opts as Options).target) === -1 ? str : '';
       }
     : (char: string) => {
-        const str = unidecode(char).replace(/[ _.,;:]/, '-');
+        const str = unidecode(char).replace(/[ ,.:;_]/, '-');
         return str.search((opts as Options).target) === -1 ? str : '';
       };
 
@@ -47,12 +60,12 @@ export default function aslug(options: Partial<Options> = {}) {
     (options.separator || options.target) &&
     opts.separator.search(opts.target)
   ) {
-    throw Error(`Separator must match target`);
+    throw new Error(`Separator must match target`);
   }
 
-  const base = basex(opts.alphabet);
+  const base = deps.basex(opts.alphabet);
   return {
-    encode: (str: string) => encode(str, base, opts as Options),
-    decode: (str: string) => decode(str, base, opts as Options)
+    encode: (str: string) => deps.encode(str, base, opts as Options),
+    decode: (str: string) => deps.decode(str, base, opts as Options)
   };
 }

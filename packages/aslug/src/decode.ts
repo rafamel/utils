@@ -1,5 +1,8 @@
 import { BaseConverter } from 'base-x';
+
 import { Options } from './types';
+
+const textdecoder = new TextDecoder();
 
 export default function decode(
   str: string,
@@ -12,10 +15,7 @@ export default function decode(
     ? str
     : trunk(
         str.slice(0, index),
-        base
-          .decode(str.slice(index + 1))
-          .toString()
-          .split('|')
+        textdecoder.decode(base.decode(str.slice(index + 1))).split('|')
       );
 }
 

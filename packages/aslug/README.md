@@ -1,14 +1,11 @@
 # aslug
 
 [![Version](https://img.shields.io/npm/v/aslug.svg)](https://www.npmjs.com/package/aslug)
-[![Build Status](https://img.shields.io/travis/rafamel/utils/master.svg)](https://travis-ci.org/rafamel/utils)
-[![Coverage](https://img.shields.io/coveralls/rafamel/utils/master.svg)](https://coveralls.io/github/rafamel/utils)
-[![Dependencies](https://img.shields.io/david/rafamel/utils.svg?path=packages%2Faslug)](https://david-dm.org/rafamel/utils.svg?path=packages%2Faslug)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/aslug.svg)](https://snyk.io/test/npm/aslug)
-[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/aslug/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/aslug.svg)](https://www.npmjs.com/package/aslug)
 
-> A lossless *slug* that preserves uniqueness.
+> A lossless slug that preserves uniqueness.
 
 ## Install
 
@@ -28,8 +25,8 @@ An example use case for `aslug` would be a set of *ids* that have to be made saf
 
 `aslug` takes an `options` *object* and returns an *object* with methods `encode` and `decode` -both taking a *string*.
 
-* [`aslug` documentation](https://rafamel.github.io/utils/aslug/globals.html#aslug)
-* [`options` documentation](https://rafamel.github.io/utils/aslug/interfaces/options.html)
+* [`aslug` documentation](https://rafamel.github.io/utils/aslug/modules.html#default)
+* [`options` documentation](https://rafamel.github.io/utils/aslug/interfaces/Options.html)
 
 Optional `options` fields include:
 

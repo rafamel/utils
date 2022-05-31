@@ -1,4 +1,6 @@
-import { strict, partial, shallow, deep } from '~/strategies';
+import { describe, test, expect } from '@jest/globals';
+
+import { strict, partial, shallow, deep } from '../src';
 
 describe(`strict`, () => {
   test(`is true`, () => {

@@ -6,15 +6,14 @@ export type Union<A, B, C = B, D = B, E = B> = A | B | C | D | E;
 export type Intersection<A, B, C = B, D = B, E = B> = A & B & C & D & E;
 
 /* Extract */
-export type KeyOf<
-  T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary
-> = T extends ReadonlyArray<any>
-  ? number
-  : T extends ArrayLike<any>
-  ? number
-  : T extends object
-  ? keyof T
-  : never;
+export type KeyOf<T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary> =
+  T extends ReadonlyArray<any>
+    ? number
+    : T extends ArrayLike<any>
+    ? number
+    : T extends object
+    ? keyof T
+    : never;
 
 export type ValueOf<
   T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary

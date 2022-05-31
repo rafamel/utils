@@ -1,5 +1,8 @@
 import { BaseConverter } from 'base-x';
+
 import { Options } from './types';
+
+const textencoder = new TextEncoder();
 
 export default function encode(
   str: string,
@@ -10,7 +13,7 @@ export default function encode(
   return (
     trunk('', str, payload, options) +
     (payload.length
-      ? options.separator + base.encode(Buffer.from(payload.join('|')))
+      ? options.separator + base.encode(textencoder.encode(payload.join('|')))
       : '')
   );
 }
@@ -31,7 +34,8 @@ export function trunk(
   const c = next.slice(index + 1);
 
   str += a;
-  const replaced = options.map(b);
+  const map = options.map;
+  const replaced = map(b);
   payload.push(
     `${b}${str.length}${
       replaced.length

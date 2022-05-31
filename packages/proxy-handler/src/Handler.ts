@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import { SourceFn, HandlerOptions, SwitchableKey } from './types';
 
 export class Handler<T extends object> implements Required<ProxyHandler<T>> {
@@ -85,18 +84,13 @@ export class Handler<T extends object> implements Required<ProxyHandler<T>> {
       Reflect.defineProperty(this.source, key, attributes)
     );
   }
-  public enumerate(_: T): PropertyKey[] {
-    return this.conditional('enumerate', [], () =>
-      Array.from(Reflect.enumerate(this.source))
-    );
-  }
-  public ownKeys(_: T): PropertyKey[] {
+  public ownKeys(_: T): ArrayLike<string | symbol> {
     return this.conditional('ownKeys', [], () => Reflect.ownKeys(this.source));
   }
   public apply(_: T, self: any, args?: any): any {
-    return Reflect.apply(this.source as Function, self, args);
+    return Reflect.apply(this.source as any, self, args);
   }
   public construct(_: T, args: any, target?: any): object {
-    return Reflect.construct(this.source as Function, args, target);
+    return Reflect.construct(this.source as any, args, target);
   }
 }

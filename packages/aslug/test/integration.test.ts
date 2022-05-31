@@ -1,4 +1,6 @@
-import aslug from '~/aslug';
+import { test, expect } from '@jest/globals';
+
+import aslug from '../src/aslug';
 
 const { encode, decode } = aslug();
 

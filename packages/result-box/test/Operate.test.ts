@@ -1,5 +1,7 @@
+import { test } from '@jest/globals';
+import assert from 'node:assert';
+
 import { Operate } from '../src/Operate';
-import assert from 'assert';
 
 test(`Operate.fallback`, () => {
   assert.deepStrictEqual(Operate.fallback('foo')(null), {
@@ -28,7 +30,10 @@ test(`Operate.transform: no args`, () => {
 });
 test(`Operate.transform: onSuccess`, () => {
   const values: any[] = [];
-  const fn = (res: string) => (value: any): any => values.push(value) && res;
+  const fn =
+    (res: string) =>
+    (value: any): any =>
+      values.push(value) && res;
 
   assert.deepStrictEqual(Operate.transform(fn('foo'))(null), null);
   assert.deepStrictEqual(
@@ -44,7 +49,10 @@ test(`Operate.transform: onSuccess`, () => {
 });
 test(`Operate.transform: onFailure`, () => {
   const values: any[] = [];
-  const fn = (res: string) => (value: any): any => values.push(value) && res;
+  const fn =
+    (res: string) =>
+    (value: any): any =>
+      values.push(value) && res;
 
   assert.deepStrictEqual(Operate.transform(null, fn('foo'))(null), null);
   assert.deepStrictEqual(
@@ -71,7 +79,10 @@ test(`Operate.map: no args`, () => {
 });
 test(`Operate.map: onSuccess`, () => {
   const values: any[] = [];
-  const fn = (res: string) => (value: any): any => values.push(value) && res;
+  const fn =
+    (res: string) =>
+    (value: any): any =>
+      values.push(value) && res;
 
   assert.deepStrictEqual(Operate.map(fn('foo'))(null), null);
   assert.deepStrictEqual(
@@ -87,7 +98,10 @@ test(`Operate.map: onSuccess`, () => {
 });
 test(`Operate.map: onFailure`, () => {
   const values: any[] = [];
-  const fn = (res: string) => (value: any): any => values.push(value) && res;
+  const fn =
+    (res: string) =>
+    (value: any): any =>
+      values.push(value) && res;
 
   assert.deepStrictEqual(Operate.map(null, fn('foo'))(null), null);
   assert.deepStrictEqual(

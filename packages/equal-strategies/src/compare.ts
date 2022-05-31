@@ -21,7 +21,7 @@ export function compare<T>(
       return deep(value, query);
     }
     default: {
-      throw Error(`Invalid equality kind: ${kind}`);
+      throw new Error(`Invalid equality kind: ${kind}`);
     }
   }
 }

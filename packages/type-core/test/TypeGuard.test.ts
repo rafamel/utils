@@ -1,5 +1,8 @@
-import { TypeGuard } from '~/TypeGuard';
-import assert from 'assert';
+/* eslint-disable unicorn/no-thenable */
+import assert from 'node:assert';
+import { test } from '@jest/globals';
+
+import { TypeGuard } from '../src/TypeGuard';
 
 const noop = (): void => undefined;
 

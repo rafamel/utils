@@ -1,5 +1,6 @@
-import { Push } from 'multitude/definitions';
 import { MaybePromiseLike, TypeGuard } from 'type-core';
+import { Push } from 'multitude';
+
 import { Result } from './Result';
 
 export declare namespace Consume {
@@ -27,7 +28,7 @@ export class Consume {
       } catch (_) {
         str = String(error);
       }
-      throw Error(`Result failed with ${typeof error}: ` + str);
+      throw new Error(`Result failed with ${typeof error}: ` + str);
     }
   }
   /**
@@ -68,7 +69,7 @@ export class Consume {
           try {
             value = Consume.result(result);
           } catch (err) {
-            error = [err];
+            error = [err as Error];
           }
           if (!error) {
             obs.next(value);

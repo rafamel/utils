@@ -1,4 +1,6 @@
-import { safePairs } from '~/safe-pairs';
+import { describe, test, expect } from '@jest/globals';
+
+import { safePairs } from '../src/safe-pairs';
 
 const a = { foo: 'foo', bar: 'bar', baz: 'baz' };
 const b = { foo: 'baz', bar: 'bar', baz: 'foo', foobar: 'foobaz' };

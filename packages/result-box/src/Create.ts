@@ -1,4 +1,3 @@
-import { Push } from 'multitude/definitions';
 import {
   MaybePromiseLike,
   Dictionary,
@@ -6,17 +5,17 @@ import {
   NullaryFn,
   TypeGuard
 } from 'type-core';
+import { Push } from 'multitude';
+
 import { Result } from './Result';
 
 export declare namespace Create {
   export type CombineSuccessType<T extends Dictionary<Result.Break>> = {
     [P in keyof T]: Result.SuccessType<T[P]>;
   };
-  export type CombineFailureType<T extends Dictionary<Result.Break>> = ValueOf<
-    {
-      [P in keyof T]: Result.FailureType<T[P]>;
-    }
-  >;
+  export type CombineFailureType<T extends Dictionary<Result.Break>> = ValueOf<{
+    [P in keyof T]: Result.FailureType<T[P]>;
+  }>;
 }
 
 export class Create {
@@ -42,7 +41,7 @@ export class Create {
       const value = fn();
       return Create.success(value);
     } catch (err) {
-      return Create.failure(err);
+      return Create.failure(err as Error);
     }
   }
   /**
@@ -57,7 +56,7 @@ export class Create {
       const value = await (TypeGuard.isFunction(promise) ? promise() : promise);
       return Create.success(value);
     } catch (err) {
-      return Create.failure(err);
+      return Create.failure(err as Error);
     }
   }
   /**

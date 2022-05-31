@@ -1,4 +1,6 @@
-import { splitBy } from '~/split-by';
+import { test, expect } from '@jest/globals';
+
+import { splitBy } from '../src/split-by';
 
 test(`succeeds`, () => {
   const arr = ['foo', 'bar', 'baz', '--', 'foobar', 'foobaz', 'barbaz'];

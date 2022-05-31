@@ -1,3 +1,5 @@
-test(`doesn't throw`, () => {
-  expect(() => null).not.toThrow();
+import { test, expect } from '@jest/globals';
+
+test(`description`, () => {
+  expect(true).toBe(true);
 });

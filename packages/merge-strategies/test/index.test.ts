@@ -1,3 +1,5 @@
+import { describe, test, expect } from '@jest/globals';
+
 import { shallow, merge, deep } from '../src';
 
 describe(`shallow`, () => {

@@ -1,8 +1,13 @@
 {
   "name": "equal-strategies",
+  "description": "Equality evaluation strategies",
   "version": "0.1.0",
   "author": "Rafa Mel",
-  "description": "Equality evaluation strategies",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "equal",
     "equality",
@@ -12,42 +17,29 @@
     "shallow",
     "deep"
   ],
+  "type": "module",
+  "types": "./build/index.d.ts",
+  "exports": "./build/index.js",
+  "files": [
+    "build/"
+  ],
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
-  "main": "pkg/dist/index.js",
-  "types": "pkg/dist/index.d.ts",
   "scripts": {
-    "commit": "kpo commit --",
-    "semantic": "kpo semantic --",
-    "fix": "kpo fix --",
-    "fix:scripts": "kpo fix:scripts --",
-    "lint": "kpo lint --",
-    "lint:md": "kpo lint:md --",
-    "lint:scripts": "kpo lint:scripts --",
-    "clean": "kpo clean --",
-    "clean:build": "kpo clean:build --",
-    "clean:modules": "kpo clean:modules --",
-    "prepublishOnly": "kpo prepublishOnly --",
-    "preversion": "kpo preversion --",
-    "version": "kpo version --",
+    "node": "kpo node --",
     "build": "kpo build --",
-    "build:transpile": "kpo build:transpile --",
-    "build:types": "kpo build:types --",
-    "fix:code": "kpo fix:code --",
-    "lint:code": "kpo lint:code --",
-    "lint:types": "kpo lint:types --",
-    "test": "kpo test --",
-    "verify": "kpo verify --",
-    "validate": "kpo validate --",
+    "tarball": "kpo tarball --",
     "docs": "kpo docs --",
-    "build:pack": "kpo build:pack --",
-    "build:static": "kpo build:static --",
+    "fix": "kpo fix --",
+    "lint": "kpo lint --",
+    "test": "kpo test --",
+    "commit": "kpo commit --",
     "release": "kpo release --",
-    "watch": "kpo watch --",
-    "watch:test": "kpo watch:test --"
+    "distribute": "kpo distribute --",
+    "validate": "kpo validate --",
+    "version": "kpo version --"
   },
-  "license": "MIT",
   "homepage": "https://github.com/rafamel/utils/tree/master/packages/equal-strategies",
   "repository": {
     "type": "git",
@@ -56,24 +48,11 @@
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"
   },
+  "devDependencies": {
+    "@types/lodash.isequal": "^4.5.0"
+  },
   "dependencies": {
     "lodash.isequal": "^4.5.0",
     "shallow-equal-object": "^1.1.1"
-  },
-  "@pika/pack": {
-    "pipeline": [
-      [
-        "@pika/plugin-standard-pkg",
-        {
-          "exclude": [
-            "__mocks__/**/*",
-            "__tests__/**/*"
-          ]
-        }
-      ],
-      [
-        "@pika/plugin-build-web"
-      ]
-    ]
   }
 }
