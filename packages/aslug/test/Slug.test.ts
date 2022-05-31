@@ -1,7 +1,6 @@
 import { describe, test, expect } from '@jest/globals';
 
 import { Slug } from '../src/Slug';
-import { escapeStr } from '../src/helpers/escape-str';
 
 describe(`safety checks`, () => {
   test(`alphabet has unique characters`, () => {
@@ -41,13 +40,6 @@ describe(`safety checks`, () => {
     );
     expect(() => new Slug(null, { separator: '_' })).not.toThrow();
   });
-  test(`separator must match target`, () => {
-    const separator = new Slug().options.separator;
-
-    expect(
-      () => new Slug(null, { target: new RegExp(`[^${escapeStr(separator)}]`) })
-    ).toThrowErrorMatchingInlineSnapshot(`"Separator must match target"`);
-  });
 });
 
 describe(`encode/decode`, () => {
@@ -63,7 +55,7 @@ describe(`encode/decode`, () => {
     const slug = new Slug();
     const plain = 'foó bar-baz+$á.d,f;gs:a\'d" níño';
     const encoded =
-      'foo-bar-baza-d-f-gs-ad-nino~qbc9Mzu8fMVsrMAcm7Zb1zcBrGkttLhd1fL6vBlALk97FI4Y7hH8eJ4Wa74vmZUtc3wlmnXrKIY39zoAN4FEYYmL9r';
+      'foo-bar-baza-d-f-gs-ad-nino.qbc9Mzu8fMVsrMAcm7Zb1zcBrGkttLhd1fL6vBlALk97FI4Y7hH8eJ4Wa74vmZUtc3wlmnXrKIY39zoAN4FEYYmL9r';
 
     expect(slug.encode(plain)).toBe(encoded);
     expect(slug.decode(encoded)).toBe(plain);
@@ -71,7 +63,7 @@ describe(`encode/decode`, () => {
   test(`starts/ends in special chars`, () => {
     const slug = new Slug();
     const plain = '~foó pπ[ §';
-    const encoded = 'foo-pp-SS~RL-Njqw9esh-zzooMjNYSoUWMWqsRHxq9cAgz-4';
+    const encoded = 'foo-pp-SS.RL-Njqw9esh-zzooMjNYSoUWMWqsRHxq9cAgz-4';
 
     expect(slug.encode(plain)).toBe(encoded);
     expect(slug.decode(encoded)).toBe(plain);

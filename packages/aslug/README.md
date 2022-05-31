@@ -29,9 +29,8 @@ The `Slug` class optionally takes an `alphabet` *string* and an `options` *objec
 
 * `alphabet` defaults to: `'0123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-'`
 * `options` fields include:
-  * A `separator` to be used between the readable string and the payload. Defaults to `'~'`.
-  * A `target` regular expression to identify the characters to replace. Defaults to matching all characters not in `alphabet`.
-  * A `map` function to determine the strategy to use when replacing characters: remove diacritics, leave empty, or any other alternative. Defaults to replacing characters for their *ASCII* equivalent.
+  * A `separator` to be used between the readable string and the payload. Defaults to `'.'`.
+  * A `map` function to determine the strategy to use when replacing characters with a string within `alphabet` -otherwise an empty string. It can be used to remove diacritics, leave empty, or any other alternative. Defaults to replacing characters for their *ASCII* equivalent, if in `alphabet`.
 
 ### Simple example
 
@@ -40,6 +39,6 @@ import { Slug } from 'aslug';
 
 const slug = new Slug();
 
-slug.encode('string w/ special chars'); // string-w-special-chars~EjhdB6y8T2PsDU0e6zUv
-slug.decode('string-w-special-chars~EjhdB6y8T2PsDU0e6zUv'); // string w/ special chars
+slug.encode('string w/ special chars'); // string-w-special-chars.EjhdB6y8T2PsDU0e6zUv
+slug.decode('string-w-special-chars.EjhdB6y8T2PsDU0e6zUv'); // string w/ special chars
 ```
