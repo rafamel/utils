@@ -1,7 +1,7 @@
 {
   "name": "type-core",
   "description": "A types utility belt for TypeScript",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "author": "Rafa Mel",
   "license": "MIT",
   "private": false,

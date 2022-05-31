@@ -1,294 +1,82 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>result-box 0.3.5</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">result-box 0.3.5</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1> result-box 0.3.5</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#result-box" id="result-box" style="color: inherit; text-decoration: none;">
-					<h1>result-box</h1>
-				</a>
-				<p><a href="https://www.npmjs.com/package/result-box"><img src="https://img.shields.io/npm/v/result-box.svg" alt="Version"></a>
-					<a href="https://travis-ci.org/rafamel/utils"><img src="https://img.shields.io/travis/rafamel/utils/master.svg" alt="Build Status"></a>
-					<a href="https://coveralls.io/github/rafamel/utils"><img src="https://img.shields.io/coveralls/rafamel/utils/master.svg" alt="Coverage"></a>
-					<a href="https://david-dm.org/rafamel/utils.svg?path=packages%2Fresult-box"><img src="https://img.shields.io/david/rafamel/utils.svg?path=packages%2Fresult-box" alt="Dependencies"></a>
-					<a href="https://snyk.io/test/npm/result-box"><img src="https://img.shields.io/snyk/vulnerabilities/npm/result-box.svg" alt="Vulnerabilities"></a>
-					<a href="https://github.com/rafamel/utils/blob/master/LICENSE"><img src="https://img.shields.io/github/license/rafamel/utils.svg" alt="License"></a>
-				<a href="https://www.npmjs.com/package/result-box"><img src="https://img.shields.io/npm/types/result-box.svg" alt="Types"></a></p>
-				<blockquote>
-					<p>Because throw/catch is not always best.</p>
-				</blockquote>
-				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
-					<h2>Install</h2>
-				</a>
-				<p><a href="https://www.npmjs.com/package/result-box"><code>npm install result-box</code></a></p>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
-				<p>A <em>result</em> is a plain <em>object</em> with fields <code>success</code> and <code>data</code>. Type definitions for different kinds of <em>result</em> are provided, as well as some creation, operation, and consumption conveniency functions:</p>
-				<ul>
-					<li><a href="#result"><code>Result</code>:</a> <em>result</em> type definitions.</li>
-					<li><a href="#create"><code>Create</code>:</a> creation utility functions.</li>
-					<li><a href="#operate"><code>Operate</code>:</a> operation utility functions.</li>
-					<li><a href="#consume"><code>Consume</code>:</a> consumption utility functions.</li>
-				</ul>
-				<a href="#result" id="result" style="color: inherit; text-decoration: none;">
-					<h3><code>Result</code></h3>
-				</a>
-				<p>Type definitions are provided for a successful <em>result</em>, a failed <em>result</em>, and a combination of them:</p>
-				<ul>
-					<li><a href="https://rafamel.github.io/utils/result-box/modules/result.html#box"><code>Result.Box</code>:</a> a successful or failed <em>result</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/modules/result.html#break"><code>Result.Break</code>:</a> a successful <em>result</em>, a failed <em>result</em>, or <code>null</code>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/modules/result.html#success-1"><code>Result.Success</code>:</a> a successful <em>result</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/modules/result.html#failure"><code>Result.Failure</code>:</a> a failed <em>result</em>.</li>
-				</ul>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Result } <span class="hljs-keyword">from</span> <span class="hljs-string">'result-box'</span>;
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>result-box v0.4.0</title><meta name="description" content="Documentation for result-box v0.4.0"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">result-box v0.4.0</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>result-box v0.4.0 </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#result-box" id="result-box" style="color: inherit; text-decoration: none;">
+  <h1>result-box</h1>
+</a>
+<p><a href="https://www.npmjs.com/package/result-box"><img src="https://img.shields.io/npm/v/result-box.svg" alt="Version"></a>
+<a href="https://snyk.io/test/npm/result-box"><img src="https://img.shields.io/snyk/vulnerabilities/npm/result-box.svg" alt="Vulnerabilities"></a>
+<a href="https://github.com/rafamel/result-box/blob/master/LICENSE"><img src="https://img.shields.io/github/license/rafamel/utils.svg" alt="License"></a>
+<a href="https://www.npmjs.com/package/result-box"><img src="https://img.shields.io/npm/types/result-box.svg" alt="Types"></a></p>
+<blockquote>
+<p>Because throw/catch is not always best.</p>
+</blockquote>
 
-<span class="hljs-keyword">const</span> success: Result.Success&lt;<span class="hljs-built_in">string</span>&gt; = {
-  success: <span class="hljs-literal">true</span>,
-  data: <span class="hljs-string">'foo'</span>
-};
+<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+  <h2>Install</h2>
+</a>
+<p><a href="https://www.npmjs.com/package/result-box"><code>npm install result-box</code></a></p>
 
-<span class="hljs-keyword">const</span> failure: Result.Failure&lt;<span class="hljs-built_in">Error</span>&gt; = {
-  success: <span class="hljs-literal">false</span>,
-  data: <span class="hljs-built_in">Error</span>(<span class="hljs-string">'foo'</span>)
-};
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+<p>A <em>result</em> is a plain <em>object</em> with fields <code>success</code> and <code>data</code>. Type definitions for different kinds of <em>result</em> are provided, as well as some creation, operation, and consumption conveniency functions:</p>
+<ul>
+<li><a href="#result"><code>Result</code>:</a> <em>result</em> type definitions.</li>
+<li><a href="#create"><code>Create</code>:</a> creation utility functions.</li>
+<li><a href="#operate"><code>Operate</code>:</a> operation utility functions.</li>
+<li><a href="#consume"><code>Consume</code>:</a> consumption utility functions.</li>
+</ul>
 
-<span class="hljs-keyword">const</span> successBox: Result.Box&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">Error</span>&gt; = success;
-<span class="hljs-keyword">const</span> failureBox: Result.Box&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">Error</span>&gt; = failure;
+<a href="#result" id="result" style="color: inherit; text-decoration: none;">
+  <h3><code>Result</code></h3>
+</a>
+<p>Type definitions are provided for a successful <em>result</em>, a failed <em>result</em>, and a combination of them:</p>
+<ul>
+<li><a href="https://rafamel.github.io/utils/result-box/modules/Result.html#Box"><code>Result.Box</code>:</a> a successful or failed <em>result</em>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/modules/Result.html#Break"><code>Result.Break</code>:</a> a successful <em>result</em>, a failed <em>result</em>, or <code>null</code>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/modules/Result.html#Success"><code>Result.Success</code>:</a> a successful <em>result</em>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/modules/Result.html#Failure"><code>Result.Failure</code>:</a> a failed <em>result</em>.</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Result</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;result-box&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">success</span><span class="hl-1">: </span><span class="hl-6">Result</span><span class="hl-1">.</span><span class="hl-6">Success</span><span class="hl-1">&lt;</span><span class="hl-6">string</span><span class="hl-1">&gt; = {</span><br/><span class="hl-1">  </span><span class="hl-2">success:</span><span class="hl-1"> </span><span class="hl-4">true</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-2">data:</span><span class="hl-1"> </span><span class="hl-3">&#39;foo&#39;</span><br/><span class="hl-1">};</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">failure</span><span class="hl-1">: </span><span class="hl-6">Result</span><span class="hl-1">.</span><span class="hl-6">Failure</span><span class="hl-1">&lt;</span><span class="hl-6">Error</span><span class="hl-1">&gt; = {</span><br/><span class="hl-1">  </span><span class="hl-2">success:</span><span class="hl-1"> </span><span class="hl-4">false</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-2">data:</span><span class="hl-1"> </span><span class="hl-6">Error</span><span class="hl-1">(</span><span class="hl-3">&#39;foo&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">};</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">successBox</span><span class="hl-1">: </span><span class="hl-6">Result</span><span class="hl-1">.</span><span class="hl-6">Box</span><span class="hl-1">&lt;</span><span class="hl-6">string</span><span class="hl-1">, </span><span class="hl-6">Error</span><span class="hl-1">&gt; = </span><span class="hl-2">success</span><span class="hl-1">;</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">failureBox</span><span class="hl-1">: </span><span class="hl-6">Result</span><span class="hl-1">.</span><span class="hl-6">Box</span><span class="hl-1">&lt;</span><span class="hl-6">string</span><span class="hl-1">, </span><span class="hl-6">Error</span><span class="hl-1">&gt; = </span><span class="hl-2">failure</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">successBreak</span><span class="hl-1">: </span><span class="hl-6">Result</span><span class="hl-1">.</span><span class="hl-6">Break</span><span class="hl-1">&lt;</span><span class="hl-6">string</span><span class="hl-1">, </span><span class="hl-6">Error</span><span class="hl-1">&gt; = </span><span class="hl-2">success</span><span class="hl-1">;</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">failureBreak</span><span class="hl-1">: </span><span class="hl-6">Result</span><span class="hl-1">.</span><span class="hl-6">Break</span><span class="hl-1">&lt;</span><span class="hl-6">string</span><span class="hl-1">, </span><span class="hl-6">Error</span><span class="hl-1">&gt; = </span><span class="hl-2">failure</span><span class="hl-1">;</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">nullBreak</span><span class="hl-1">: </span><span class="hl-6">Result</span><span class="hl-1">.</span><span class="hl-6">Break</span><span class="hl-1">&lt;</span><span class="hl-6">string</span><span class="hl-1">, </span><span class="hl-6">Error</span><span class="hl-1">&gt; = </span><span class="hl-4">null</span><span class="hl-1">;</span>
+</code></pre>
 
-<span class="hljs-keyword">const</span> successBreak: Result.Break&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">Error</span>&gt; = success;
-<span class="hljs-keyword">const</span> failureBreak: Result.Break&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">Error</span>&gt; = failure;
-<span class="hljs-keyword">const</span> nullBreak: Result.Break&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">Error</span>&gt; = <span class="hljs-literal">null</span>;</code></pre>
-				<a href="#create" id="create" style="color: inherit; text-decoration: none;">
-					<h3><code>Create</code></h3>
-				</a>
-				<p>Creation utility functions:</p>
-				<ul>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#success"><code>Create.success</code>:</a> creates a successful <em>result</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#failure"><code>Create.failure</code>:</a> creates a failed <em>result</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#execute"><code>Create.execute</code>:</a> creates a <em>result</em> from a function.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#promise"><code>Create.promise</code>:</a> returns a <em>Promise</em> of a <em>result</em> from an input <em>Promise</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#observable"><code>Create.observable</code>:</a> returns an <em>Observable</em> of <em>result</em> from an input <em>Observable</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/create.html#combine"><code>Create.combine</code>:</a> combines a record or array of <em>result</em>.</li>
-				</ul>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Create } <span class="hljs-keyword">from</span> <span class="hljs-string">'result-box'</span>;
+<a href="#create" id="create" style="color: inherit; text-decoration: none;">
+  <h3><code>Create</code></h3>
+</a>
+<p>Creation utility functions:</p>
+<ul>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Create.html#success"><code>Create.success</code>:</a> creates a successful <em>result</em>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Create.html#failure"><code>Create.failure</code>:</a> creates a failed <em>result</em>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Create.html#execute"><code>Create.execute</code>:</a> creates a <em>result</em> from a function.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Create.html#promise"><code>Create.promise</code>:</a> returns a <em>Promise</em> of a <em>result</em> from an input <em>Promise</em>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Create.html#observable"><code>Create.observable</code>:</a> returns an <em>Observable</em> of <em>result</em> from an input <em>Observable</em>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Create.html#combine"><code>Create.combine</code>:</a> combines a record or array of <em>result</em>.</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Create</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;result-box&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-7">// Returns: `{ success: true, data: { foo: &#39;bar&#39; } }`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">success</span><span class="hl-1"> = </span><span class="hl-2">Create</span><span class="hl-1">.</span><span class="hl-8">success</span><span class="hl-1">({ </span><span class="hl-2">foo:</span><span class="hl-1"> </span><span class="hl-3">&#39;bar&#39;</span><span class="hl-1"> });</span><br/><br/><span class="hl-7">// Returns: `{ success: false, data: { reason: Error, code: 500 } }`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">failure</span><span class="hl-1"> = </span><span class="hl-2">Create</span><span class="hl-1">.</span><span class="hl-8">failure</span><span class="hl-1">({ </span><span class="hl-2">reason:</span><span class="hl-1"> </span><span class="hl-6">Error</span><span class="hl-1">(), </span><span class="hl-2">code:</span><span class="hl-1"> </span><span class="hl-9">500</span><span class="hl-1"> });</span><br/><br/><span class="hl-7">// Returns: `{ success: true, data: { foo: &#39;bar&#39; } }`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">executeSuccess</span><span class="hl-1"> = </span><span class="hl-2">Create</span><span class="hl-1">.</span><span class="hl-8">execute</span><span class="hl-1">(() </span><span class="hl-4">=&gt;</span><span class="hl-1"> ({ </span><span class="hl-2">foo:</span><span class="hl-1"> </span><span class="hl-3">&#39;bar&#39;</span><span class="hl-1"> }));</span><br/><br/><span class="hl-7">// Returns: `{ success: false, data: Error }`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">executeFailure</span><span class="hl-1"> = </span><span class="hl-2">Create</span><span class="hl-1">.</span><span class="hl-8">execute</span><span class="hl-1">(() </span><span class="hl-4">=&gt;</span><span class="hl-1"> { </span><span class="hl-0">throw</span><span class="hl-1"> </span><span class="hl-6">Error</span><span class="hl-1">(); });</span>
+</code></pre>
 
-<span class="hljs-comment">// Returns: `{ success: true, data: { foo: 'bar' } }`</span>
-<span class="hljs-keyword">const</span> success = Create.success({ foo: <span class="hljs-string">'bar'</span> });
+<a href="#operate" id="operate" style="color: inherit; text-decoration: none;">
+  <h3><code>Operate</code></h3>
+</a>
+<p>All operations return a unary function taking a <em>result</em> as an argument. You can straightforwardly pipe them with a pipe function such as the ones provided by the <a href="https://www.npmjs.com/package/pipettes"><code>pipettes</code></a> package.</p>
+<ul>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Operate.html#fallback"><code>Operate.fallback</code>:</a> creates a successful <em>result</em> when null.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Operate.html#transform"><code>Operate.transform</code>:</a> transforms a <em>result</em> into its <code>data</code>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Operate.html#map"><code>Operate.map</code>:</a> maps a <em>result</em> <code>data</code>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Operate.html#flip"><code>Operate.flip</code>:</a> optionally converts a successful <em>result</em> into a failed result and vice-versa.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Operate.html#tap"><code>Operate.tap</code>:</a> allows for the execution of side effects.</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Result</span><span class="hl-1">, </span><span class="hl-2">Operate</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;result-box&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">into</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;pipettes&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">none</span><span class="hl-1"> = </span><span class="hl-4">null</span><span class="hl-1"> </span><span class="hl-0">as</span><span class="hl-1"> </span><span class="hl-6">Result</span><span class="hl-1">.</span><span class="hl-6">Break</span><span class="hl-1">&lt;</span><span class="hl-6">number</span><span class="hl-1">, </span><span class="hl-6">string</span><span class="hl-1">&gt;;</span><br/><br/><span class="hl-7">// Return type: `Result.Box&lt;number | boolean, string&gt;`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">box</span><span class="hl-1"> = </span><span class="hl-8">into</span><span class="hl-1">(</span><span class="hl-2">none</span><span class="hl-1">, </span><span class="hl-2">Operate</span><span class="hl-1">.</span><span class="hl-8">fallback</span><span class="hl-1">(</span><span class="hl-4">true</span><span class="hl-1">));</span><br/><br/><span class="hl-7">// Return type: `number | boolean | string[]`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">transformed</span><span class="hl-1"> = </span><span class="hl-8">into</span><span class="hl-1">(</span><br/><span class="hl-1">  </span><span class="hl-2">box</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-2">Operate</span><span class="hl-1">.</span><span class="hl-8">transform</span><span class="hl-1">(</span><span class="hl-4">null</span><span class="hl-1">, (</span><span class="hl-2">data</span><span class="hl-1">: </span><span class="hl-6">string</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> [</span><span class="hl-2">data</span><span class="hl-1">])</span><br/><span class="hl-1">);</span><br/><br/><span class="hl-7">// Return type: `Result.Box&lt;boolean, string&gt;`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">mapped</span><span class="hl-1"> = </span><span class="hl-8">into</span><span class="hl-1">(</span><br/><span class="hl-1">  </span><span class="hl-2">box</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-2">Operate</span><span class="hl-1">.</span><span class="hl-8">map</span><span class="hl-1">((</span><span class="hl-2">data</span><span class="hl-1">: </span><span class="hl-6">number</span><span class="hl-1"> | </span><span class="hl-6">boolean</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> </span><span class="hl-2">data</span><span class="hl-1"> === </span><span class="hl-9">5</span><span class="hl-1">, </span><span class="hl-4">null</span><span class="hl-1">)</span><br/><span class="hl-1">);</span><br/><br/><span class="hl-7">// Return type: `Result.Box&lt;never, number | boolean | string&gt;`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">flipped</span><span class="hl-1"> = </span><span class="hl-8">into</span><span class="hl-1">(</span><span class="hl-2">box</span><span class="hl-1">, </span><span class="hl-2">Operate</span><span class="hl-1">.</span><span class="hl-8">flip</span><span class="hl-1">(</span><span class="hl-4">true</span><span class="hl-1">, </span><span class="hl-4">false</span><span class="hl-1">));</span><br/><br/><span class="hl-7">// Return type: `Result.Box&lt;number | boolean, string&gt;`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">tapped</span><span class="hl-1"> = </span><span class="hl-8">into</span><span class="hl-1">(</span><span class="hl-2">box</span><span class="hl-1">, </span><span class="hl-2">Operate</span><span class="hl-1">.</span><span class="hl-8">tap</span><span class="hl-1">(</span><span class="hl-4">null</span><span class="hl-1">, </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-2">log</span><span class="hl-1">));</span>
+</code></pre>
 
-<span class="hljs-comment">// Returns: `{ success: false, data: { reason: Error, code: 500 } }`</span>
-<span class="hljs-keyword">const</span> failure = Create.failure({ reason: <span class="hljs-built_in">Error</span>(), code: <span class="hljs-number">500</span> });
-
-<span class="hljs-comment">// Returns: `{ success: true, data: { foo: 'bar' } }`</span>
-<span class="hljs-keyword">const</span> executeSuccess = Create.execute(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> ({ foo: <span class="hljs-string">'bar'</span> }));
-
-<span class="hljs-comment">// Returns: `{ success: false, data: Error }`</span>
-<span class="hljs-keyword">const</span> executeFailure = Create.execute(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">throw</span> <span class="hljs-built_in">Error</span>(); });</code></pre>
-				<a href="#operate" id="operate" style="color: inherit; text-decoration: none;">
-					<h3><code>Operate</code></h3>
-				</a>
-				<p>All operations return a unary function taking a <em>result</em> as an argument. You can straightforwardly pipe them with a pipe function such as the ones provided by the <a href="https://www.npmjs.com/package/pipettes"><code>pipettes</code></a> package.</p>
-				<ul>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#fallback-1"><code>Operate.fallback</code>:</a> creates a successful <em>result</em> when null.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#transform-1"><code>Operate.transform</code>:</a> transforms a <em>result</em> into its <code>data</code>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#map-1"><code>Operate.map</code>:</a> maps a <em>result</em> <code>data</code>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#flip-1"><code>Operate.flip</code>:</a> optionally converts a successful <em>result</em> into a failed result and vice-versa.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/operate.html#tap"><code>Operate.tap</code>:</a> allows for the execution of side effects.</li>
-				</ul>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Result, Operate } <span class="hljs-keyword">from</span> <span class="hljs-string">'result-box'</span>;
-<span class="hljs-keyword">import</span> { into } <span class="hljs-keyword">from</span> <span class="hljs-string">'pipettes'</span>;
-
-<span class="hljs-keyword">const</span> none = <span class="hljs-literal">null</span> <span class="hljs-keyword">as</span> Result.Break&lt;<span class="hljs-built_in">number</span>, <span class="hljs-built_in">string</span>&gt;;
-
-<span class="hljs-comment">// Return type: `Result.Box&lt;number | boolean, string&gt;`</span>
-<span class="hljs-keyword">const</span> box = into(none, Operate.fallback(<span class="hljs-literal">true</span>));
-
-<span class="hljs-comment">// Return type: `number | boolean | string[]`</span>
-<span class="hljs-keyword">const</span> transformed = into(
-  box,
-  Operate.transform(<span class="hljs-literal">null</span>, <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> [data])
-);
-
-<span class="hljs-comment">// Return type: `Result.Box&lt;boolean, string&gt;`</span>
-<span class="hljs-keyword">const</span> mapped = into(
-  box,
-  Operate.map(<span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span></span>) =&gt;</span> data === <span class="hljs-number">5</span>, <span class="hljs-literal">null</span>)
-);
-
-<span class="hljs-comment">// Return type: `Result.Box&lt;never, number | boolean | string&gt;`</span>
-<span class="hljs-keyword">const</span> flipped = into(box, Operate.flip(<span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>));
-
-<span class="hljs-comment">// Return type: `Result.Box&lt;number | boolean, string&gt;`</span>
-<span class="hljs-keyword">const</span> tapped = into(box, Operate.tap(<span class="hljs-literal">null</span>, <span class="hljs-built_in">console</span>.log));</code></pre>
-				<a href="#consume" id="consume" style="color: inherit; text-decoration: none;">
-					<h3><code>Consume</code></h3>
-				</a>
-				<p>Consumption utility functions:</p>
-				<ul>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/consume.html#result-1"><code>Consume.result</code>:</a> consumes a <em>result</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/consume.html#promise"><code>Consume.promise</code>:</a> consumes a <em>Promise</em> of a <em>result</em>.</li>
-					<li><a href="https://rafamel.github.io/utils/result-box/classes/consume.html#observable"><code>Consume.observable</code>:</a> consumes an <em>Observable</em> of <em>result</em>.</li>
-				</ul>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Create, Consume } <span class="hljs-keyword">from</span> <span class="hljs-string">'result-box'</span>;
-<span class="hljs-keyword">import</span> { into } <span class="hljs-keyword">from</span> <span class="hljs-string">'pipettes'</span>;
-
-<span class="hljs-comment">// Returns: `'foo'`</span>
-<span class="hljs-keyword">const</span> data = Consume.result(Create.success(<span class="hljs-string">'foo'</span>));
-
-<span class="hljs-comment">// Throws error</span>
-into(Create.failure(<span class="hljs-string">'bar'</span>), Consume.result);</code></pre>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/result.html">Result</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/consume.html" class="tsd-kind-icon">Consume</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/create.html" class="tsd-kind-icon">Create</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/operate.html" class="tsd-kind-icon">Operate</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
-</body>
-</html>
+<a href="#consume" id="consume" style="color: inherit; text-decoration: none;">
+  <h3><code>Consume</code></h3>
+</a>
+<p>Consumption utility functions:</p>
+<ul>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Consume.html#result"><code>Consume.result</code>:</a> consumes a <em>result</em>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Consume.html#promise"><code>Consume.promise</code>:</a> consumes a <em>Promise</em> of a <em>result</em>.</li>
+<li><a href="https://rafamel.github.io/utils/result-box/classes/Consume.html#observable"><code>Consume.observable</code>:</a> consumes an <em>Observable</em> of <em>result</em>.</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Create</span><span class="hl-1">, </span><span class="hl-2">Consume</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;result-box&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">into</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;pipettes&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-7">// Returns: `&#39;foo&#39;`</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">data</span><span class="hl-1"> = </span><span class="hl-2">Consume</span><span class="hl-1">.</span><span class="hl-8">result</span><span class="hl-1">(</span><span class="hl-2">Create</span><span class="hl-1">.</span><span class="hl-8">success</span><span class="hl-1">(</span><span class="hl-3">&#39;foo&#39;</span><span class="hl-1">));</span><br/><br/><span class="hl-7">// Throws error</span><br/><span class="hl-8">into</span><span class="hl-1">(</span><span class="hl-2">Create</span><span class="hl-1">.</span><span class="hl-8">failure</span><span class="hl-1">(</span><span class="hl-3">&#39;bar&#39;</span><span class="hl-1">), </span><span class="hl-2">Consume</span><span class="hl-1">.</span><span class="hl-2">result</span><span class="hl-1">);</span>
+</code></pre>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/Consume.html">Consume</a></li><li class=" tsd-kind-namespace"><a href="modules/Create.html">Create</a></li><li class=" tsd-kind-namespace"><a href="modules/Operate.html">Operate</a></li><li class=" tsd-kind-namespace"><a href="modules/Result.html">Result</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/Consume.html" class="tsd-kind-icon">Consume</a></li><li class="tsd-kind-class"><a href="classes/Create.html" class="tsd-kind-icon">Create</a></li><li class="tsd-kind-class"><a href="classes/Operate.html" class="tsd-kind-icon">Operate</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

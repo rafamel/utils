@@ -1,7 +1,7 @@
 {
   "name": "proxy-handler",
   "description": "Proxy object handler implementation",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Rafa Mel",
   "license": "MIT",
   "private": false,

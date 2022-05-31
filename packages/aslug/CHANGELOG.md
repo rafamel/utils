@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/rafamel/utils/compare/aslug@0.4.3...aslug@0.5.0) (2022-05-31)
+
+
+### Bug Fixes
+
+* update setup and dependencies; pure esm build; require node 18 ([b516240](https://github.com/rafamel/utils/commit/b5162408aa497ab5129eae08b2a708259d5b32c1))
+
+
+### Features
+
+* **aslug:** implement as class ([2e2968f](https://github.com/rafamel/utils/commit/2e2968f20d4380db86c60c66a1e7fbf30beaf9ea))
+* **aslug:** set "." as default separator and remove target option ([f3f3291](https://github.com/rafamel/utils/commit/f3f3291de0ba00dc2166735c72b8ee8925c01c3f))
+
+
+### BREAKING CHANGES
+
+* **aslug:** The default separator is now "." instead of "~". The target option has been
+removed.
+* **aslug:** Package functionality implemented as class Slug. Please check the latest
+documentation.
+* all packages are now pure ESM, while node 18 is also required.
+
+
+
+
+
 ## [0.4.3](https://github.com/rafamel/utils/compare/aslug@0.4.2...aslug@0.4.3) (2020-07-15)
 
 
