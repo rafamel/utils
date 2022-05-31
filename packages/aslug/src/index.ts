@@ -1,2 +1,2 @@
-export { default } from './aslug';
-export * from './types';
+export * from './Slug';
+export * from './Encoder';

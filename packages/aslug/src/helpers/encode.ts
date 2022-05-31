@@ -1,28 +1,25 @@
-import { BaseConverter } from 'base-x';
+import { Encoder } from '../Encoder';
+import { Slug } from '../Slug';
 
-import { Options } from './types';
-
-const textencoder = new TextEncoder();
-
-export default function encode(
+export function encode(
   str: string,
-  base: BaseConverter,
-  options: Options
+  encoder: Encoder.Type,
+  options: Readonly<Slug.Options>
 ): string {
   const payload: string[] = [];
   return (
     trunk('', str, payload, options) +
     (payload.length
-      ? options.separator + base.encode(textencoder.encode(payload.join('|')))
+      ? options.separator + encoder.encode(payload.join('|'))
       : '')
   );
 }
 
-export function trunk(
+function trunk(
   str: string,
   next: string,
   payload: string[],
-  options: Options
+  options: Readonly<Slug.Options>
 ): string {
   if (!next) return str;
 
