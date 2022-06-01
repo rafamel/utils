@@ -36,11 +36,11 @@
   },
   "devDependencies": {
     "@jest/globals": "^28.1.0",
-    "@riseup/library": "^0.20.0",
-    "@riseup/monorepo": "^0.20.0",
-    "@riseup/tooling": "^0.20.0",
-    "@riseup/universal": "^0.20.0",
-    "@riseup/utils": "^0.20.0",
+    "@riseup/library": "^0.21.0",
+    "@riseup/monorepo": "^0.21.0",
+    "@riseup/tooling": "^0.21.0",
+    "@riseup/universal": "^0.21.0",
+    "@riseup/utils": "^0.21.0",
     "kpo": "^0.23.2",
     "lerna": "^5.0.0",
     "typescript": "^4.7.2"
