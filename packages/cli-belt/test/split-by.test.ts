@@ -1,4 +1,4 @@
-import { test, expect } from '@jest/globals';
+import { expect, test } from 'vitest';
 
 import { splitBy } from '../src/split-by';
 

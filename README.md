@@ -1,4 +1,4 @@
-# Utils monorepo
+# Utils
 
 [![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 

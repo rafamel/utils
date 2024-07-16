@@ -1,4 +1,4 @@
-import { BasicKind, AllResultType, AnyResultType } from './definitions';
+import type { AllResultType, AnyResultType, BasicKind } from './definitions';
 import { isKind } from './helpers';
 
 export function containsKey<

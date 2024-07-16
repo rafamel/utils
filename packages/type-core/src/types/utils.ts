@@ -1,5 +1,5 @@
-import { Dictionary } from './structural';
-import { VariadicFn } from './functions';
+import type { Dictionary } from './structural';
+import type { VariadicFn } from './functions';
 
 /* Any */
 export type Union<A, B, C = B, D = B, E = B> = A | B | C | D | E;
@@ -10,20 +10,21 @@ export type KeyOf<T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary> =
   T extends ReadonlyArray<any>
     ? number
     : T extends ArrayLike<any>
-    ? number
-    : T extends object
-    ? keyof T
-    : never;
+      ? number
+      : T extends object
+        ? keyof T
+        : never;
 
 export type ValueOf<
   T extends ReadonlyArray<any> | ArrayLike<any> | Dictionary
-> = T extends ReadonlyArray<any>
-  ? T[number]
-  : T extends ArrayLike<any>
-  ? T[number]
-  : T extends object
-  ? T[keyof T]
-  : never;
+> =
+  T extends ReadonlyArray<any>
+    ? T[number]
+    : T extends ArrayLike<any>
+      ? T[number]
+      : T extends object
+        ? T[keyof T]
+        : never;
 
 /* Map */
 export type Index<T> = { [K in keyof T]: T[K] };
@@ -39,18 +40,18 @@ export declare namespace Deep {
   export type Required<T> = T extends VariadicFn
     ? T
     : T extends Array<infer U>
-    ? Private.DeepRequiredArray<U>
-    : T extends object
-    ? Private.DeepRequiredObject<T>
-    : T;
+      ? Private.DeepRequiredArray<U>
+      : T extends object
+        ? Private.DeepRequiredObject<T>
+        : T;
 
   export type Partial<T> = T extends VariadicFn
     ? T
     : T extends Array<infer U>
-    ? Private.DeepPartialArray<U>
-    : T extends object
-    ? Private.DeepPartialObject<T>
-    : T | undefined;
+      ? Private.DeepPartialArray<U>
+      : T extends object
+        ? Private.DeepPartialObject<T>
+        : T | undefined;
 }
 
 /* Helpers */

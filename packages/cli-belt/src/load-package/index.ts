@@ -1,8 +1,12 @@
 import fs from 'node:fs';
-import { findUp } from 'find-up';
-import { Package } from 'normalize-package-data';
 
-import { loadPackageImplementation, LoadPackageOptions } from './load-package';
+import { findUp } from 'find-up';
+import type { Package } from 'normalize-package-data';
+
+import {
+  type LoadPackageOptions,
+  loadPackageImplementation
+} from './load-package';
 
 /**
  * It will find and return the contents of the first `package.json` found, recursing up, starting on `dir`. It can optionally normalize the data and set the `process.title` to the package name.

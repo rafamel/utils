@@ -1,3 +1,5 @@
+/* eslint-disable ts/ban-types */
+
 /* Primitives */
 export type ID = number | string;
 export type NonDefined = undefined | void;

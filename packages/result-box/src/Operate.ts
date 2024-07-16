@@ -1,7 +1,7 @@
-import { Empty, UnaryFn } from 'type-core';
+import type { Empty, UnaryFn } from 'type-core';
 
 import { Create } from './Create';
-import { Result } from './Result';
+import type { Result } from './Result';
 
 export declare namespace Operate {
   export type Fallback<T extends Result.Break, U> = T extends null
@@ -40,9 +40,9 @@ export declare namespace Operate {
 
 export class Operate {
   /**
-   * For an input of a *result* or `null`,
-   * the returning function returns the *result* if not `null`,
-   * or a successful *result* of `value` if `null`.
+   * For an input of a result or `null`,
+   * the returning function returns the result if not `null`,
+   * or a successful result of `value` if `null`.
    */
   public static fallback<T extends Result.Break, U>(
     value: U
@@ -52,8 +52,8 @@ export class Operate {
     };
   }
   /**
-   * Maps a *result* to their `data`, with optional
-   * remaps for `data` upon a successful and/or failed *result.*
+   * Maps a result to their `data`, with optional
+   * remaps for `data` upon a successful and/or failed result.
    */
   public static transform<
     T extends Result.Break,
@@ -73,7 +73,7 @@ export class Operate {
     };
   }
   /**
-   * Maps a *result* to a *result* with different `data` values.
+   * Maps a result to a result with different `data` values.
    */
   public static map<
     T extends Result.Break,
@@ -90,10 +90,10 @@ export class Operate {
     };
   }
   /**
-   * Allows to optionally convert an input successful *result* into a
-   * failed *Result* with the same `data`, and vice-versa.
-   * @param onSuccess whether to flip a successful *result* to a failed *result*
-   * @param onFailure whether to flip a failed *result* to a successful *result*
+   * Allows to optionally convert an input successful result into a
+   * failed result with the same `data`, and vice-versa.
+   * @param onSuccess whether to flip a successful result to a failed result
+   * @param onFailure whether to flip a failed result to a successful result
    */
   public static flip<
     T extends Result.Break,
@@ -111,7 +111,7 @@ export class Operate {
   }
   /**
    * Allows for the execution of side effects upon
-   * a successful or failed *result.*
+   * a successful or failed result.
    */
   public static tap<T extends Result.Break>(
     onSuccess?: UnaryFn<Result.SuccessType<T>> | Empty,

@@ -1,4 +1,4 @@
-import { strict, partial, shallow, deep } from './strategies';
+import { deep, partial, shallow, strict } from './strategies';
 
 export type EqualityKind = 'strict' | 'partial' | 'shallow' | 'deep';
 

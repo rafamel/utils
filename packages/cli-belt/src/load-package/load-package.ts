@@ -1,5 +1,7 @@
+import process from 'node:process';
+
 import { ensure } from 'errorish';
-import normalize, { Package } from 'normalize-package-data';
+import normalize, { type Package } from 'normalize-package-data';
 
 export interface LoadPackageOptions {
   /**

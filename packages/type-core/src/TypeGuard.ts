@@ -1,12 +1,12 @@
-import {
+import type {
+  Dictionary,
   Empty,
   FalseLike,
-  VariadicFn,
-  Dictionary,
   ID,
-  Primitive,
   Intersection,
-  Nullish
+  Nullish,
+  Primitive,
+  VariadicFn
 } from './types';
 
 export class TypeGuard {

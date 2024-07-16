@@ -1,11 +1,10 @@
 # type-core
 
 [![Version](https://img.shields.io/npm/v/type-core.svg)](https://www.npmjs.com/package/type-core)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/type-core.svg)](https://snyk.io/test/npm/type-core)
-[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/type-core/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/type-core.svg)](https://www.npmjs.com/package/type-core)
+[![License](https://img.shields.io/github/license/rafamel/type-core.svg)](https://github.com/rafamel/type-core/blob/master/LICENSE)
 
-> Riseup library template.
+> A types utility belt for TypeScript.
 
 ## Install
 

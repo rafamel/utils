@@ -1,7 +1,12 @@
+import process from 'node:process';
+
 import pidtree from 'pidtree';
 
 import { filterAlive } from './filter-alive';
-import { Options, terminateChildrenImplementation } from './terminate-children';
+import {
+  type Options,
+  terminateChildrenImplementation
+} from './terminate-children';
 
 async function terminateChildren(
   pid: number,

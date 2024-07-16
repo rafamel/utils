@@ -1,12 +1,8 @@
-import { test, expect, jest, beforeEach } from '@jest/globals';
+import { expect, test, vi } from 'vitest';
 
 import { filterAlive as _filterAlive } from '../src/filter-alive';
 
-const mocks = { killProcess: jest.fn() };
-
-beforeEach(() => {
-  for (const mock of Object.values(mocks)) mock.mockClear();
-});
+const mocks = { killProcess: vi.fn() };
 
 function filterAlive(pids: number[]): number[] {
   return _filterAlive(pids, {

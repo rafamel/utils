@@ -1,4 +1,4 @@
-import { BasicKind } from './definitions';
+import type { BasicKind } from './definitions';
 
 export function isKind(
   item: any,

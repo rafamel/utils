@@ -1,9 +1,8 @@
 # merge-strategies
 
 [![Version](https://img.shields.io/npm/v/merge-strategies.svg)](https://www.npmjs.com/package/merge-strategies)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/merge-strategies.svg)](https://snyk.io/test/npm/merge-strategies)
-[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/merge-strategies/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/merge-strategies.svg)](https://www.npmjs.com/package/merge-strategies)
+[![License](https://img.shields.io/github/license/rafamel/merge-strategies.svg)](https://github.com/rafamel/merge-strategies/blob/master/LICENSE)
 
 > Object merging made simple.
 
@@ -27,8 +26,8 @@ import { shallow } from 'merge-strategies';
 
 // Returns: { foo: [3, 4], bar: { foo: 'foo' } }
 shallow(
-  { foo: [1, 2], bar: { baz: 'baz' },
-  { foo: [3, 4], bar: { foo: 'foo' },
+  { foo: [1, 2], bar: { baz: 'baz' } },
+  { foo: [3, 4], bar: { foo: 'foo' } }
 );
 ```
 
@@ -44,8 +43,8 @@ import { merge } from 'merge-strategies';
 
 // Returns: { foo: [3, 4], bar: { baz: 'baz', foo: 'foo' } }
 merge(
-  { foo: [1, 2], bar: { baz: 'baz' },
-  { foo: [3, 4], bar: { foo: 'foo' },
+  { foo: [1, 2], bar: { baz: 'baz' } },
+  { foo: [3, 4], bar: { foo: 'foo' } },
 );
 ```
 
@@ -61,7 +60,7 @@ import { deep } from 'merge-strategies';
 
 // Returns: { foo: [1, 2, 3, 4], bar: { baz: 'baz', foo: 'foo' } }
 deep(
-  { foo: [1, 2], bar: { baz: 'baz' },
-  { foo: [3, 4], bar: { foo: 'foo' },
+  { foo: [1, 2], bar: { baz: 'baz' } },
+  { foo: [3, 4], bar: { foo: 'foo' } },
 );
 ```

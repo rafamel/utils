@@ -1,4 +1,4 @@
-import { SourceFn, HandlerOptions, SwitchableKey } from './types';
+import type { HandlerOptions, SourceFn, SwitchableKey } from './types';
 
 export class Handler<T extends object> implements Required<ProxyHandler<T>> {
   public static proxy<T extends object, U extends object = T>(

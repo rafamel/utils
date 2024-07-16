@@ -1,6 +1,6 @@
 export function filterAlive(
   pids: number[],
-  deps: { killProcess(pid: number, signal: 0): void }
+  deps: { killProcess: (pid: number, signal: 0) => void }
 ): number[] {
   const arr: number[] = [];
   for (const pid of pids) {

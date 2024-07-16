@@ -1,4 +1,4 @@
-import { describe, test, expect } from '@jest/globals';
+import { describe, expect, test } from 'vitest';
 
 import { Slug } from '../src/Slug';
 
@@ -25,18 +25,20 @@ describe(`safety checks`, () => {
 
     expect(
       () => new Slug(separator + '123')
-    ).toThrowErrorMatchingInlineSnapshot(`"Separator must not be in alphabet"`);
+    ).toThrowErrorMatchingInlineSnapshot(
+      `[Error: Separator must not be in alphabet]`
+    );
   });
   test(`separator must be one character`, () => {
     expect(
       () => new Slug(null, { separator: '' })
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Separator must be a single character"`
+      `[Error: Separator must be a single character]`
     );
     expect(
       () => new Slug(null, { separator: '__' })
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Separator must be a single character"`
+      `[Error: Separator must be a single character]`
     );
     expect(() => new Slug(null, { separator: '_' })).not.toThrow();
   });

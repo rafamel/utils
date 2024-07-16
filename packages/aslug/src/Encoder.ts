@@ -1,10 +1,10 @@
-import basex, { BaseConverter } from 'base-x';
+import basex, { type BaseConverter } from 'base-x';
 
 export declare namespace Encoder {
   interface Type {
     readonly alphabet: string;
-    encode(str: string): string;
-    decode(str: string): string;
+    encode: (str: string) => string;
+    decode: (str: string) => string;
   }
 }
 

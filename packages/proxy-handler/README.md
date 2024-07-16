@@ -1,9 +1,8 @@
 # proxy-handler
 
 [![Version](https://img.shields.io/npm/v/proxy-handler.svg)](https://www.npmjs.com/package/proxy-handler)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/proxy-handler.svg)](https://snyk.io/test/npm/proxy-handler)
-[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/proxy-handler/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/proxy-handler.svg)](https://www.npmjs.com/package/proxy-handler)
+[![License](https://img.shields.io/github/license/rafamel/proxy-handler.svg)](https://github.com/rafamel/proxy-handler/blob/master/LICENSE)
 
 > Proxy object handler implementation.
 

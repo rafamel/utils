@@ -1,5 +1,6 @@
-import { test } from '@jest/globals';
 import assert from 'node:assert';
+
+import { test } from 'vitest';
 import { Observable } from 'multitude';
 
 import { Create } from '../src/Create';

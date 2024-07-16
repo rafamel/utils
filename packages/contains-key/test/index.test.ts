@@ -1,13 +1,13 @@
 /* eslint-disable object-shorthand */
-import { describe, test, expect } from '@jest/globals';
+import { describe, expect, test } from 'vitest';
 
+import type { BasicKind } from '../src/definitions';
 import {
-  containsKey,
-  containsOwnKey,
   containsAnyKey,
-  containsAnyOwnKey
-} from '../src/index';
-import { BasicKind } from '../src/definitions';
+  containsAnyOwnKey,
+  containsKey,
+  containsOwnKey
+} from '../src';
 
 const defined: BasicKind[] = [
   'null',

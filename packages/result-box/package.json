@@ -2,7 +2,7 @@
   "name": "result-box",
   "description": "Because throw/catch is not always best",
   "version": "0.4.0",
-  "author": "Rafa Mel",
+  "author": "rafamel",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -19,26 +19,27 @@
     "build/"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "scripts": {
-    "node": "kpo node --",
-    "build": "kpo build --",
-    "tarball": "kpo tarball --",
-    "docs": "kpo docs --",
-    "fix": "kpo fix --",
-    "lint": "kpo lint --",
-    "test": "kpo test --",
-    "commit": "kpo commit --",
-    "release": "kpo release --",
-    "distribute": "kpo distribute --",
-    "validate": "kpo validate --",
-    "version": "kpo version --"
+    "start": "../../provision/node_modules/.bin/kpo start --",
+    "watch": "../../provision/node_modules/.bin/kpo watch --",
+    "build": "../../provision/node_modules/.bin/kpo build --",
+    "tarball": "../../provision/node_modules/.bin/kpo tarball --",
+    "docs": "../../provision/node_modules/.bin/kpo docs --",
+    "lint": "../../provision/node_modules/.bin/kpo lint --",
+    "fix": "../../provision/node_modules/.bin/kpo fix --",
+    "test": "../../provision/node_modules/.bin/kpo test --",
+    "commit": "../../provision/node_modules/.bin/kpo commit --",
+    "release": "../../provision/node_modules/.bin/kpo release --",
+    "distribute": "../../provision/node_modules/.bin/kpo distribute --",
+    "validate": "../../provision/node_modules/.bin/kpo validate --",
+    "version": "../../provision/node_modules/.bin/kpo version --"
   },
   "homepage": "https://github.com/rafamel/utils/tree/master/packages/result-box",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafamel/utils"
+    "url": "git+https://github.com/rafamel/utils.git"
   },
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"

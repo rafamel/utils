@@ -1,13 +1,13 @@
 import {
-  MaybePromiseLike,
-  Dictionary,
-  ValueOf,
-  NullaryFn,
-  TypeGuard
+  type Dictionary,
+  type MaybePromiseLike,
+  type NullaryFn,
+  TypeGuard,
+  type ValueOf
 } from 'type-core';
-import { Push } from 'multitude';
+import type { Push } from 'multitude';
 
-import { Result } from './Result';
+import type { Result } from './Result';
 
 export declare namespace Create {
   export type CombineSuccessType<T extends Dictionary<Result.Break>> = {
@@ -20,19 +20,19 @@ export declare namespace Create {
 
 export class Create {
   /**
-   * Creates a successful *result* with `data`.
+   * Creates a successful result with `data`.
    */
   public static success<S>(data: S): Result.Success<S> {
     return { success: true, data };
   }
   /**
-   * Creates a failed *result* with `data`.
+   * Creates a failed result with `data`.
    */
   public static failure<F>(data: F): Result.Failure<F> {
     return { success: false, data };
   }
   /**
-   * Creates a *result* that will be successful and contain the
+   * Creates a result that will be successful and contain the
    * return value of `fn` as `data`, or otherwise be failed if
    * `fn` throws.
    */
@@ -45,7 +45,7 @@ export class Create {
     }
   }
   /**
-   * Returns a *Promise* of a *result,* that will be successful if `promise`
+   * Returns a Promise of a result, that will be successful if `promise`
    * resolves, and failed otherwise.
    * @param promise a promise or a promise returning function
    */
@@ -60,11 +60,11 @@ export class Create {
     }
   }
   /**
-   * Returns an *Observable* of *result,* that will be successful
+   * Returns an Observable of result, that will be successful
    * as long as the original `observable` doesn't error, and failed otherwise.
    * @param Constructor an ES Observable constructor
    * @param observable an ES Observable
-   * @param completeOnFail whether the resulting observable should complete after a failed *result*
+   * @param completeOnFail whether the resulting observable should complete after a failed result
    */
   public static observable<S>(
     Constructor: Push.LikeConstructor,
@@ -173,8 +173,8 @@ export class Create {
   ): Result.Break<S[], F>;
   /**
    * Combines multiple results. Takes either a record or an
-   * array of *result.*
-   * Returns a *result* that will be failed if any of the
+   * array of result.
+   * Returns a result that will be failed if any of the
    * input results fail, otherwise return `null` if any of the
    * inputs are `null`, or succeed with `data` of a
    * record or array of the result's `data` fields.

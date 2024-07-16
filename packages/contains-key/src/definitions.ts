@@ -11,20 +11,20 @@ export type BasicKind =
 export type KindType<T extends BasicKind> = T extends 'boolean'
   ? boolean
   : T extends 'number'
-  ? number
-  : T extends 'string'
-  ? string
-  : T extends 'null'
-  ? null
-  : T extends 'object'
-  ? object
-  : T extends 'array'
-  ? any[]
-  : T extends 'symbol'
-  ? symbol
-  : T extends 'function'
-  ? (...args: any[]) => any
-  : any;
+    ? number
+    : T extends 'string'
+      ? string
+      : T extends 'null'
+        ? null
+        : T extends 'object'
+          ? object
+          : T extends 'array'
+            ? any[]
+            : T extends 'symbol'
+              ? symbol
+              : T extends 'function'
+                ? (...args: any[]) => any
+                : any;
 
 export type AllResultType<
   T,
@@ -35,8 +35,8 @@ export type AllResultType<
     ? T & { [P in N]: Exclude<T[P], undefined | void> & KindType<K> }
     : T & { [P in N]: KindType<K> }
   : T extends { [P in N]?: any }
-  ? T & { [P in N]: Exclude<T[P], undefined | void> }
-  : T & { [P in N]: any };
+    ? T & { [P in N]: Exclude<T[P], undefined | void> }
+    : T & { [P in N]: any };
 
 export type AnyResultType<
   T,
@@ -47,5 +47,5 @@ export type AnyResultType<
     ? T & { [P in N]?: T[P] & KindType<K> }
     : T & { [P in N]?: KindType<K> }
   : T extends { [P in N]?: any }
-  ? T & { [P in N]?: T[P] }
-  : T & { [P in N]?: any };
+    ? T & { [P in N]?: T[P] }
+    : T & { [P in N]?: any };

@@ -1,14 +1,14 @@
-import { jest, describe, test, expect } from '@jest/globals';
+import { describe, expect, test, vi } from 'vitest';
 
 import {
-  loadPackageImplementation,
-  LoadPackageOptions
+  type LoadPackageOptions,
+  loadPackageImplementation
 } from '../src/load-package/load-package';
 
 function create(findUpMock?: any, readMock?: any): Record<string, any> {
   const res = { findUp: {}, readJSON: { name: 'Foo' } };
-  const findUp: any = findUpMock || jest.fn(async () => res.findUp);
-  const readJSON: any = readMock || jest.fn(async () => res.readJSON);
+  const findUp: any = findUpMock || vi.fn(async () => res.findUp);
+  const readJSON: any = readMock || vi.fn(async () => res.readJSON);
 
   return {
     res,
@@ -38,7 +38,9 @@ describe(`reads package`, () => {
 
     await expect(
       loadPackage('foo/bar')
-    ).rejects.toThrowErrorMatchingInlineSnapshot(`"package couldn't be found"`);
+    ).rejects.toThrowErrorMatchingInlineSnapshot(
+      `[Error: package couldn't be found]`
+    );
   });
   test(`calls readJSON w/ path`, async () => {
     const { loadPackage, readJSON, res } = create();
@@ -60,24 +62,24 @@ describe(`normalize`, () => {
     const { loadPackage } = create();
     await expect(loadPackage('foo/bar', { normalize: true })).resolves
       .toMatchInlineSnapshot(`
-            Object {
-              "_id": "Foo@",
-              "name": "Foo",
-              "readme": "ERROR: No README data found!",
-              "version": "",
-            }
-          `);
+      {
+        "_id": "Foo@",
+        "name": "Foo",
+        "readme": "ERROR: No README data found!",
+        "version": "",
+      }
+    `);
   });
   test(`normalize = true`, async () => {
     const { loadPackage } = create();
     await expect(loadPackage('foo/bar')).resolves.toMatchInlineSnapshot(`
-            Object {
-              "_id": "Foo@",
-              "name": "Foo",
-              "readme": "ERROR: No README data found!",
-              "version": "",
-            }
-          `);
+      {
+        "_id": "Foo@",
+        "name": "Foo",
+        "readme": "ERROR: No README data found!",
+        "version": "",
+      }
+    `);
   });
   test(`normalize = false`, async () => {
     const { loadPackage, res } = create();

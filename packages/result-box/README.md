@@ -1,9 +1,8 @@
 # result-box
 
 [![Version](https://img.shields.io/npm/v/result-box.svg)](https://www.npmjs.com/package/result-box)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/result-box.svg)](https://snyk.io/test/npm/result-box)
-[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/result-box/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/result-box.svg)](https://www.npmjs.com/package/result-box)
+[![License](https://img.shields.io/github/license/rafamel/result-box.svg)](https://github.com/rafamel/result-box/blob/master/LICENSE)
 
 > Because throw/catch is not always best.
 
@@ -24,10 +23,10 @@ A *result* is a plain *object* with fields `success` and `data`. Type definition
 
 Type definitions are provided for a successful *result*, a failed *result*, and a combination of them:
 
-* [`Result.Box`:](https://rafamel.github.io/utils/result-box/modules/Result.html#Box) a successful or failed *result*.
-* [`Result.Break`:](https://rafamel.github.io/utils/result-box/modules/Result.html#Break) a successful *result*, a failed *result*, or `null`.
-* [`Result.Success`:](https://rafamel.github.io/utils/result-box/modules/Result.html#Success) a successful *result*.
-* [`Result.Failure`:](https://rafamel.github.io/utils/result-box/modules/Result.html#Failure) a failed *result*.
+* [`Result.Box`:](https://rafamel.github.io/utils/result-box/types/Result.Box.html) a successful or failed *result*.
+* [`Result.Break`:](https://rafamel.github.io/utils/result-box/types/Result.Break.html) a successful *result*, a failed *result*, or `null`.
+* [`Result.Success`:](https://rafamel.github.io/utils/result-box/types/Result.Success.html) a successful *result*.
+* [`Result.Failure`:](https://rafamel.github.io/utils/result-box/types/Result.Failure.html) a failed *result*.
 
 ```typescript
 import { Result } from 'result-box';
@@ -39,7 +38,7 @@ const success: Result.Success<string> = {
 
 const failure: Result.Failure<Error> = {
   success: false,
-  data: Error('foo')
+  data: new Error('foo')
 };
 
 const successBox: Result.Box<string, Error> = success;
@@ -54,12 +53,12 @@ const nullBreak: Result.Break<string, Error> = null;
 
 Creation utility functions:
 
-* [`Create.success`:](https://rafamel.github.io/utils/result-box/classes/Create.html#success) creates a successful *result*.
-* [`Create.failure`:](https://rafamel.github.io/utils/result-box/classes/Create.html#failure) creates a failed *result*.
-* [`Create.execute`:](https://rafamel.github.io/utils/result-box/classes/Create.html#execute) creates a *result* from a function.
-* [`Create.promise`:](https://rafamel.github.io/utils/result-box/classes/Create.html#promise) returns a *Promise* of a *result* from an input *Promise*.
-* [`Create.observable`:](https://rafamel.github.io/utils/result-box/classes/Create.html#observable) returns an *Observable* of *result* from an input *Observable*.
-* [`Create.combine`:](https://rafamel.github.io/utils/result-box/classes/Create.html#combine) combines a record or array of *result*.
+* [`Create.success`:](https://rafamel.github.io/utils/result-box/classes/Create-1.html#success) creates a successful *result*.
+* [`Create.failure`:](https://rafamel.github.io/utils/result-box/classes/Create-1.html#failure) creates a failed *result*.
+* [`Create.execute`:](https://rafamel.github.io/utils/result-box/classes/Create-1.html#execute) creates a *result* from a function.
+* [`Create.promise`:](https://rafamel.github.io/utils/result-box/classes/Create-1.html#promise) returns a *Promise* of a *result* from an input *Promise*.
+* [`Create.observable`:](https://rafamel.github.io/utils/result-box/classes/classes/Create-1.html#observable) returns an *Observable* of *result* from an input *Observable*.
+* [`Create.combine`:](https://rafamel.github.io/utils/result-box/classes/classes/Create-1.html#combine) combines a record or array of *result*.
 
 ```typescript
 import { Create } from 'result-box';
@@ -68,27 +67,27 @@ import { Create } from 'result-box';
 const success = Create.success({ foo: 'bar' });
 
 // Returns: `{ success: false, data: { reason: Error, code: 500 } }`
-const failure = Create.failure({ reason: Error(), code: 500 });
+const failure = Create.failure({ reason: new Error('...'), code: 500 });
 
 // Returns: `{ success: true, data: { foo: 'bar' } }`
 const executeSuccess = Create.execute(() => ({ foo: 'bar' }));
 
 // Returns: `{ success: false, data: Error }`
-const executeFailure = Create.execute(() => { throw Error(); });
+const executeFailure = Create.execute(() => { throw new Error('...'); });
 ```
 
 ### `Operate`
 
 All operations return a unary function taking a *result* as an argument. You can straightforwardly pipe them with a pipe function such as the ones provided by the [`pipettes`](https://www.npmjs.com/package/pipettes) package.
 
-* [`Operate.fallback`:](https://rafamel.github.io/utils/result-box/classes/Operate.html#fallback) creates a successful *result* when null.
-* [`Operate.transform`:](https://rafamel.github.io/utils/result-box/classes/Operate.html#transform) transforms a *result* into its `data`.
-* [`Operate.map`:](https://rafamel.github.io/utils/result-box/classes/Operate.html#map) maps a *result* `data`.
-* [`Operate.flip`:](https://rafamel.github.io/utils/result-box/classes/Operate.html#flip) optionally converts a successful *result* into a failed result and vice-versa.
-* [`Operate.tap`:](https://rafamel.github.io/utils/result-box/classes/Operate.html#tap) allows for the execution of side effects.
+* [`Operate.fallback`:](https://rafamel.github.io/utils/result-box/classes/Operate-1.html#fallback) creates a successful *result* when null.
+* [`Operate.transform`:](https://rafamel.github.io/utils/result-box/classes/Operate-1.html#transform) transforms a *result* into its `data`.
+* [`Operate.map`:](https://rafamel.github.io/utils/result-box/classes/Operate-1.html#map) maps a *result* `data`.
+* [`Operate.flip`:](https://rafamel.github.io/utils/result-box/classes/Operate-1.html#flip) optionally converts a successful *result* into a failed result and vice-versa.
+* [`Operate.tap`:](https://rafamel.github.io/utils/result-box/classes/Operate-1.html#tap) allows for the execution of side effects.
 
 ```typescript
-import { Result, Operate } from 'result-box';
+import { Operate, Result } from 'result-box';
 import { into } from 'pipettes';
 
 const none = null as Result.Break<number, string>;
@@ -119,12 +118,12 @@ const tapped = into(box, Operate.tap(null, console.log));
 
 Consumption utility functions:
 
-* [`Consume.result`:](https://rafamel.github.io/utils/result-box/classes/Consume.html#result) consumes a *result*.
-* [`Consume.promise`:](https://rafamel.github.io/utils/result-box/classes/Consume.html#promise) consumes a *Promise* of a *result*.
-* [`Consume.observable`:](https://rafamel.github.io/utils/result-box/classes/Consume.html#observable) consumes an *Observable* of *result*.
+* [`Consume.result`:](https://rafamel.github.io/utils/result-box/classes/Consume-1.html#result) consumes a *result*.
+* [`Consume.promise`:](https://rafamel.github.io/utils/result-box/classes/Consume-1.html#promise) consumes a *Promise* of a *result*.
+* [`Consume.observable`:](https://rafamel.github.io/utils/result-box/classes/Consume-1.html#observable) consumes an *Observable* of *result*.
 
 ```typescript
-import { Create, Consume } from 'result-box';
+import { Consume, Create } from 'result-box';
 import { into } from 'pipettes';
 
 // Returns: `'foo'`

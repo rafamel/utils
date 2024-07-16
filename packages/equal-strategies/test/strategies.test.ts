@@ -1,6 +1,6 @@
-import { describe, test, expect } from '@jest/globals';
+import { describe, expect, test } from 'vitest';
 
-import { strict, partial, shallow, deep } from '../src';
+import { deep, partial, shallow, strict } from '../src';
 
 describe(`strict`, () => {
   test(`is true`, () => {

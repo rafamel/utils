@@ -1,31 +1,50 @@
-import { recreate, context, create, series, lift, exec, catches } from 'kpo';
+import project from './config/project.config.mjs';
+import defaults from './config/riseup.config.mjs';
 
-import riseup from './riseup.config.mjs';
-
-export default recreate({ announce: true }, () => {
-  const tasks = {
-    node: riseup.tasks.node,
-    build: riseup.tasks.build,
-    tarball: riseup.tasks.tarball,
-    docs: riseup.tasks.docs,
-    fix: riseup.tasks.fix,
-    lint: series(riseup.tasks.lintmd, riseup.tasks.lint),
-    test: riseup.tasks.test,
-    commit: riseup.tasks.commit,
-    release: context({ args: ['--no-verify'] }, riseup.tasks.release),
-    distribute: riseup.tasks.distribute,
-    validate: series(
-      create(() => tasks.lint),
-      create(() => tasks.test),
-      lift({ purge: true, mode: 'audit' }, () => tasks),
-      catches({ level: 'silent' }, exec('npm', ['outdated']))
-    ),
-    /* Hooks */
-    version: series(
-      create(() => tasks.validate),
-      create(() => tasks.build),
-      create(() => tasks.docs)
-    )
-  };
-  return tasks;
-});
+export default Promise.resolve(defaults)
+  .then(({ tasks }) => tasks)
+  .then(({ commit, contents, distribute, release, tarball }) => {
+    return ({ catches, create, exec, finalize, lift, recreate, series }) => {
+      const tasks = {
+        start: exec('node', [project.build.destination]),
+        watch: exec('tsx', ['--watch', './src']),
+        build: series(
+          contents,
+          exec('tsup', ['--config', './config/tsup.config.mts'])
+        ),
+        tarball,
+        lint: finalize(
+          exec('eslint', ['.']),
+          exec('tsc', ['--noEmit']),
+          exec('prettier', ['.', '--log-level', 'warn', '--cache', '--check'])
+        ),
+        fix: series(
+          exec('eslint', ['.', '--fix']),
+          exec('prettier', ['.', '--log-level', 'warn', '--write'])
+        ),
+        test: exec('vitest', ['-c', './config/vitest.config.mts']),
+        commit,
+        release,
+        distribute,
+        validate: series(
+          create(() => tasks.lint),
+          create(() => tasks.test),
+          lift(
+            {
+              purge: true,
+              mode: 'audit',
+              bin: '../../provision/node_modules/.bin/kpo'
+            },
+            () => tasks
+          ),
+          catches({ level: 'silent' }, exec('npm', ['audit']))
+        ),
+        /* Hooks */
+        version: series(
+          create(() => tasks.validate),
+          create(() => tasks.build)
+        )
+      };
+      return recreate({ announce: true }, tasks);
+    };
+  });

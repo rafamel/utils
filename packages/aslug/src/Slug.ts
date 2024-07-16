@@ -15,8 +15,8 @@ export declare namespace Slug {
     /**
      * Maps the replaced characters with a string
      * within `alphabet` -otherwise an empty string.
-     * Defaults to replacing characters for their
-     * *ASCII* equivalent, if in `alphabet`.
+     * Defaults to replacing characters for
+     * ASCII equivalent, if in `alphabet`.
      */
     map: (char: string) => string;
   }

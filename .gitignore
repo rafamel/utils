@@ -1,16 +1,3 @@
-# Project Specific #
-####################
-pkg
-build
-deploy
-vendor
-lib
-dist
-out
-public
-coverage
-_test*
-
 # Environment Variables #
 #########################
 .env
@@ -23,6 +10,7 @@ _test*
 #############################
 .cache
 .vercel
+.tsup
 .pnp
 .pnp.js
 hint-report
@@ -71,3 +59,17 @@ yarn-error.log*
 .Trashes
 Thumbs.db
 ehthumbs.db
+
+# Project Specific #
+####################
+lib
+pkg
+out
+dist
+build
+vendor
+deploy
+public
+coverage
+_test*
+!**/deps/*.tgz

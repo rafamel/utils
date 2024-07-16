@@ -16,9 +16,9 @@ export async function terminateChildrenImplementation(
   pid: number,
   options: Options,
   deps: {
-    killProcess(pid: number, signal: NodeJS.Signals): void;
-    getChildrenPids(pid: number): Promise<number[]>;
-    filterAlivePids(pids: number[]): number[];
+    killProcess: (pid: number, signal: NodeJS.Signals) => void;
+    getChildrenPids: (pid: number) => Promise<number[]>;
+    filterAlivePids: (pids: number[]) => number[];
   }
 ): Promise<number[]> {
   const opts = Object.assign({}, defaults, options);

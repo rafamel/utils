@@ -1,4 +1,5 @@
 {
   "version": "independent",
-  "packages": ["packages/*"]
+  "useWorkspaces": true,
+  "changelogPreset": "angular"
 }

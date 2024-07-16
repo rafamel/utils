@@ -1,0 +1,20 @@
+{
+  "name": "provision",
+  "version": "0.0.0",
+  "author": "rafamel",
+  "license": "MIT",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "keywords": [],
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@riseup/universal": "^0.22.0",
+    "@riseup/utils": "^0.22.0",
+    "kpo": "^0.28.0"
+  }
+}

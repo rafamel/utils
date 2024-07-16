@@ -1,11 +1,10 @@
 # cli-belt
 
 [![Version](https://img.shields.io/npm/v/cli-belt.svg)](https://www.npmjs.com/package/cli-belt)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/cli-belt.svg)](https://snyk.io/test/npm/cli-belt)
-[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/cli-belt/blob/master/LICENSE)
 [![Types](https://img.shields.io/npm/types/cli-belt.svg)](https://www.npmjs.com/package/cli-belt)
+[![License](https://img.shields.io/github/license/rafamel/cli-belt.svg)](https://github.com/rafamel/cli-belt/blob/master/LICENSE)
 
-> An utility belt to complement your arguments parser of choice.
+> A lossless slug that preserves uniqueness.
 
 ## Install
 
@@ -17,18 +16,18 @@ Most solutions for creating command line interfaces have a too high degree of ma
 
 ## Documentation
 
-These are all of `cli-belt`'s helper functions -[see docs:](https://rafamel.github.io/utils/cli-belt/modules.html)
+These are all of `cli-belt`'s helper functions -[see docs:](https://rafamel.github.io/utils/cli-belt/)
 
-* [`loadPackage`](https://rafamel.github.io/utils/cli-belt/modules.html#loadPackage) finds and returns the contents of the first `package.json` found, recursing up from a `dir`.
-* [`flags`](https://rafamel.github.io/utils/cli-belt/modules.html#flags) parses a `help` string and returns an object with options, aliases, arguments, and descriptions.
-* [`safePairs`](https://rafamel.github.io/utils/cli-belt/modules.html#safePairs) ensures all properties of an object exist in another.
-* [`splitBy`](https://rafamel.github.io/utils/cli-belt/modules.html#splitBy) splits an arguments array into two arrays by the first `separator`.
-* [`error`](https://rafamel.github.io/utils/cli-belt/modules.html#error) formats and prints an error message, optionally exiting the process.
+* [`loadPackage`](https://rafamel.github.io/utils/cli-belt/functions/loadPackage.html) finds and returns the contents of the first `package.json` found, recursing up from a `dir`.
+* [`flags`](https://rafamel.github.io/utils/cli-belt/functions/flags.html) parses a `help` string and returns an object with options, aliases, arguments, and descriptions.
+* [`safePairs`](https://rafamel.github.io/utils/cli-belt/functions/safePairs.html) ensures all properties of an object exist in another.
+* [`splitBy`](https://rafamel.github.io/utils/cli-belt/functions/splitBy.html) splits an arguments array into two arrays by the first `separator`.
+* [`error`](https://rafamel.github.io/utils/cli-belt/functions/error.html) formats and prints an error message, optionally exiting the process.
 
 ## Usage example
 
 ```javascript
-import { loadPackage, flags, safePairs, splitBy, error } from 'cli-belt';
+import { error, flags, loadPackage, safePairs, splitBy } from 'cli-belt';
 import { stripIndent as indent } from 'common-tags';
 import arg from 'arg';
 import logger from 'loglevel';
@@ -83,7 +82,7 @@ export default async function main() {
   });
 
   // Handle options
-  if (cmd._.length) throw Error(`Unknown command ${cmd._[0]}`);
+  if (cmd._.length) throw new Error(`Unknown command ${cmd._[0]}`);
   if (cmd['--help']) return console.log(help);
   if (cmd['--version']) return console.log(pkg.version);
 

@@ -1,21 +1,17 @@
 /* eslint-disable no-console */
-import { jest, test, expect } from '@jest/globals';
+import { expect, test, vi } from 'vitest';
 import chalk from 'chalk';
 
 import { error } from '../src/error';
 
 chalk.level = 0;
-console.error = jest.fn();
-console.debug = jest.fn();
-const logger = { error: jest.fn(), debug: jest.fn() } as any;
-process.exit = jest.fn() as any;
+console.error = vi.fn();
+console.debug = vi.fn();
+const logger = { error: vi.fn(), debug: vi.fn() } as any;
+process.exit = vi.fn() as any;
 const mocks: any = { console, logger, exit: process.exit };
 
 test(`defaults`, () => {
-  mocks.console.error.mockClear();
-  mocks.console.debug.mockClear();
-  mocks.exit.mockClear();
-
   expect(error(new Error('Foo bar'))).toBeUndefined();
   expect(mocks.console.error).toHaveBeenCalledTimes(1);
   expect(mocks.console.error.mock.calls[0][0]).toMatchInlineSnapshot(
@@ -25,10 +21,6 @@ test(`defaults`, () => {
   expect(mocks.exit).not.toHaveBeenCalled();
 });
 test(`debug`, () => {
-  mocks.console.error.mockClear();
-  mocks.console.debug.mockClear();
-  mocks.exit.mockClear();
-
   const err = new Error('Foo bar');
   expect(error(err, { debug: true })).toBeUndefined();
   expect(mocks.console.error).toHaveBeenCalledTimes(1);
@@ -40,12 +32,6 @@ test(`debug`, () => {
   expect(mocks.exit).not.toHaveBeenCalled();
 });
 test(`logger`, () => {
-  mocks.console.error.mockClear();
-  mocks.console.debug.mockClear();
-  mocks.logger.error.mockClear();
-  mocks.logger.debug.mockClear();
-  mocks.exit.mockClear();
-
   const err = new Error('Foo bar');
   expect(error(err, { logger, debug: true })).toBeUndefined();
   expect(mocks.console.error).not.toHaveBeenCalled();
@@ -59,8 +45,6 @@ test(`logger`, () => {
   expect(mocks.exit).not.toHaveBeenCalled();
 });
 test(`exit`, () => {
-  mocks.exit.mockClear();
-
   expect(error(new Error('Foo bar'), { exit: 1 })).toBeUndefined();
   expect(mocks.exit).toHaveBeenCalledTimes(1);
   expect(mocks.exit).toHaveBeenCalledWith(1);

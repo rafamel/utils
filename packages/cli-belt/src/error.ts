@@ -1,3 +1,5 @@
+import process from 'node:process';
+
 import chalk from 'chalk';
 
 export interface Logger extends Record<string, any> {

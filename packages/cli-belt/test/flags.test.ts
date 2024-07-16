@@ -1,6 +1,6 @@
-import { test, expect } from '@jest/globals';
+import { expect, test } from 'vitest';
 
-import { flags, Flag } from '../src/flags';
+import { type Flag, flags } from '../src/flags';
 
 const help = `
 Usage: foo [options]

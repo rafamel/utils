@@ -2,47 +2,54 @@
   "name": "utils",
   "description": "A monorepo of simple small utilities for everyday happiness",
   "version": "0.0.0",
-  "author": "Rafa Mel",
+  "author": "rafamel",
   "license": "MIT",
   "private": true,
   "publishConfig": {
     "access": "restricted"
   },
   "keywords": [],
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "engines": {
-    "node": ">=16"
+    "node": ">=22"
   },
   "scripts": {
-    "run": "kpo run --",
-    "execute": "kpo execute --",
-    "build": "kpo build --",
-    "lint": "kpo lint --",
-    "coverage": "kpo coverage --",
-    "commit": "kpo commit --",
-    "release": "kpo release --",
-    "distribute": "kpo distribute --",
-    "validate": "kpo validate --",
-    "postinstall": "kpo postinstall --",
-    "preversion": "kpo preversion --",
-    "version": "kpo version --"
+    "build": "./provision/node_modules/.bin/kpo build --",
+    "commit": "./provision/node_modules/.bin/kpo commit --",
+    "coverage": "./provision/node_modules/.bin/kpo coverage --",
+    "release": "./provision/node_modules/.bin/kpo release --",
+    "distribute": "./provision/node_modules/.bin/kpo distribute --",
+    "validate": "./provision/node_modules/.bin/kpo validate --",
+    "version": "./provision/node_modules/.bin/kpo version --",
+    "checks": "./provision/node_modules/.bin/kpo checks --",
+    "postinstall": "cd ./provision && npm i && cd ../ && npm run build"
   },
   "homepage": "https://github.com/rafamel/utils",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafamel/utils"
+    "url": "git+https://github.com/rafamel/utils.git"
   },
   "bugs": {
     "url": "https://github.com/rafamel/utils/issues"
   },
   "devDependencies": {
-    "@jest/globals": "^28.1.0",
-    "@riseup/library": "^0.21.0",
-    "@riseup/monorepo": "^0.21.0",
-    "@riseup/tooling": "^0.21.0",
-    "@riseup/universal": "^0.21.0",
-    "@riseup/utils": "^0.21.0",
-    "kpo": "^0.23.2",
-    "lerna": "^5.0.0",
-    "typescript": "^4.7.2"
+    "@antfu/eslint-config": "^2.21.1",
+    "@lerna-lite/version": "^3.6.0",
+    "@vitest/coverage-v8": "^2.0.2",
+    "eslint": "^8.57.0",
+    "glob": "^11.0.0",
+    "import-meta-resolve": "^4.1.0",
+    "prettier": "^3.3.2",
+    "tsc-alias": "^1.8.10",
+    "tsup": "^8.1.0",
+    "tsx": "^4.16.2",
+    "typedoc": "^0.26.4",
+    "typedoc-plugin-missing-exports": "^3.0.0",
+    "typescript": "^5.5.3",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^2.0.2"
   }
 }

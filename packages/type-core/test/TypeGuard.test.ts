@@ -1,6 +1,6 @@
-/* eslint-disable unicorn/no-thenable */
 import assert from 'node:assert';
-import { test } from '@jest/globals';
+
+import { test } from 'vitest';
 
 import { TypeGuard } from '../src/TypeGuard';
 

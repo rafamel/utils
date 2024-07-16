@@ -1,6 +1,6 @@
-import { describe, test, expect } from '@jest/globals';
+import { describe, expect, test } from 'vitest';
 
-import { shallow, merge, deep } from '../src';
+import { deep, merge, shallow } from '../src';
 
 describe(`shallow`, () => {
   test(`returns shallow merge`, () => {
@@ -134,13 +134,13 @@ describe(`deep`, () => {
     expect(deep(defaults, {})).not.toBe(defaults);
     expect(deep(defaults, {})).toEqual({ a: 1 });
   });
-  test(`inner mutation doesn't affect defaults`, () => {
+  test(`inner mutation doesn't affect defaults (1)`, () => {
     const defaults = { a: { b: 2 } };
     const obj = deep(defaults, {}) as any;
     obj.a.b = 5;
     expect(defaults.a.b).toBe(2);
   });
-  test(`inner mutation doesn't affect defaults`, () => {
+  test(`inner mutation doesn't affect defaults (2)`, () => {
     const defaults = { a: { b: [{}, {}], c: [{}, {}] }, b: 2 };
     const obj = deep(defaults, { a: { b: [3, 4] } }) as any;
     obj.b = 1;

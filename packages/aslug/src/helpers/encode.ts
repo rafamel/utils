@@ -1,5 +1,5 @@
-import { Encoder } from '../Encoder';
-import { Slug } from '../Slug';
+import type { Encoder } from '../Encoder';
+import type { Slug } from '../Slug';
 
 export function encode(
   str: string,

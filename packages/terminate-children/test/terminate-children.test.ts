@@ -1,19 +1,15 @@
-import { test, expect, jest, beforeEach } from '@jest/globals';
+import { expect, test, vi } from 'vitest';
 
 import {
-  terminateChildrenImplementation,
-  Options
+  type Options,
+  terminateChildrenImplementation
 } from '../src/terminate-children';
 
 const mocks = {
-  killProcess: jest.fn(),
-  getChildrenPids: jest.fn(async () => [10, 20, 30]),
-  filterAlivePids: jest.fn((): number[] => [])
+  killProcess: vi.fn(),
+  getChildrenPids: vi.fn(async () => [10, 20, 30]),
+  filterAlivePids: vi.fn((): number[] => [])
 };
-
-beforeEach(() => {
-  for (const mock of Object.values(mocks)) mock.mockClear();
-});
 
 function wait(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
