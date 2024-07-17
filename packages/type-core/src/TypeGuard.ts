@@ -1,29 +1,18 @@
-import type {
-  Dictionary,
-  Empty,
-  FalseLike,
-  ID,
-  Intersection,
-  Nullish,
-  Primitive,
-  VariadicFn
-} from './types';
+import type { FalseLike, ID, Multiary, NullLike, Primitive } from './types';
+import type { Intersection } from './utils';
 
 export class TypeGuard {
   public static isID(item: any): item is ID {
     return TypeGuard.isString(item) || TypeGuard.isNumber(item);
   }
-  public static isNullish(item: any): item is Nullish {
+  public static isNullLike(item: any): item is NullLike {
     return TypeGuard.isUndefined(item) || TypeGuard.isNull(item);
-  }
-  public static isEmpty(item: any): item is Empty {
-    return TypeGuard.isNullish(item);
   }
   public static isFalseLike(item: any): item is FalseLike {
     return !item;
   }
   public static isPrimitive(item: any): item is Primitive {
-    return !TypeGuard.isObjectLike(item);
+    return !TypeGuard.isObject(item) && !TypeGuard.isFunction(item);
   }
   public static isNull(item: any): item is null {
     return item === null;
@@ -46,30 +35,24 @@ export class TypeGuard {
   public static isSymbol(item: any): item is symbol {
     return typeof item === 'symbol';
   }
-  public static isFunction(item: any): item is VariadicFn {
+  public static isFunction(item: any): item is Multiary<unknown[], unknown> {
     return typeof item === 'function';
-  }
-  public static isObjectLike(item: any): item is any {
-    return TypeGuard.isObject(item) || TypeGuard.isFunction(item);
   }
   public static isObject(item: any): item is any {
     return typeof item === 'object' && !TypeGuard.isNull(item);
   }
-  public static isRecordLike(item: any): item is Dictionary<unknown> {
-    return TypeGuard.isRecord(item) || TypeGuard.isFunction(item);
-  }
-  public static isRecord(item: any): item is Dictionary<unknown> {
+  public static isRecord(item: any): item is Record<any, unknown> {
     return TypeGuard.isObject(item) && !TypeGuard.isArray(item);
   }
   public static isArray(item: any): item is unknown[] {
     return Array.isArray(item);
   }
   public static isPromiseLike(item: any): item is PromiseLike<unknown> {
-    return Boolean(item) && TypeGuard.isFunction(item.then);
+    return TypeGuard.isObject(item) && TypeGuard.isFunction(item.then);
   }
   public static isPromise(item: any): item is Promise<unknown> {
     return (
-      Boolean(item) &&
+      TypeGuard.isObject(item) &&
       TypeGuard.isFunction(item.then) &&
       TypeGuard.isFunction(item.catch) &&
       TypeGuard.isFunction(item.finally)
@@ -77,12 +60,12 @@ export class TypeGuard {
   }
   public static isIterable(item: any): item is Iterable<unknown> {
     return (
-      !TypeGuard.isEmpty(item) && TypeGuard.isFunction(item[Symbol.iterator])
+      !TypeGuard.isNullLike(item) && TypeGuard.isFunction(item[Symbol.iterator])
     );
   }
   public static isAsyncIterable(item: any): item is AsyncIterable<unknown> {
     return (
-      !TypeGuard.isEmpty(item) &&
+      !TypeGuard.isNullLike(item) &&
       TypeGuard.isFunction(item[Symbol.asyncIterator])
     );
   }
@@ -91,7 +74,7 @@ export class TypeGuard {
   ): item is
     | Iterator<unknown, unknown, unknown>
     | AsyncIterator<unknown, unknown, unknown> {
-    return Boolean(item) && TypeGuard.isFunction(item.next);
+    return TypeGuard.isObject(item) && TypeGuard.isFunction(item.next);
   }
   public static isEventEmitterLike(
     item: any
@@ -100,7 +83,7 @@ export class TypeGuard {
     Pick<NodeJS.EventEmitter, 'addListener' | 'removeListener'>
   > {
     return (
-      Boolean(item) &&
+      TypeGuard.isObject(item) &&
       TypeGuard.isFunction(item.addListener) &&
       TypeGuard.isFunction(item.removeListener)
     );
@@ -125,7 +108,7 @@ export class TypeGuard {
   }
   public static isEventTarget(item: any): item is EventTarget {
     return (
-      Boolean(item) &&
+      TypeGuard.isObject(item) &&
       TypeGuard.isFunction(item.addEventListener) &&
       TypeGuard.isFunction(item.removeEventListener) &&
       TypeGuard.isFunction(item.dispatchEvent)

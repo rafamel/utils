@@ -1,5 +1,4 @@
-import type { Dictionary } from './structural';
-import type { VariadicFn } from './functions';
+import type { Dictionary, Multiary } from './types';
 
 /* Any */
 export type Union<A, B, C = B, D = B, E = B> = A | B | C | D | E;
@@ -26,7 +25,7 @@ export type ValueOf<
         ? T[keyof T]
         : never;
 
-/* Map */
+/* Mapping */
 export type Index<T> = { [K in keyof T]: T[K] };
 export type Replace<T extends Dictionary, U> = {
   [P in keyof T]: U;
@@ -37,7 +36,7 @@ export type Optional<T extends Dictionary, K extends keyof T> = Intersection<
 >;
 
 export declare namespace Deep {
-  export type Required<T> = T extends VariadicFn
+  export type Required<T> = T extends Multiary
     ? T
     : T extends Array<infer U>
       ? Private.DeepRequiredArray<U>
@@ -45,7 +44,7 @@ export declare namespace Deep {
         ? Private.DeepRequiredObject<T>
         : T;
 
-  export type Partial<T> = T extends VariadicFn
+  export type Partial<T> = T extends Multiary
     ? T
     : T extends Array<infer U>
       ? Private.DeepPartialArray<U>
