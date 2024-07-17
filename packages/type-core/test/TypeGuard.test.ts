@@ -19,31 +19,18 @@ test(`isID`, () => {
   assert(!TypeGuard.isID(Symbol('')));
   assert(!TypeGuard.isID(() => undefined));
 });
-test(`isNullable`, () => {
-  assert(TypeGuard.isNullish(null));
-  assert(TypeGuard.isNullish(undefined));
-  assert(!TypeGuard.isNullish(0));
-  assert(!TypeGuard.isNullish(0n));
-  assert(!TypeGuard.isNullish(false));
-  assert(!TypeGuard.isNullish(''));
-  assert(!TypeGuard.isNullish({}));
-  assert(!TypeGuard.isNullish([]));
-  assert(!TypeGuard.isNullish({ [Symbol.iterator]: noop }));
-  assert(!TypeGuard.isNullish(Symbol('')));
-  assert(!TypeGuard.isNullish(() => undefined));
-});
-test(`isEmpty`, () => {
-  assert(TypeGuard.isEmpty(null));
-  assert(TypeGuard.isEmpty(undefined));
-  assert(!TypeGuard.isEmpty(0));
-  assert(!TypeGuard.isEmpty(0n));
-  assert(!TypeGuard.isEmpty(false));
-  assert(!TypeGuard.isEmpty(''));
-  assert(!TypeGuard.isEmpty({}));
-  assert(!TypeGuard.isEmpty([]));
-  assert(!TypeGuard.isEmpty({ [Symbol.iterator]: noop }));
-  assert(!TypeGuard.isEmpty(Symbol('')));
-  assert(!TypeGuard.isEmpty(() => undefined));
+test(`isNullLike`, () => {
+  assert(TypeGuard.isNullLike(null));
+  assert(TypeGuard.isNullLike(undefined));
+  assert(!TypeGuard.isNullLike(0));
+  assert(!TypeGuard.isNullLike(0n));
+  assert(!TypeGuard.isNullLike(false));
+  assert(!TypeGuard.isNullLike(''));
+  assert(!TypeGuard.isNullLike({}));
+  assert(!TypeGuard.isNullLike([]));
+  assert(!TypeGuard.isNullLike({ [Symbol.iterator]: noop }));
+  assert(!TypeGuard.isNullLike(Symbol('')));
+  assert(!TypeGuard.isNullLike(() => undefined));
 });
 test(`isFalseLike`, () => {
   assert(TypeGuard.isFalseLike(null));
@@ -193,19 +180,6 @@ test(`isObject`, () => {
   assert(!TypeGuard.isObject(Symbol('')));
   assert(!TypeGuard.isObject(() => undefined));
 });
-test(`isObjectLike`, () => {
-  assert(TypeGuard.isObjectLike({}));
-  assert(TypeGuard.isObjectLike([]));
-  assert(TypeGuard.isObjectLike({ [Symbol.iterator]: noop }));
-  assert(TypeGuard.isObjectLike(() => undefined));
-  assert(!TypeGuard.isObjectLike(undefined));
-  assert(!TypeGuard.isObjectLike(null));
-  assert(!TypeGuard.isObjectLike(1));
-  assert(!TypeGuard.isObjectLike(1n));
-  assert(!TypeGuard.isObjectLike(true));
-  assert(!TypeGuard.isObjectLike('foo'));
-  assert(!TypeGuard.isObjectLike(Symbol('')));
-});
 test(`isRecord`, () => {
   assert(TypeGuard.isRecord({}));
   assert(TypeGuard.isRecord({ [Symbol.iterator]: noop }));
@@ -218,19 +192,6 @@ test(`isRecord`, () => {
   assert(!TypeGuard.isRecord([]));
   assert(!TypeGuard.isRecord(Symbol('')));
   assert(!TypeGuard.isRecord(() => undefined));
-});
-test(`isRecordLike`, () => {
-  assert(TypeGuard.isRecordLike({}));
-  assert(TypeGuard.isRecordLike({ [Symbol.iterator]: noop }));
-  assert(TypeGuard.isRecordLike(() => undefined));
-  assert(!TypeGuard.isRecordLike(undefined));
-  assert(!TypeGuard.isRecordLike(null));
-  assert(!TypeGuard.isRecordLike(1));
-  assert(!TypeGuard.isRecordLike(1n));
-  assert(!TypeGuard.isRecordLike(true));
-  assert(!TypeGuard.isRecordLike('foo'));
-  assert(!TypeGuard.isRecordLike([]));
-  assert(!TypeGuard.isRecordLike(Symbol('')));
 });
 test(`isArray`, () => {
   assert(TypeGuard.isArray([]));

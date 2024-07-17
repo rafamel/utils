@@ -1,6 +1,6 @@
 {
   "name": "type-core",
-  "description": "A types utility belt for TypeScript",
+  "description": "A types utility belt",
   "version": "0.13.0",
   "author": "rafamel",
   "license": "MIT",

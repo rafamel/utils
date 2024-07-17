@@ -4,7 +4,7 @@
 [![Types](https://img.shields.io/npm/types/type-core.svg)](https://www.npmjs.com/package/type-core)
 [![License](https://img.shields.io/github/license/rafamel/type-core.svg)](https://github.com/rafamel/type-core/blob/master/LICENSE)
 
-> A types utility belt for TypeScript.
+> A types utility belt.
 
 ## Install
 
@@ -12,30 +12,17 @@
 
 ## Types
 
-* [Primitives](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/basic-types.ts#L1)
-  * `ID`
-  * `NonDefined`
-  * `Nullish`
-  * `Empty`
-  * `FalseLike`
-  * `Primitive`
-* [Serial](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/basic-types.ts#L27)
-  * `Serial.Type`
-  * `Serial.Primitive`
-  * `Serial.Array`
-  * `Serial.Object`
-* [Structural](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/structural.ts#L1)
-  * `Dictionary`
-  * `Constructor`
-  * `MaybePromise`
-  * `MaybePromiseLike`
-* [Functions](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/functions.ts#L1)
-  * `NullaryFn`
-  * `UnaryFn`
-  * `BinaryFn`
-  * `MultiaryFn`
-  * `VariadicFn`
-* [Utils](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types/utils.ts#L1)
+* [`ID`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L2)
+* [`VoidLike`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L3)
+* [`NullLike`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L4)
+* [`FalseLike`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L5)
+* [`Primitive`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L6)
+* [`Serial`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L14)
+* [`Dictionary`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L23)
+* [`Promisable`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L24)
+* [`Callable`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L25)
+* [`Multiary`](https://github.com/rafamel/utils/blob/master/packages/type-core/src/types.ts#L26)
+* [Utils](https://github.com/rafamel/utils/blob/master/packages/type-core/src/utils.ts)
   * `Union`
   * `Intersection`
   * `KeyOf`
@@ -50,13 +37,12 @@
 
 ### TypeGuard
 
-[See source.](https://github.com/rafamel/utils/blob/master/packages/type-core/src/TypeGuard.ts#L1)
+[See source.](https://github.com/rafamel/utils/blob/master/packages/type-core/src/TypeGuard.ts)
 
 An exported object with methods:
 
-* `isID(item: any): item is ID`
-* `isNullish(item: any): item is Nullish`
-* `isEmpty(item: any): item is Empty`
+* `isID(item: any): item is ID`: includes *string* and *number.*
+* `isNullLike(item: any): item is NullLike`.
 * `isFalseLike(item: any): item is FalseLike`
 * `isPrimitive(item: any): item is Primitive`: includes *bigint, boolean, number, string, symbol, null,* and *undefined.*
 * `isNull(item: any): item is null`
@@ -67,9 +53,7 @@ An exported object with methods:
 * `isBigInt(item: any): item is bigint`
 * `isSymbol(item: any): item is symbol`
 * `isFunction(item: any): item is VariadicFn`
-* `isObjectLike(item: any): item is any`: excludes *null*, includes array and function.
 * `isObject(item: any): item is any`: excludes *null*, includes array.
-* `isRecordLike(item: any): item is Members<unknown>`, excludes `null` and array, includes function.
 * `isRecord(item: any): item is Members<unknown>`: excludes *null*, array, and function.
 * `isArray(item: any): item is unknown[]`
 * `isPromiseLike(item: any):  item is PromiseLike<unknown>`: item is a *thenable*.
