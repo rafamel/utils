@@ -36,7 +36,8 @@ export default Promise.resolve(defaults)
         }),
         version: series(
           create(() => tasks['validate:root']),
-          exec('npm', ['run', 'version', '-ws'])
+          exec('npm', ['run', 'version', '-ws']),
+          exec('git', ['add', '.'])
         )
       };
       return recreate({ announce: true }, tasks);

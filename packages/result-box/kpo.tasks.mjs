@@ -50,7 +50,7 @@ export default Promise.resolve(defaults)
         version: series(
           create(() => tasks.validate),
           create(() => tasks.build),
-          create(() => series(tasks.docs, exec('git', ['add', '.'])))
+          create(() => tasks.docs)
         )
       };
       return recreate({ announce: true }, tasks);
