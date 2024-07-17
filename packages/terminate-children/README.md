@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/terminate-children.svg)](https://www.npmjs.com/package/terminate-children)
 [![Types](https://img.shields.io/npm/types/terminate-children.svg)](https://www.npmjs.com/package/terminate-children)
-[![License](https://img.shields.io/github/license/rafamel/terminate-children.svg)](https://github.com/rafamel/terminate-children/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 
 > Terminate all children for a process.
 

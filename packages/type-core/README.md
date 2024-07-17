@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/type-core.svg)](https://www.npmjs.com/package/type-core)
 [![Types](https://img.shields.io/npm/types/type-core.svg)](https://www.npmjs.com/package/type-core)
-[![License](https://img.shields.io/github/license/rafamel/type-core.svg)](https://github.com/rafamel/type-core/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 
 > A types utility belt.
 

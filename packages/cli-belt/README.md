@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/cli-belt.svg)](https://www.npmjs.com/package/cli-belt)
 [![Types](https://img.shields.io/npm/types/cli-belt.svg)](https://www.npmjs.com/package/cli-belt)
-[![License](https://img.shields.io/github/license/rafamel/cli-belt.svg)](https://github.com/rafamel/cli-belt/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 
 > A lossless slug that preserves uniqueness.
 

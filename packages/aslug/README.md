@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/aslug.svg)](https://www.npmjs.com/package/aslug)
 [![Types](https://img.shields.io/npm/types/aslug.svg)](https://www.npmjs.com/package/aslug)
-[![License](https://img.shields.io/github/license/rafamel/aslug.svg)](https://github.com/rafamel/aslug/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 
 > A lossless slug that preserves uniqueness.
 

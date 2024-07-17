@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/result-box.svg)](https://www.npmjs.com/package/result-box)
 [![Types](https://img.shields.io/npm/types/result-box.svg)](https://www.npmjs.com/package/result-box)
-[![License](https://img.shields.io/github/license/rafamel/result-box.svg)](https://github.com/rafamel/result-box/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 
 > Because throw/catch is not always best.
 

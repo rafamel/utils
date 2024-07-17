@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/contains-key.svg)](https://www.npmjs.com/package/contains-key)
 [![Types](https://img.shields.io/npm/types/contains-key.svg)](https://www.npmjs.com/package/contains-key)
-[![License](https://img.shields.io/github/license/rafamel/contains-key.svg)](https://github.com/rafamel/contains-key/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 
 > Confirms objects have a key or a set of keys as direct or inherited properties.
 

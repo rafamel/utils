@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/merge-strategies.svg)](https://www.npmjs.com/package/merge-strategies)
 [![Types](https://img.shields.io/npm/types/merge-strategies.svg)](https://www.npmjs.com/package/merge-strategies)
-[![License](https://img.shields.io/github/license/rafamel/merge-strategies.svg)](https://github.com/rafamel/merge-strategies/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 
 > Object merging made simple.
 

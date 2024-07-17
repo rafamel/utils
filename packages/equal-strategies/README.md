@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/equal-strategies.svg)](https://www.npmjs.com/package/equal-strategies)
 [![Types](https://img.shields.io/npm/types/equal-strategies.svg)](https://www.npmjs.com/package/equal-strategies)
-[![License](https://img.shields.io/github/license/rafamel/equal-strategies.svg)](https://github.com/rafamel/equal-strategies/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rafamel/utils.svg)](https://github.com/rafamel/utils/blob/master/LICENSE)
 
 > Equality evaluation strategies.
 
