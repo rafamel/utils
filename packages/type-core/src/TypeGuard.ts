@@ -35,7 +35,7 @@ export class TypeGuard {
   public static isSymbol(item: any): item is symbol {
     return typeof item === 'symbol';
   }
-  public static isFunction(item: any): item is Multiary<unknown[], unknown> {
+  public static isFunction(item: any): item is Multiary {
     return typeof item === 'function';
   }
   public static isObject(item: any): item is any {
