@@ -23,8 +23,9 @@
     "release": "./provision/node_modules/.bin/kpo release --",
     "distribute": "./provision/node_modules/.bin/kpo distribute --",
     "validate": "./provision/node_modules/.bin/kpo validate --",
+    "validate:root": "./provision/node_modules/.bin/kpo validate:root --",
+    "preversion": "./provision/node_modules/.bin/kpo preversion --",
     "version": "./provision/node_modules/.bin/kpo version --",
-    "checks": "./provision/node_modules/.bin/kpo checks --",
     "postinstall": "cd ./provision && npm i && cd ../ && npm run build"
   },
   "homepage": "https://github.com/rafamel/utils",

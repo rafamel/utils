@@ -3,28 +3,21 @@ import defaults from './riseup.config.mjs';
 export default Promise.resolve(defaults)
   .then(({ tasks }) => tasks)
   .then(({ commit, coverage, distribute }) => {
-    return ({ catches, create, exec, lift, recreate, series }) => {
+    return ({ catches, copy, create, exec, lift, recreate, series }) => {
       const tasks = {
         build: exec('npm', ['run', 'build', '-ws']),
         commit,
         coverage,
         release: exec('lerna', [
-          'version',
-          '--no-push',
-          '--conventional-commits'
+          ...['version', '--no-push', '--conventional-commits'],
+          ...['--concurrency', '1']
         ]),
         distribute,
         validate: series(
-          create(() => tasks.checks),
+          create(() => tasks['validate:root']),
           exec('npm', ['run', 'validate', '-ws'])
         ),
-        /* Hooks */
-        version: series(
-          create(() => tasks.checks),
-          exec('npm', ['run', 'version', '-ws'])
-        ),
-        /* Reusable */
-        checks: series(
+        'validate:root': series(
           create(() => tasks.coverage),
           lift(
             {
@@ -35,6 +28,15 @@ export default Promise.resolve(defaults)
             () => tasks
           ),
           catches({ level: 'silent' }, exec('npm', ['audit']))
+        ),
+        /* Hooks */
+        preversion: copy('./assets/index.html', './docs/index.html', {
+          single: true,
+          exists: 'overwrite'
+        }),
+        version: series(
+          create(() => tasks['validate:root']),
+          exec('npm', ['run', 'version', '-ws'])
         )
       };
       return recreate({ announce: true }, tasks);
