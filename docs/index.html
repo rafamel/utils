@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Utils docs</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        margin: 0;
+      }
+      header {
+        height: 2.25em;
+        display: flex;
+      }
+      header a {
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 1em;
+        padding: 0.5em 1em 0.75em;
+        background: #ad2c31;
+        color: #fff;
+        text-shadow: #ffffff78 0px 2px 5px;
+      }
+      header a:hover {
+        opacity: 0.925;
+      }
+      [name='frame'] {
+        border: none;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: calc(100vh - 2.25em);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="./aslug" target="frame">aslug</a>
+      <a href="./cli-belt" target="frame">cli-belt</a>
+      <a href="./result-box" target="frame">result-box</a>
+    </header>
+    <main>
+      <iframe name="frame" src="./aslug"></iframe>
+    </main>
+  </body>
+</html>

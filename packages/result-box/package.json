@@ -1,7 +1,7 @@
 {
   "name": "result-box",
   "description": "Because throw/catch is not always best",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "rafamel",
   "license": "MIT",
   "private": false,
@@ -46,6 +46,6 @@
   },
   "dependencies": {
     "multitude": "^0.0.8",
-    "type-core": "^0.13.0"
+    "type-core": "^0.14.0"
   }
 }

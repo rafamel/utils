@@ -1,7 +1,7 @@
 {
   "name": "aslug",
   "description": "A lossless slug that preserves uniqueness",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "rafamel",
   "license": "MIT",
   "private": false,
