@@ -1,4 +1,4 @@
-import basex, { type BaseConverter } from 'base-x';
+import base from 'base-x';
 
 export declare namespace Encoder {
   interface Type {
@@ -13,7 +13,7 @@ const textdecoder = new TextDecoder();
 
 export class Encoder implements Encoder.Type {
   #alphabet: string;
-  #converter: BaseConverter;
+  #converter: base.BaseConverter;
   /**
    * Alphabet of characters to use to encode the payload.
    * Default: `'123456789ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-'`
@@ -37,7 +37,7 @@ export class Encoder implements Encoder.Type {
 
     // Assignments
     this.#alphabet = alphabet;
-    this.#converter = basex(this.#alphabet);
+    this.#converter = base(this.#alphabet);
   }
   public get alphabet(): string {
     return this.#alphabet;

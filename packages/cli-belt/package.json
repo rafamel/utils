@@ -56,11 +56,11 @@
     "url": "https://github.com/rafamel/utils/issues"
   },
   "dependencies": {
-    "camelcase": "^6.0.0",
+    "camelcase": "^8.0.0",
     "chalk": "^5.0.1",
     "errorish": "^1.0.0",
     "execall": "^3.0.0",
-    "find-up": "^6.3.0",
-    "normalize-package-data": "^4.0.0"
+    "find-up": "^7.0.0",
+    "normalize-package-data": "^6.0.2"
   }
 }

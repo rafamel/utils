@@ -50,6 +50,6 @@
     "url": "https://github.com/rafamel/utils/issues"
   },
   "dependencies": {
-    "pidtree": "^0.5.0"
+    "pidtree": "^0.6.0"
   }
 }
