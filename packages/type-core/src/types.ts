@@ -24,3 +24,4 @@ export type Dictionary<T = any> = Record<any, T>;
 export type Promisable<T = any> = Promise<T> | T;
 export type Callable<A = void, T = void> = (args: A) => T;
 export type Multiary<T extends any[] = any[], U = void> = (...args: T) => U;
+export type Constructor<T = any> = { new (...args: any[]): T; prototype: T };
