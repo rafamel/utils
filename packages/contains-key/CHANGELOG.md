@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/rafamel/utils/compare/contains-key@0.2.1...contains-key@0.2.2) (2024-07-29)
+
+**Note:** Version bump only for package contains-key
+
 ## [0.2.1](https://github.com/rafamel/utils/compare/contains-key@0.2.0...contains-key@0.2.1) (2024-07-17)
 
 **Note:** Version bump only for package contains-key

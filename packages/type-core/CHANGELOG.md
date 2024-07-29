@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/rafamel/utils/compare/type-core@0.14.0...type-core@0.15.0) (2024-07-29)
+
+### Bug Fixes
+
+* **type-core:** set TypeGuard.isFunction guard to more permissive type ([3652b6b](https://github.com/rafamel/utils/commit/3652b6bfd7be90f6fa9c0b7f8b6194117d7474cf))
+
+### Features
+
+* **type-core:** add Constructor type ([40090b4](https://github.com/rafamel/utils/commit/40090b4a253cfaa4703369bc5f12d94904d1af57))
+* **type-core:** set any as default type for Promisables ([ebc0c21](https://github.com/rafamel/utils/commit/ebc0c21ab56ba66f5a177fedf3b8f3569fb321da))
+
 # [0.14.0](https://github.com/rafamel/utils/compare/type-core@0.13.0...type-core@0.14.0) (2024-07-17)
 
 ### Features

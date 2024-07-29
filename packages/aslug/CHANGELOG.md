@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/rafamel/utils/compare/aslug@0.5.1...aslug@0.5.2) (2024-07-29)
+
+**Note:** Version bump only for package aslug
+
 ## [0.5.1](https://github.com/rafamel/utils/compare/aslug@0.5.0...aslug@0.5.1) (2024-07-17)
 
 ### Bug Fixes

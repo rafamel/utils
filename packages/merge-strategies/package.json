@@ -1,7 +1,7 @@
 {
   "name": "merge-strategies",
   "description": "Object merging made simple",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "rafamel",
   "license": "MIT",
   "private": false,
